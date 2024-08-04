@@ -16,6 +16,8 @@ class SimulationVM {
             state.rRemaining = 5000;
             state.called = false;
             state.code = this.stateCodes[i];
+            // let factor = Math.random() * (10 - -10) + -10;
+            // state.prezMargin -= 1;
             if (state.prezMargin < 0) {
                 state.dRemaining =
                     state.dRemaining -
@@ -36,14 +38,14 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 500);
+        }, 250);
     }
     ticking = false;
     hour;
     minute;
     stateList = [];
     activeStates = [];
-
+    keyStates = [];
     REVs = 0;
     DEVs = 0;
     tick() {
@@ -64,6 +66,9 @@ class SimulationVM {
         this.stateList.forEach((state) => {
             if (state.closeTime === timeCode) {
                 this.activeStates.push(state);
+                if (state.prezMargin < 5 && state.prezMargin > -5) {
+                    this.keyStates.push(state);
+                }
                 const elem = document.getElementsByClassName(state.code);
                 if (elem) {
                     elem[0].classList.add("too-early");
@@ -74,7 +79,7 @@ class SimulationVM {
         console.log(this.hour + ":" + this.minute);
     }
     reportVote(state) {
-        if (Math.random() < 0.3) {
+        if (Math.random() < state.countSpeed) {
             console.log(`reporting vote ${state.fullName}`);
             let rFactor = Math.random() * (0.1 - 0.01) + 0.01;
             let dFactor = Math.random() * (0.1 - 0.01) + 0.01;
@@ -165,4 +170,4 @@ class SimulationVM {
     }
 }
 
-export { SimulationVM };
+export default new SimulationVM();
