@@ -1,0 +1,308 @@
+{
+    "ak": {
+        "fullName": "Alaska",
+        "closeTime": 1200,
+        "prezMargin": -10.7,
+        "evs": 3
+    },
+    "al": {
+        "fullName": "Alabama",
+        "closeTime": 800,
+        "prezMargin": -24.1,
+        "evs": 9
+    },
+    "ar": {
+        "fullName": "Arkansas",
+        "closeTime": 830,
+        "prezMargin": -26.9,
+        "evs": 6
+    },
+    "az": {
+        "fullName": "Arizona",
+        "closeTime": 900,
+        "prezMargin": 0.8,
+        "evs": 11
+    },
+    "ca": {
+        "fullName": "California",
+        "closeTime": 1100,
+        "prezMargin": 29.1,
+        "evs": 54
+    },
+    "co": {
+        "fullName": "Colorado",
+        "closeTime": 900,
+        "prezMargin": 12.5,
+        "evs": 10
+    },
+    "ct": {
+        "fullName": "Connecticut",
+        "closeTime": 800,
+        "prezMargin": 20.1,
+        "evs": 7
+    },
+    "dc": {
+        "fullName": "District of Columbia",
+        "closeTime": 800,
+        "prezMargin": 79,
+        "evs": 3
+    },
+    "de": {
+        "fullName": "Delaware",
+        "closeTime": 800,
+        "prezMargin": 20.1,
+        "evs": 3
+    },
+    "fl": {
+        "fullName": "Florida",
+        "closeTime": 800,
+        "prezMargin": -3,
+        "evs": 30
+    },
+    "ga": {
+        "fullName": "Georgia",
+        "closeTime": 700,
+        "prezMargin": 1.6,
+        "evs": 16
+    },
+    "hi": {
+        "fullName": "Hawaii",
+        "closeTime": 1200,
+        "prezMargin": 29.5,
+        "evs": 4
+    },
+    "ia": {
+        "fullName": "Iowa",
+        "closeTime": 900,
+        "prezMargin": -7.8,
+        "evs": 6
+    },
+    "id": {
+        "fullName": "Idaho",
+        "closeTime": 1100,
+        "prezMargin": -32.3,
+        "evs": 4
+    },
+    "il": {
+        "fullName": "Illinois",
+        "closeTime": 800,
+        "prezMargin": 17.3,
+        "evs": 19
+    },
+    "in": {
+        "fullName": "Indiana",
+        "closeTime": 700,
+        "prezMargin": -16.2,
+        "evs": 11
+    },
+    "ks": {
+        "fullName": "Kansas",
+        "closeTime": 900,
+        "prezMargin": -15.1,
+        "evs": 6
+    },
+    "ky": {
+        "fullName": "Kentucky",
+        "closeTime": 700,
+        "prezMargin": -25.4,
+        "evs": 8
+    },
+    "la": {
+        "fullName": "Louisana",
+        "closeTime": 900,
+        "prezMargin": -16.3,
+        "evs": 8
+    },
+    "ma": {
+        "fullName": "Massachusetts",
+        "closeTime": 800,
+        "prezMargin": 33.8,
+        "evs": 11
+    },
+    "md": {
+        "fullName": "Maryland",
+        "closeTime": 800,
+        "prezMargin": 33.4,
+        "evs": 10
+    },
+    "me": {
+        "fullName": "Maine",
+        "closeTime": 800,
+        "prezMargin": 9.6,
+        "evs": 4
+    },
+    "mi": {
+        "fullName": "Michigan",
+        "closeTime": 900,
+        "prezMargin": 3.5,
+        "evs": 15
+    },
+    "mn": {
+        "fullName": "Minnesota",
+        "closeTime": 900,
+        "prezMargin": 6.7,
+        "evs": 10
+    },
+    "mo": {
+        "fullName": "Missouri",
+        "closeTime": 800,
+        "prezMargin": -15,
+        "evs": 10
+    },
+    "ms": {
+        "fullName": "Mississippi",
+        "closeTime": 800,
+        "prezMargin": -13.3,
+        "evs": 6
+    },
+    "mt": {
+        "fullName": "Montana",
+        "closeTime": 1000,
+        "prezMargin": -16.5,
+        "evs": 4
+    },
+    "nc": {
+        "fullName": "North Carolina",
+        "closeTime": 730,
+        "prezMargin": -0.5,
+        "evs": 16
+    },
+    "nd": {
+        "fullName": "North Dakota",
+        "closeTime": 900,
+        "prezMargin": -34,
+        "evs": 3
+    },
+    "ne": {
+        "fullName": "Nebraska",
+        "closeTime": 900,
+        "prezMargin": -19.7,
+        "evs": 5
+    },
+    "nh": {
+        "fullName": "New Hampshire",
+        "closeTime": 800,
+        "prezMargin": 6.9,
+        "evs": 4
+    },
+    "nj": {
+        "fullName": "New Jersey",
+        "closeTime": 800,
+        "prezMargin": 15.4,
+        "evs": 14
+    },
+    "ny": {
+        "fullName": "New York",
+        "closeTime": 900,
+        "prezMargin": 23.7,
+        "evs": 28
+    },
+    "nv": {
+        "fullName": "Nevada",
+        "closeTime": 1000,
+        "prezMargin": 3.2,
+        "evs": 6
+    },
+    "nm": {
+        "fullName": "New Mexico",
+        "closeTime": 900,
+        "prezMargin": 11.1,
+        "evs": 5
+    },
+    "oh": {
+        "fullName": "Ohio",
+        "closeTime": 730,
+        "prezMargin": -7.8,
+        "evs": 17
+    },
+    "ok": {
+        "fullName": "Oklahoma",
+        "closeTime": 800,
+        "prezMargin": -33.2,
+        "evs": 7
+    },
+    "or": {
+        "fullName": "Oregon",
+        "closeTime": 1100,
+        "prezMargin": 16.5,
+        "evs": 8
+    },
+    "pa": {
+        "fullName": "Pennsylvania",
+        "closeTime": 800,
+        "prezMargin": 1.3,
+        "evs": 19
+    },
+    "ri": {
+        "fullName": "Rhode Island",
+        "closeTime": 800,
+        "prezMargin": 21.1,
+        "evs": 4
+    },
+    "sc": {
+        "fullName": "South Carolina",
+        "closeTime": 700,
+        "prezMargin": -10.4,
+        "evs": 9
+    },
+    "sd": {
+        "fullName": "South Dakota",
+        "closeTime": 900,
+        "prezMargin": -26.2,
+        "evs": 3
+    },
+    "tn": {
+        "fullName": "Tennessee",
+        "closeTime": 800,
+        "prezMargin": -22.5,
+        "evs": 11
+    },
+    "tx": {
+        "fullName": "Texas",
+        "closeTime": 900,
+        "prezMargin": -6.3,
+        "evs": 40
+    },
+    "ut": {
+        "fullName": "Utah",
+        "closeTime": 1000,
+        "prezMargin": -22.1,
+        "evs": 6
+    },
+    "va": {
+        "fullName": "Virginia",
+        "closeTime": 700,
+        "prezMargin": 9.6,
+        "evs": 13
+    },
+    "vt": {
+        "fullName": "Vermont",
+        "closeTime": 700,
+        "prezMargin": 36.3,
+        "evs": 3
+    },
+    "wa": {
+        "fullName": "Washington",
+        "closeTime": 1100,
+        "prezMargin": 19.2,
+        "evs": 12
+    },
+    "wi": {
+        "fullName": "Wisconsin",
+        "closeTime": 900,
+        "prezMargin": 0.9,
+        "evs": 10
+    },
+    "wv": {
+        "fullName": "West Virginia",
+        "closeTime": 730,
+        "prezMargin": -38.7,
+        "evs": 4
+    },
+    "wy": {
+        "fullName": "Wyoming",
+        "closeTime": 1000,
+        "prezMargin": -45,
+        "evs": 3
+    }
+}

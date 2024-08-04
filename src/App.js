@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useEffect, useRef } from "react";
+
+import { observer } from "mobx-react-lite";
+import { SimulationVM } from "./viewmodels/simulation";
+
+import President from "./President";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const vm = new SimulationVM();
+    // vm = useRef(vm);
+    return <President vm={vm} />;
 }
 
-export default App;
+export default observer(App);
