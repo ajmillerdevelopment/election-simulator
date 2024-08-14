@@ -6,7 +6,7 @@ export default observer(function Tooltip(props) {
     const state = vm.stateList.find((x) => x.code === props.state.code);
     return (
         <Tooltip anchorSelect=".ga" place="top">
-            {state.fullName}
+            Text
         </Tooltip>
     );
 });

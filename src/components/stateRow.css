@@ -1,0 +1,14 @@
+.tooltip {
+    background-color: #faf9f6;
+    height: 100%;
+    width: 100%;
+}
+.tooltip p {
+    color: black;
+}
+.dbox {
+    background-color: lightblue;
+}
+.rbox {
+    background-color: lightcoral;
+}
