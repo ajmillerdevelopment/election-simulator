@@ -94,6 +94,7 @@ export default function Header(props) {
                         document
                             .getElementById("prezHeader")
                             .classList.remove("active");
+                        props.setModule("house");
                     }}
                 >
                     <h3>House</h3>

@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Start from "./pages/Start";
 import Presidential from "./pages/Presidential";
 import Senate from "./pages/Senate";
+import House from "./pages/House";
 
 function App() {
     let vm = SimulationVM;
@@ -29,7 +30,7 @@ function App() {
             {module === "start" ? <Start setModule={setModule} /> : null}
             {module === "presidential" ? <Presidential /> : null}
             {module === "senate" ? <Senate /> : null}
-            {logElements}
+            {module === "house" ? <House /> : null}
         </div>
     );
 }

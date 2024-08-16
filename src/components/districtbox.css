@@ -1,0 +1,60 @@
+.box-container {
+    padding: 20px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px black solid;
+}
+.district-box {
+    border: 1px black solid;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.district-header {
+    height: 20%;
+    background-color: beige;
+    border-bottom: 1px grey solid;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.district-header span {
+    font-size: small;
+    margin: 0 4px;
+}
+.district-header h4 {
+}
+.vote-box {
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.vote-box div {
+    margin: 5px;
+}
+.vote-box div span {
+    margin-left: 10px;
+    text-align: right;
+}
+.district-box p {
+    margin: 0 5px !important;
+    font-size: small;
+}
+.leaning-blue-box {
+    background-color: lightblue;
+}
+.leaning-red-box {
+    background-color: lightcoral;
+}
+.called-blue-box {
+    background-color: blue;
+    color: white;
+}
+.called-red-box {
+    background-color: red;
+    color: white;
+}

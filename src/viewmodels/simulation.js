@@ -21,25 +21,21 @@ class SimulationVM {
             state.rReporting = 0;
             state.rRemaining = Math.round(state.totalVote / 2);
             state.code = this.stateCodes[i];
-
             if (state.senateMargin) {
                 state.dSenReporting = 0;
                 state.dSenRemaining = Math.round(state.totalVote / 2);
                 state.rSenReporting = 0;
                 state.rSenRemaining = Math.round(state.totalVote / 2);
-            } else {
             }
             state.called = false;
             let factor = Math.random() * (2.2 - -2.2) + -2.2;
             let senateFactor = Math.random() * (2.2 - -2.2) + -2.2;
-
             state.prezMargin += factor;
             state.prezMargin += nationalFactor;
             if (state.senateMargin) {
                 state.senateMargin += senateFactor;
                 state.senateMargin += nationalFactor;
             }
-            state = this.calculateHouse(state, factor + nationalFactor);
             let voteMargin = Math.round(
                 state.totalVote * (state.prezMargin / 100)
             );
@@ -48,11 +44,28 @@ class SimulationVM {
             );
             state.dRemaining = state.dRemaining + voteMargin;
             state.rRemaining = state.rRemaining - voteMargin;
-
             if (state.senateMargin) {
                 state.dSenRemaining += senateVoteMargin;
                 state.rSenRemaining -= senateVoteMargin;
             }
+            //House Districts Init
+            state.houseSeats?.contested?.forEach((district) => {
+                district.countSpeed = state.countSpeed;
+                let districtFactor = Math.random() * (2.2 - -2.2) + -2.2;
+                district.districtMargin += nationalFactor;
+                district.districtMargin += districtFactor;
+                district.districtMargin += factor;
+                district.districtMargin += 1.5;
+                let voteMargin = Math.round(
+                    200000 * (district.districtMargin / 100)
+                );
+                district.dReporting = 0;
+                district.dRemaining = 100000;
+                district.rReporting = 0;
+                district.rRemaining = 100000;
+                district.dRemaining += voteMargin;
+                district.rRemaining -= voteMargin;
+            });
         });
         this.hour = "18";
         this.minute = "59";
@@ -60,7 +73,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 1000);
+        }, 10);
     }
     ticking = false;
     hour;
@@ -68,6 +81,7 @@ class SimulationVM {
     timeCode;
     stateList = [];
     activeStates = [];
+    activeDistricts = [];
     log = [];
     REVs = 0;
     DEVs = 0;
@@ -98,14 +112,23 @@ class SimulationVM {
             if (state.closeTime === timeCodeforEval) {
                 this.activeStates.push(state);
                 state.active = true;
-                // const elem = document.getElementsByClassName(state.code);
-                // if (elem) {
-                //     elem[0].classList.add("too-early");
-                // }
+                if (state.houseSeats) {
+                    if (state.houseSeats.safeD)
+                        this.DHouse += state.houseSeats.safeD;
+                    if (state.houseSeats.safeR)
+                        this.RHouse += state.houseSeats.safeR;
+                    if (state.houseSeats.contested)
+                        this.activeDistricts = this.activeDistricts.concat(
+                            state.houseSeats.contested
+                        );
+                }
             }
         });
         this.log.push(``); //necessary for the clock to refresh properly
         this.activeStates.forEach((state) => this.reportVote(state));
+        this.activeDistricts.forEach((district) =>
+            this.reportDistrictVote(district)
+        );
         if (this.REVs > 269 && !this.called) {
             this.log.push(`Trump wins presidency!`);
             this.called = true;
@@ -136,7 +159,6 @@ class SimulationVM {
                 ((state.dReporting + state.rReporting) / state.totalVote) *
                 100
             ).toFixed(0);
-            this.countHouse(state, reportedVote);
             if (!state.called) {
                 if (state.prezMargin > 15 || state.prezMargin < -15) {
                     if (state.prezMargin > 0) {
@@ -154,21 +176,6 @@ class SimulationVM {
                     } else {
                         this.callRed(state);
                     }
-                }
-            }
-            if (!state.called && reportedVote > 30) {
-                if (state.rReporting > state.dReporting) {
-                    // const elem = document.getElementsByClassName(state.code);
-                    // if (elem) {
-                    //     elem[0].classList.remove("too-early", "leaning-blue");
-                    //     elem[0].classList.add("leaning-red");
-                    // }
-                } else {
-                    // const elem = document.getElementsByClassName(state.code);
-                    // if (elem) {
-                    //     elem[0].classList.remove("too-early", "leaning-red");
-                    //     elem[0].classList.add("leaning-blue");
-                    // }
                 }
             }
             if (state.senateMargin && !state.senateCalled) {
@@ -200,18 +207,37 @@ class SimulationVM {
             }
         }
     }
+    reportDistrictVote(district) {
+        if (Math.random() < district.countSpeed) {
+            let rFactor = Math.random() * (0.15 - 0.01) + 0.01;
+            let dFactor = Math.random() * (0.15 - 0.01) + 0.01;
+            let rTranche = Math.ceil(district.rRemaining * rFactor);
+            let dTranche = Math.ceil(district.dRemaining * dFactor);
+            district.rRemaining = district.rRemaining - rTranche;
+            district.rReporting = district.rReporting + rTranche;
+            district.dRemaining = district.dRemaining - dTranche;
+            district.dReporting = district.dReporting + dTranche;
+            if (!district.called) {
+                if (
+                    district.dReporting - district.rReporting >
+                        district.rRemaining ||
+                    district.rReporting - district.dReporting >
+                        district.dRemaining
+                ) {
+                    if (district.districtMargin > 0) {
+                        district.called = true;
+                        this.DHouse++;
+                    } else {
+                        district.called = true;
+                        this.RHouse++;
+                    }
+                }
+            }
+        }
+    }
     callBlue(state) {
         state.called = true;
         this.DEVs += state.evs;
-        // const elem = document.getElementsByClassName(state.code);
-        // if (elem) {
-        //     elem[0].classList.remove(
-        //         "too-early",
-        //         "leaning-blue",
-        //         "leaning-red"
-        //     );
-        //     elem[0].classList.add("called-blue");
-        // }
         this.log.push(
             `${this.hour}:${this.minute} - Harris wins ${state.fullName}`
         );
@@ -219,15 +245,6 @@ class SimulationVM {
     callRed(state) {
         state.called = true;
         this.REVs += state.evs;
-        // const elem = document.getElementsByClassName(state.code);
-        // if (elem) {
-        //     elem[0].classList.remove(
-        //         "too-early",
-        //         "leaning-blue",
-        //         "leaning-red"
-        //     );
-        //     elem[0].classList.add("called-red");
-        // }
         this.log.push(
             `${this.hour}:${this.minute} - Trump wins ${state.fullName}`
         );
@@ -259,134 +276,6 @@ class SimulationVM {
             this.log.push(
                 `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) elected to the Senate`
             );
-        }
-    }
-    calculateHouse(state, totalMargin) {
-        const seats = state.houseSeats;
-        if (!seats.safeD) seats.safeD = null;
-        if (!seats.likelyD) seats.likelyD = null;
-        if (!seats.leanD) seats.leanD = null;
-        if (!seats.tossup) seats.tossup = null;
-        if (!seats.leanR) seats.leanR = null;
-        if (!seats.likelyR) seats.likelyR = null;
-        if (!seats.safeR) seats.safeR = null;
-        state.d30 = null;
-        state.d60 = null;
-        state.d90 = null;
-        state.d99 = null;
-        state.r99 = null;
-        state.r90 = null;
-        state.r60 = null;
-        state.r30 = null;
-
-        if (totalMargin < -3) {
-            state.d30 += seats.safeD;
-            state.d99 += seats.likelyD;
-            state.r99 += seats.leanD;
-            state.r90 += seats.tossup;
-            state.r60 += seats.leanR;
-            state.r30 += seats.likelyR;
-            state.r30 += seats.safeR;
-        } else if (totalMargin < -2) {
-            state.d30 += seats.safeD;
-            state.d90 += seats.likelyD;
-            state.d99 += seats.leanD;
-            state.r99 += seats.tossup;
-            state.r90 += seats.leanR;
-            state.r60 += seats.likelyR;
-            state.r30 += seats.safeR;
-        } else if (totalMargin > 2) {
-            state.d30 += seats.safeD;
-            state.d30 += seats.likelyD;
-            state.d60 += seats.leanD;
-            state.d90 += seats.tossup;
-            state.d99 += seats.leanR;
-            state.r99 += seats.likelyR;
-            state.r30 += seats.safeR;
-        } else if (totalMargin > 3) {
-            state.d30 += seats.safeD;
-            state.d30 += seats.likelyD;
-            state.d30 += seats.leanD;
-            state.d60 += seats.tossup;
-            state.d90 += seats.leanR;
-            state.d99 += seats.likelyR;
-            state.r30 += seats.safeR;
-        } else {
-            state.d30 += seats.safeD;
-            state.d60 += seats.likelyD;
-            state.d90 += seats.leanD;
-            state.d99 += seats.tossup;
-            state.r99 += seats.leanR;
-            state.r90 += seats.likelyR;
-            state.r30 += seats.safeR;
-        }
-        delete state.houseSeats;
-        return state;
-    }
-    countHouse(state, reportedVote) {
-        if (reportedVote > 30) {
-            this.DHouse += state.d30;
-            this.RHouse += state.r30;
-            if (state.d30) {
-                this.log.push(
-                    `${this.hour}:${this.minute} - Democrats win ${state.d30} Safe D seats in ${state.fullName}`
-                );
-            }
-            if (state.r30) {
-                this.log.push(
-                    `${this.hour}:${this.minute} - Republicans win ${state.r30} Safe R seats in ${state.fullName}`
-                );
-            }
-            state.d30 = 0;
-            state.r30 = 0;
-        }
-        if (reportedVote > 60) {
-            this.DHouse += state.d60;
-            this.RHouse += state.r60;
-            if (state.d60) {
-                this.log.push(
-                    `${this.hour}:${this.minute} - Democrats win ${state.d60} Likely D seats in ${state.fullName}`
-                );
-            }
-            if (state.r60) {
-                this.log.push(
-                    `${this.hour}:${this.minute} - Republicans win ${state.r60} Likely R seats in ${state.fullName}`
-                );
-            }
-            state.d60 = 0;
-            state.r60 = 0;
-        }
-        if (reportedVote > 90) {
-            this.DHouse += state.d90;
-            this.RHouse += state.r90;
-            if (state.d90) {
-                this.log.push(
-                    `${this.hour}:${this.minute} - Democrats win ${state.d90} Lean D seats in ${state.fullName}`
-                );
-            }
-            if (state.r90) {
-                this.log.push(
-                    `${this.hour}:${this.minute} - Republicans win ${state.r90} Lean R seats in ${state.fullName}`
-                );
-            }
-            state.d90 = 0;
-            state.r90 = 0;
-        }
-        if (reportedVote > 98) {
-            this.DHouse += state.d99;
-            this.RHouse += state.r99;
-            if (state.d99) {
-                this.log.push(
-                    `${this.hour}:${this.minute} - Democrats win ${state.d99} Tossup seats in ${state.fullName}`
-                );
-            }
-            if (state.r99) {
-                this.log.push(
-                    `${this.hour}:${this.minute} - Republicans win ${state.r99} Tossup seats in ${state.fullName}`
-                );
-            }
-            state.d99 = 0;
-            state.r99 = 0;
         }
     }
 }

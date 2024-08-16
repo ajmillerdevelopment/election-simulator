@@ -7,7 +7,14 @@
         "countSpeed": 0.05,
         "totalVote": 350000,
         "houseSeats": {
-            "leanD": 1
+            "contested": [
+                {
+                    "districtName": "AK-AL",
+                    "districtMargin": 2,
+                    "incumbent": "Peltola (D)",
+                    "rating": "Lean D"
+                }
+            ]
         }
     },
     "al": {
@@ -19,7 +26,14 @@
         "totalVote": 2300000,
         "houseSeats": {
             "safeD": 1,
-            "likelyD": 1,
+            "contested": [
+                {
+                    "districtName": "AL-02",
+                    "districtMargin": 4,
+                    "incumbent": "NEW SEAT",
+                    "rating": "Likely D"
+                }
+            ],
             "safeR": 5
         }
     },
@@ -46,7 +60,20 @@
         "senateMargin": 2.5,
         "houseSeats": {
             "safeD": 3,
-            "tossup": 2,
+            "contested": [
+                {
+                    "districtName": "AZ-01",
+                    "districtMargin": 1,
+                    "incumbent": "Schweikert (R)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtMargin": 1,
+                    "districtName": "AZ-06",
+                    "incumbent": "Ciscomani (R)",
+                    "rating": "Tossup"
+                }
+            ],
             "safeR": 4
         }
     },
@@ -62,12 +89,69 @@
         "totalVote": 17000000,
         "houseSeats": {
             "safeD": 37,
-            "likelyD": 2,
-            "leanD": 1,
-            "tossup": 4,
-            "leanR": 1,
-            "likelyR": 2,
-            "safeR": 5
+            "safeR": 5,
+            "contested": [
+                {
+                    "districtName": "CA-09",
+                    "districtMargin": 4,
+                    "incumbent": "Harder (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "CA-49",
+                    "districtMargin": 4,
+                    "incumbent": "Levin (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "CA-47",
+                    "districtMargin": 2,
+                    "incumbent": "Porter (D)",
+                    "rating": "Lean D"
+                },
+                {
+                    "districtName": "CA-13",
+                    "districtMargin": 1,
+                    "incumbent": "Duarte (R)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "CA-22",
+                    "districtMargin": 1,
+                    "incumbent": "Valadao (R)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "CA-27",
+                    "districtMargin": 1,
+                    "incumbent": "Garcia (R)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "CA-41",
+                    "districtMargin": 1,
+                    "incumbent": "Calvert (R)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "CA-45",
+                    "districtMargin": -2,
+                    "incumbent": "Steel (R)",
+                    "rating": "Lean R"
+                },
+                {
+                    "districtName": "CA-03",
+                    "districtMargin": -4,
+                    "incumbent": "Kiley (R)",
+                    "rating": "Likely R"
+                },
+                {
+                    "districtName": "CA-40",
+                    "districtMargin": -4,
+                    "incumbent": "Kim (R)",
+                    "rating": "Likely R"
+                }
+            ]
         }
     },
     "co": {
@@ -79,7 +163,14 @@
         "totalVote": 3200000,
         "houseSeats": {
             "safeR": 2,
-            "tossup": 1,
+            "contested": [
+                {
+                    "districtName": "CO-03",
+                    "districtMargin": -2,
+                    "incumbent": "Boebert (R)",
+                    "rating": "Lean R"
+                }
+            ],
             "safeD": 4
         }
     },
@@ -96,7 +187,14 @@
         "senateMargin": 20,
         "houseSeats": {
             "safeD": 4,
-            "leanD": 1
+            "contested": [
+                {
+                    "districtName": "CT-05",
+                    "districtMargin": 2,
+                    "incumbent": "Hayes (D)",
+                    "rating": "Lean D"
+                }
+            ]
         }
     },
     "dc": {
@@ -118,6 +216,9 @@
         "DSenateName": "Rochester",
         "RSenateName": "Hansen",
         "senateMargin": 20,
+        "DGovName": "TBD",
+        "RGovName": "TBD",
+        "govMargin": 20,
         "houseSeats": {
             "safeD": 1
         }
@@ -135,8 +236,26 @@
         "senateMargin": -2,
         "houseSeats": {
             "safeD": 6,
-            "likelyD": 2,
-            "likelyR": 1,
+            "contested": [
+                {
+                    "districtName": "FL-09",
+                    "districtMargin": 4,
+                    "incumbent": "Soto (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "FL-23",
+                    "districtMargin": 4,
+                    "incumbent": "Moskowitz (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "FL-13",
+                    "districtMargin": -4,
+                    "incumbent": "Luna (R)",
+                    "rating": "Likely R"
+                }
+            ],
             "safeR": 19
         }
     },
@@ -175,8 +294,20 @@
         "countSpeed": 0.3,
         "totalVote": 1600000,
         "houseSeats": {
-            "leanR": 1,
-            "likelyR": 1,
+            "contested": [
+                {
+                    "districtName": "IA-03",
+                    "districtMargin": -2,
+                    "incumbent": "Nunn (R)",
+                    "rating": "Lean R"
+                },
+                {
+                    "districtName": "IA-01",
+                    "districtMargin": -4,
+                    "incumbent": "Miller-Meeks (R)",
+                    "rating": "Likely R"
+                }
+            ],
             "safeR": 2
         }
     },
@@ -198,7 +329,14 @@
         "totalVote": 6000000,
         "houseSeats": {
             "safeD": 13,
-            "leanD": 1,
+            "contested": [
+                {
+                    "districtName": "IL-17",
+                    "districtMargin": 2,
+                    "incumbent": "Sorensen (D)",
+                    "rating": "Lean D"
+                }
+            ],
             "safeR": 3
         }
     },
@@ -213,9 +351,19 @@
         "RSenateName": "Banks",
         "DSenateName": "McCray",
         "senateMargin": -12,
+        "RGovName": "Braun",
+        "DGovName": "McCormick",
+        "govMargin": -12,
         "houseSeats": {
             "safeR": 7,
-            "leanD": 1,
+            "contested": [
+                {
+                    "districtName": "IN-01",
+                    "districtMargin": 2,
+                    "incumbent": "Mrvan (D)",
+                    "rating": "Lean D"
+                }
+            ],
             "safeD": 1
         }
     },
@@ -227,7 +375,14 @@
         "countSpeed": 0.2,
         "totalVote": 1300000,
         "houseSeats": {
-            "likelyD": 1,
+            "contested": [
+                {
+                    "districtName": "KS-03",
+                    "districtMargin": 4,
+                    "incumbent": "Davids (D)",
+                    "rating": "Likely D"
+                }
+            ],
             "safeR": 3
         }
     },
@@ -282,7 +437,14 @@
         "totalVote": 3000000,
         "houseSeats": {
             "safeD": 6,
-            "likelyD": 1,
+            "contested": [
+                {
+                    "districtName": "MD-06",
+                    "districtMargin": 4,
+                    "incumbent": "Trone (D)",
+                    "rating": "Likely D"
+                }
+            ],
             "safeR": 1
         }
     },
@@ -297,7 +459,17 @@
         "RSenateName": "Kouzounas",
         "totalVote": 800000,
         "senateMargin": 12,
-        "houseSeats": { "safeD": 1, "tossup": 1 }
+        "houseSeats": {
+            "safeD": 1,
+            "contested": [
+                {
+                    "districtName": "ME-02",
+                    "districtMargin": 1,
+                    "incumbent": "Golden (D)",
+                    "rating": "Tossup"
+                }
+            ]
+        }
     },
     "mi": {
         "fullName": "Michigan",
@@ -311,10 +483,32 @@
         "senateMargin": 5,
         "houseSeats": {
             "safeD": 3,
-            "likelyD": 1,
-            "tossup": 2,
-            "leanR": 1,
-            "likelyR": 1,
+            "contested": [
+                {
+                    "districtName": "MI-03",
+                    "districtMargin": 4,
+                    "incumbent": "Scholten (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "MI-07",
+                    "districtMargin": 1,
+                    "incumbent": "Slotkin (D)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "MI-08",
+                    "districtMargin": 1,
+                    "incumbent": "Kildee (D)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "MI-10",
+                    "districtMargin": -2,
+                    "incumbent": "James (R)",
+                    "rating": "Likely R"
+                }
+            ],
             "safeR": 5
         }
     },
@@ -332,7 +526,14 @@
 
         "houseSeats": {
             "safeD": 3,
-            "leanD": 1,
+            "contested": [
+                {
+                    "districtName": "MN-02",
+                    "districtMargin": 2,
+                    "incumbent": "Craig (D)",
+                    "rating": "Lean D"
+                }
+            ],
             "safeR": 4
         }
     },
@@ -347,6 +548,9 @@
         "DSenateName": "Kunce",
         "senateMargin": -12,
         "totalVote": 3000000,
+        "RGovName": "Kehoe",
+        "DGovName": "Quade",
+        "govMargin": -12,
         "houseSeats": {
             "safeD": 2,
             "safeR": 6
@@ -379,11 +583,20 @@
         "DSenateName": "Tester",
         "RSenateName": "Sheehy",
         "totalVote": 600000,
-
-        "senateMargin": -3,
+        "DGovName": "Busse",
+        "RGovName": "Gianforte",
+        "govMargin": -8,
+        "senateMargin": -2,
         "houseSeats": {
             "safeR": 1,
-            "likelyR": 1
+            "contested": [
+                {
+                    "districtName": "MT-01",
+                    "districtMargin": -4,
+                    "incumbent": "Zinke (R)",
+                    "rating": "Likely R"
+                }
+            ]
         }
     },
     "nc": {
@@ -393,10 +606,19 @@
         "evs": 16,
         "countSpeed": 0.2,
         "totalVote": 5500000,
-
+        "DGovName": "Stein",
+        "RGovName": "Robinson",
+        "govMargin": 4,
         "houseSeats": {
             "safeD": 3,
-            "tossup": 1,
+            "contested": [
+                {
+                    "districtName": "NC-01",
+                    "districtMargin": 1,
+                    "incumbent": "Davis (D)",
+                    "rating": "Tossup"
+                }
+            ],
             "safeR": 10
         }
     },
@@ -410,7 +632,9 @@
         "RSenateName": "Cramer",
         "DSenateName": "Christiansen",
         "totalVote": 300000,
-
+        "DGovName": "Peipkorn",
+        "RGovName": "Armstrong",
+        "govMargin": -30,
         "senateMargin": -30,
         "houseSeats": {
             "safeR": 1
@@ -430,7 +654,14 @@
 
         "houseSeats": {
             "safeR": 2,
-            "leanR": 1
+            "contested": [
+                {
+                    "districtName": "NE-02",
+                    "districtMargin": -2,
+                    "incumbent": "Bacon (R)",
+                    "rating": "Lean R"
+                }
+            ]
         }
     },
     "nh": {
@@ -442,7 +673,20 @@
         "totalVote": 800000,
 
         "houseSeats": {
-            "likelyD": 2
+            "contested": [
+                {
+                    "districtName": "NH-01",
+                    "districtMargin": 4,
+                    "incumbent": "Pappas (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "NH-02",
+                    "districtMargin": 4,
+                    "incumbent": "Kuster (D)",
+                    "rating": "Likely D"
+                }
+            ]
         }
     },
     "nj": {
@@ -458,7 +702,14 @@
         "senateMargin": 17,
         "houseSeats": {
             "safeD": 9,
-            "tossup": 1,
+            "contested": [
+                {
+                    "districtName": "NJ-07",
+                    "districtMargin": 1,
+                    "incumbent": "Kean Jr (R)",
+                    "rating": "Tossup"
+                }
+            ],
             "safeR": 2
         }
     },
@@ -475,10 +726,50 @@
         "senateMargin": 20,
         "houseSeats": {
             "safeD": 14,
-            "likelyD": 1,
-            "leanD": 2,
-            "tossup": 3,
-            "likelyR": 1,
+            "contested": [
+                {
+                    "districtName": "NY-03",
+                    "districtMargin": 4,
+                    "incumbent": "Souzzi (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "NY-18",
+                    "districtMargin": 2,
+                    "incumbent": "Ryan (D)",
+                    "rating": "Lean D"
+                },
+                {
+                    "districtName": "NY-22",
+                    "districtMargin": 2,
+                    "incumbent": "Williams (R)",
+                    "rating": "Lean D"
+                },
+                {
+                    "districtName": "NY-04",
+                    "districtMargin": 1,
+                    "incumbent": "D'Esposito (R)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "NY-17",
+                    "districtMargin": 1,
+                    "incumbent": "Lawler (R)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "NY-19",
+                    "districtMargin": 1,
+                    "incumbent": "Molinero (R)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "NY-01",
+                    "districtMargin": -4,
+                    "incumbent": "LaLota (R)",
+                    "rating": "Likely R"
+                }
+            ],
             "safeR": 4
         }
     },
@@ -495,8 +786,26 @@
         "RSenateName": "Brown",
         "senateMargin": 4,
         "houseSeats": {
-            "likelyD": 2,
-            "leanD": 1,
+            "contested": [
+                {
+                    "districtName": "NV-01",
+                    "districtMargin": 4,
+                    "incumbent": "Titus (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "NV-04",
+                    "districtMargin": 4,
+                    "incumbent": "Horsford (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "NV-03",
+                    "districtMargin": 2,
+                    "incumbent": "Lee (D)",
+                    "rating": "Lean D"
+                }
+            ],
             "safeR": 1
         }
     },
@@ -514,7 +823,14 @@
         "senateMargin": 8,
         "houseSeats": {
             "safeD": 2,
-            "tossup": 1
+            "contested": [
+                {
+                    "districtName": "NM-02",
+                    "districtMargin": 1,
+                    "incumbent": "Vasquez (D)",
+                    "rating": "Tossup"
+                }
+            ]
         }
     },
     "oh": {
@@ -531,8 +847,26 @@
 
         "houseSeats": {
             "safeD": 2,
-            "likelyD": 1,
-            "tossup": 2,
+            "contested": [
+                {
+                    "districtName": "OH-01",
+                    "districtMargin": 4,
+                    "incumbent": "Landsman (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "OH-09",
+                    "districtMargin": 1,
+                    "incumbent": "Kaptur (D)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "OH-13",
+                    "districtMargin": 1,
+                    "incumbent": "Sykes (D)",
+                    "rating": "Tossup"
+                }
+            ],
             "safeR": 10
         }
     },
@@ -558,9 +892,26 @@
 
         "houseSeats": {
             "safeR": 1,
-            "tossup": 1,
-            "leanD": 1,
-            "likelyD": 1,
+            "contested": [
+                {
+                    "districtName": "OR-04",
+                    "districtMargin": 4,
+                    "incumbent": "Hoyle (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "OR-06",
+                    "districtMargin": 2,
+                    "incumbent": "Salinas (D)",
+                    "rating": "Lean D"
+                },
+                {
+                    "districtName": "OR-05",
+                    "districtMargin": 1,
+                    "incumbent": "Chavez (R)",
+                    "rating": "Tossup"
+                }
+            ],
             "safeD": 2
         }
     },
@@ -578,10 +929,38 @@
         "senateMargin": 6,
         "houseSeats": {
             "safeD": 6,
-            "leanD": 1,
-            "tossup": 2,
-            "leanR": 1,
-            "likelyR": 1,
+            "contested": [
+                {
+                    "districtName": "PA-17",
+                    "districtMargin": 2,
+                    "incumbent": "Deluzio (D)",
+                    "rating": "Lean D"
+                },
+                {
+                    "districtName": "PA-07",
+                    "districtMargin": 1,
+                    "incumbent": "Wild (D)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "PA-08",
+                    "districtMargin": 1,
+                    "incumbent": "Cartwright (R)",
+                    "rating": "Tossup"
+                },
+                {
+                    "districtName": "PA-10",
+                    "districtMargin": -2,
+                    "incumbent": "Perry (R)",
+                    "rating": "Lean R"
+                },
+                {
+                    "districtName": "PA-01",
+                    "districtMargin": -4,
+                    "incumbent": "Fitzpatrick (R)",
+                    "rating": "Likely R"
+                }
+            ],
             "safeR": 6
         }
     },
@@ -653,8 +1032,26 @@
         "senateMargin": -4,
         "houseSeats": {
             "safeD": 11,
-            "leanD": 2,
-            "likelyR": 1,
+            "contested": [
+                {
+                    "districtName": "TX-28",
+                    "districtMargin": 2,
+                    "incumbent": "Cuellar (D)",
+                    "rating": "Lean D"
+                },
+                {
+                    "districtName": "TX-34",
+                    "districtMargin": 2,
+                    "incumbent": "Gonzolez (R)",
+                    "rating": "Lean D"
+                },
+                {
+                    "districtName": "TX-15",
+                    "districtMargin": -4,
+                    "incumbent": "De La Cruz (R)",
+                    "rating": "Likely R"
+                }
+            ],
             "safeR": 24
         }
     },
@@ -668,6 +1065,9 @@
         "RSenateName": "Curtis",
         "DSenateName": "Gleich",
         "totalVote": 1400000,
+        "RGovName": "Cox",
+        "DGovName": "King",
+        "govMargin": -20,
         "senateMargin": -18,
         "houseSeats": {
             "safeR": 4
@@ -687,8 +1087,20 @@
         "senateMargin": 14,
         "houseSeats": {
             "safeD": 5,
-            "leanD": 1,
-            "leanR": 1,
+            "contested": [
+                {
+                    "districtName": "VA-07",
+                    "districtMargin": 2,
+                    "incumbent": "Spanberger (D)",
+                    "rating": "Lean D"
+                },
+                {
+                    "districtName": "VA-02",
+                    "districtMargin": -2,
+                    "incumbent": "Kiggans (R)",
+                    "rating": "Lean R"
+                }
+            ],
             "safeR": 4
         }
     },
@@ -702,8 +1114,10 @@
         "DSenateName": "Sanders",
         "RSenateName": "Malloy",
         "totalVote": 400000,
-
         "senateMargin": 36,
+        "govMargin": 0,
+        "DGovName": "TBD",
+        "RGovName": "TBD",
         "houseSeats": {
             "safeD": 1
         }
@@ -718,12 +1132,26 @@
         "DSenateName": "Cantwell",
         "RSenateName": "Garcia",
         "totalVote": 4000000,
-
+        "DGovName": "Ferguson",
+        "RGovName": "Reichert",
+        "govMargin": 10,
         "senateMargin": 18,
         "houseSeats": {
             "safeD": 6,
-            "likelyD": 1,
-            "tossup": 1,
+            "contested": [
+                {
+                    "districtName": "WA-08",
+                    "districtMargin": 4,
+                    "incumbent": "Schrier (D)",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "WA-03",
+                    "districtMargin": 1,
+                    "incumbent": "Perez (D)",
+                    "rating": "Tossup"
+                }
+            ],
             "safeR": 2
         }
     },
@@ -740,8 +1168,20 @@
         "senateMargin": 4,
         "houseSeats": {
             "safeD": 2,
-            "leanR": 1,
-            "likelyR": 1,
+            "contested": [
+                {
+                    "districtName": "WI-03",
+                    "districtMargin": -2,
+                    "incumbent": "Van Orden (R)",
+                    "rating": "Lean R"
+                },
+                {
+                    "districtName": "WI-01",
+                    "districtMargin": -4,
+                    "incumbent": "Stiel (R)",
+                    "rating": "Likely R"
+                }
+            ],
             "safeR": 4
         }
     },
@@ -756,6 +1196,9 @@
         "DSenateName": "Elliot",
         "totalVote": 700000,
         "senateMargin": -30,
+        "RGovName": "Morrisey",
+        "DGovName": "Williams",
+        "govMargin": -30,
         "houseSeats": {
             "safeR": 2
         }
