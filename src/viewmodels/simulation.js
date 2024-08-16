@@ -73,7 +73,7 @@ class SimulationVM {
                 district.districtMargin += nationalFactor;
                 district.districtMargin += districtFactor;
                 district.districtMargin += factor;
-                district.districtMargin += 1.5;
+                district.districtMargin += 1;
                 let voteMargin = Math.round(
                     200000 * (district.districtMargin / 100)
                 );

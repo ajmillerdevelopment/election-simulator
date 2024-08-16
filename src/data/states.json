@@ -106,7 +106,7 @@
                 {
                     "districtName": "CA-47",
                     "districtMargin": 2,
-                    "incumbent": "Porter (D)",
+                    "incumbent": "fmr. Porter (D)",
                     "rating": "Lean D"
                 },
                 {
@@ -167,8 +167,14 @@
                 {
                     "districtName": "CO-03",
                     "districtMargin": -2,
-                    "incumbent": "Boebert (R)",
+                    "incumbent": "fmr. Boebert (R)",
                     "rating": "Lean R"
+                },
+                {
+                    "districtName": "CO-08",
+                    "districtMargin": 1,
+                    "incumbent": "Caraveo (D)",
+                    "rating": "Tossup"
                 }
             ],
             "safeD": 4
@@ -441,7 +447,7 @@
                 {
                     "districtName": "MD-06",
                     "districtMargin": 4,
-                    "incumbent": "Trone (D)",
+                    "incumbent": "fmr. Trone (D)",
                     "rating": "Likely D"
                 }
             ],
@@ -482,7 +488,7 @@
         "totalVote": 5500000,
         "senateMargin": 5,
         "houseSeats": {
-            "safeD": 3,
+            "safeD": 4,
             "contested": [
                 {
                     "districtName": "MI-03",
@@ -493,13 +499,13 @@
                 {
                     "districtName": "MI-07",
                     "districtMargin": 1,
-                    "incumbent": "Slotkin (D)",
+                    "incumbent": "fmr. Slotkin (D)",
                     "rating": "Tossup"
                 },
                 {
                     "districtName": "MI-08",
                     "districtMargin": 1,
-                    "incumbent": "Kildee (D)",
+                    "incumbent": "fmr. Kildee (D)",
                     "rating": "Tossup"
                 },
                 {
@@ -685,7 +691,7 @@
                 {
                     "districtName": "NH-02",
                     "districtMargin": 4,
-                    "incumbent": "Kuster (D)",
+                    "incumbent": "fmr. Kuster (D)",
                     "rating": "Likely D"
                 }
             ]
@@ -772,7 +778,7 @@
                     "rating": "Likely R"
                 }
             ],
-            "safeR": 4
+            "safeR": 5
         }
     },
     "nv": {
@@ -1093,7 +1099,7 @@
                 {
                     "districtName": "VA-07",
                     "districtMargin": 2,
-                    "incumbent": "Spanberger (D)",
+                    "incumbent": "fmr. Spanberger (D)",
                     "rating": "Lean D"
                 },
                 {
@@ -1117,7 +1123,7 @@
         "RSenateName": "Malloy",
         "totalVote": 400000,
         "senateMargin": 36,
-        "govMargin": 0,
+        "govMargin": 0.1,
         "DGovName": "TBD",
         "RGovName": "TBD",
         "houseSeats": {
