@@ -60,7 +60,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 100);
+        }, 1000);
     }
     ticking = false;
     hour;
