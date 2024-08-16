@@ -7,7 +7,9 @@ import SenateTooltip from "../components/SenateTooltip";
 function Senate() {
     const vm = SimulationVM;
     const toolTips = vm.activeStates.map((state) => {
-        return <SenateTooltip state={state} />;
+        if (state.senateMargin) {
+            return <SenateTooltip state={state} />;
+        } else return null;
     });
 
     useEffect(() => {

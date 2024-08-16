@@ -37,6 +37,9 @@ export default function Header(props) {
                         document
                             .getElementById("prezHeader")
                             .classList.add("active");
+                        document
+                            .getElementById("govHeader")
+                            .classList.remove("active");
                         props.setModule("presidential");
                     }}
                 >
@@ -62,6 +65,9 @@ export default function Header(props) {
                         document
                             .getElementById("prezHeader")
                             .classList.remove("active");
+                        document
+                            .getElementById("govHeader")
+                            .classList.remove("active");
                         props.setModule("senate");
                     }}
                 >
@@ -83,6 +89,34 @@ export default function Header(props) {
                     </div>
                 </div>
                 <div
+                    id="govHeader"
+                    onClick={() => {
+                        document
+                            .getElementById("senateHeader")
+                            .classList.remove("active");
+                        document
+                            .getElementById("houseHeader")
+                            .classList.remove("active");
+                        document
+                            .getElementById("prezHeader")
+                            .classList.remove("active");
+                        document
+                            .getElementById("govHeader")
+                            .classList.add("active");
+                        props.setModule("governors");
+                    }}
+                >
+                    <h3>Governors</h3>
+                    <div>
+                        <strong style={{ color: "red", margin: "0 5px" }}>
+                            GOP: {vm.RGovs}
+                        </strong>{" "}
+                        <strong style={{ color: "blue" }}>
+                            Dems: {vm.DGovs}
+                        </strong>
+                    </div>
+                </div>
+                <div
                     id="houseHeader"
                     onClick={() => {
                         document
@@ -93,6 +127,9 @@ export default function Header(props) {
                             .classList.add("active");
                         document
                             .getElementById("prezHeader")
+                            .classList.remove("active");
+                        document
+                            .getElementById("govHeader")
                             .classList.remove("active");
                         props.setModule("house");
                     }}

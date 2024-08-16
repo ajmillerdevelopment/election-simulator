@@ -671,7 +671,9 @@
         "evs": 4,
         "countSpeed": 0.2,
         "totalVote": 800000,
-
+        "DGovName": "TBD",
+        "RGovName": "TBD",
+        "govMargin": 0.1,
         "houseSeats": {
             "contested": [
                 {

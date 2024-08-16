@@ -7,6 +7,7 @@ import Start from "./pages/Start";
 import Presidential from "./pages/Presidential";
 import Senate from "./pages/Senate";
 import House from "./pages/House";
+import Governors from "./pages/Governors";
 
 function App() {
     let vm = SimulationVM;
@@ -30,6 +31,7 @@ function App() {
             {module === "start" ? <Start setModule={setModule} /> : null}
             {module === "presidential" ? <Presidential /> : null}
             {module === "senate" ? <Senate /> : null}
+            {module === "governors" ? <Governors /> : null}
             {module === "house" ? <House /> : null}
         </div>
     );

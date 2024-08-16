@@ -27,14 +27,25 @@ class SimulationVM {
                 state.rSenReporting = 0;
                 state.rSenRemaining = Math.round(state.totalVote / 2);
             }
+            if (state.govMargin) {
+                state.dGovReporting = 0;
+                state.dGovRemaining = Math.round(state.totalVote / 2);
+                state.rGovReporting = 0;
+                state.rGovRemaining = Math.round(state.totalVote / 2);
+            }
             state.called = false;
             let factor = Math.random() * (2.2 - -2.2) + -2.2;
             let senateFactor = Math.random() * (2.2 - -2.2) + -2.2;
+            let govFactor = Math.random() * (2.2 - -2.2) + -2.2;
             state.prezMargin += factor;
             state.prezMargin += nationalFactor;
             if (state.senateMargin) {
                 state.senateMargin += senateFactor;
                 state.senateMargin += nationalFactor;
+            }
+            if (state.govMargin) {
+                state.govMargin += govFactor;
+                state.govMargin += senateFactor;
             }
             let voteMargin = Math.round(
                 state.totalVote * (state.prezMargin / 100)
@@ -42,11 +53,18 @@ class SimulationVM {
             let senateVoteMargin = Math.round(
                 state.totalVote * (state.senateMargin / 100)
             );
+            let govVoteMargin = Math.round(
+                state.totalVote * (state.govMargin / 100)
+            );
             state.dRemaining = state.dRemaining + voteMargin;
             state.rRemaining = state.rRemaining - voteMargin;
             if (state.senateMargin) {
                 state.dSenRemaining += senateVoteMargin;
                 state.rSenRemaining -= senateVoteMargin;
+            }
+            if (state.govMargin) {
+                state.dGovRemaining += govVoteMargin;
+                state.rGovRemaining -= govVoteMargin;
             }
             //House Districts Init
             state.houseSeats?.contested?.forEach((district) => {
@@ -73,7 +91,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 10);
+        }, 100);
     }
     ticking = false;
     hour;
@@ -89,6 +107,8 @@ class SimulationVM {
     DSen = 28;
     RHouse = 0;
     DHouse = 0;
+    RGovs = 19;
+    DGovs = 20;
     called = false;
     tick() {
         let minutevalue = Number(this.minute);
@@ -155,6 +175,14 @@ class SimulationVM {
                 state.dSenRemaining = state.dSenRemaining - dSenateTranche;
                 state.dSenReporting = state.dSenReporting + dSenateTranche;
             }
+            if (state.govMargin) {
+                let rGovTranche = Math.ceil(state.rGovRemaining * rFactor);
+                let dGovTranche = Math.ceil(state.dGovRemaining * dFactor);
+                state.rGovRemaining = state.rGovRemaining - rGovTranche;
+                state.rGovReporting = state.rGovReporting + rGovTranche;
+                state.dGovRemaining = state.dGovRemaining - dGovTranche;
+                state.dGovReporting = state.dGovReporting + dGovTranche;
+            }
             let reportedVote = (
                 ((state.dReporting + state.rReporting) / state.totalVote) *
                 100
@@ -202,6 +230,33 @@ class SimulationVM {
                         this.callBlueSen(state);
                     } else {
                         this.callRedSen(state);
+                    }
+                }
+            }
+            if (state.govMargin && !state.govCalled) {
+                if (state.govMargin > 10 || state.govMargin < -10) {
+                    if (
+                        reportedVote > 10 ||
+                        state.govMargin > 15 ||
+                        state.govMargin < -15
+                    ) {
+                        if (state.govMargin > 0) {
+                            this.callBlueGov(state);
+                        } else {
+                            this.callRedGov(state);
+                        }
+                    }
+                }
+                if (
+                    state.dGovReporting - state.rGovReporting >
+                        state.rGovRemaining ||
+                    state.rGovReporting - state.dGovReporting >
+                        state.dGovRemaining
+                ) {
+                    if (state.govMargin > 0) {
+                        this.callBlueGov(state);
+                    } else {
+                        this.callRedGov(state);
                     }
                 }
             }
@@ -277,6 +332,14 @@ class SimulationVM {
                 `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) elected to the Senate`
             );
         }
+    }
+    callBlueGov(state) {
+        state.govCalled = true;
+        this.DGovs++;
+    }
+    callRedGov(state) {
+        state.govCalled = true;
+        this.RGovs++;
     }
 }
 
