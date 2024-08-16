@@ -91,7 +91,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 100);
+        }, 10);
     }
     ticking = false;
     hour;
@@ -129,7 +129,7 @@ class SimulationVM {
         this.timeCode = this.hour + this.minute;
         let timeCodeforEval = Number(this.timeCode);
         this.stateList.forEach((state) => {
-            if (state.closeTime === timeCodeforEval) {
+            if (state.closeTime === timeCodeforEval && !state.called) {
                 this.activeStates.push(state);
                 state.active = true;
                 if (state.houseSeats) {

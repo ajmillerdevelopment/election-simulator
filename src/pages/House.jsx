@@ -6,9 +6,29 @@ import styles from "../components/districtbox.css";
 
 export default function House() {
     const vm = SimulationVM;
-    const boxes = vm.activeDistricts.map((district) => {
-        return <DistrictBox district={district} />;
+    const likelyD = [];
+    const leanD = [];
+    const tossup = [];
+    const leanR = [];
+    const likelyR = [];
+    vm.activeDistricts.forEach((district) => {
+        if (district.rating === "Likely D") {
+            likelyD.push(<DistrictBox district={district} />);
+        }
+        if (district.rating === "Lean D") {
+            leanD.push(<DistrictBox district={district} />);
+        }
+        if (district.rating === "Tossup") {
+            tossup.push(<DistrictBox district={district} />);
+        }
+        if (district.rating === "Lean R") {
+            leanR.push(<DistrictBox district={district} />);
+        }
+        if (district.rating === "Likely R") {
+            likelyR.push(<DistrictBox district={district} />);
+        }
     });
+
     useEffect(() => {
         vm.activeDistricts.forEach((district) => {
             const elem = document.getElementsByClassName(
@@ -39,5 +59,28 @@ export default function House() {
             }
         });
     }, [vm.timeCode]);
-    return <div className="box-container">{boxes}</div>;
+    return (
+        <div className="box-container">
+            <div className="likelyD boxcol">
+                {" "}
+                <h4>Likely D</h4> {likelyD}
+            </div>
+            <div className="leanD boxcol">
+                <h4>Lean D</h4>
+                {leanD}
+            </div>
+            <div className="tossup boxcol">
+                <h4>Tossup</h4>
+                {tossup}
+            </div>
+            <div className="leanR boxcol">
+                <h4>Lean R</h4>
+                {leanR}
+            </div>
+            <div className="likelyR boxcol">
+                <h4>Likely R</h4>
+                {likelyR}
+            </div>
+        </div>
+    );
 }

@@ -4,10 +4,15 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border: 1px black solid;
+    justify-content: space-around;
+}
+.boxcol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .district-box {
-    border: 1px black solid;
+    border: 2px black solid;
     width: 200px;
     height: 100px;
     display: flex;
