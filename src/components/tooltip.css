@@ -9,12 +9,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+.tooltip p * {
+    margin: 0;
 }
 .tooltip strong {
     color: black;
-}
-.tooltip p * {
-    margin: 1px 10px 1px 0px;
 }
 .dbox {
     background-color: lightblue;

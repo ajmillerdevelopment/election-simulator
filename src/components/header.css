@@ -1,0 +1,54 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background-color: beige;
+    border-bottom: 2px grey solid;
+}
+.clock {
+    margin: 10px;
+}
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.blink {
+    animation: blink 1s infinite;
+}
+.results-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.results-bar div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+}
+.results-bar div div {
+    display: flex;
+    flex-direction: row;
+}
+.results-bar div h3 {
+    margin: 5px;
+}
+.active {
+    border-left: 2px grey solid;
+    border-right: 2px grey solid;
+    background-color: lightgoldenrodyellow;
+}
+.results-bar div:active {
+    background-color: yellow;
+}

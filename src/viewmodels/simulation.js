@@ -1,11 +1,14 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { makeAutoObservable, action } from "mobx";
+import { makeAutoObservable, action, observable } from "mobx";
 import stateValues from "../data/states.json";
 
 class SimulationVM {
     constructor() {
         makeAutoObservable(this, {
             tick: action,
+            hour: observable,
+            minute: observable,
+            timeCode: observable,
         });
         this.stateList = Object.values(stateValues);
         this.stateCodes = Object.keys(stateValues);
@@ -14,57 +17,44 @@ class SimulationVM {
         this.stateList.forEach((state, i) => {
             state.totalVote = state.totalVote * 0.8;
             state.dReporting = 0;
-            state.dRemaining = 5000;
+            state.dRemaining = Math.round(state.totalVote / 2);
             state.rReporting = 0;
-            state.rRemaining = 5000;
+            state.rRemaining = Math.round(state.totalVote / 2);
+            state.code = this.stateCodes[i];
+
             if (state.senateMargin) {
                 state.dSenReporting = 0;
-                state.dSenRemaining = 5000;
+                state.dSenRemaining = Math.round(state.totalVote / 2);
                 state.rSenReporting = 0;
-                state.rSenRemaining = 5000;
+                state.rSenRemaining = Math.round(state.totalVote / 2);
+            } else {
             }
             state.called = false;
-            state.code = this.stateCodes[i];
             let factor = Math.random() * (2.2 - -2.2) + -2.2;
+            let senateFactor = Math.random() * (2.2 - -2.2) + -2.2;
+
             state.prezMargin += factor;
             state.prezMargin += nationalFactor;
             if (state.senateMargin) {
-                state.senateMargin += factor;
+                state.senateMargin += senateFactor;
                 state.senateMargin += nationalFactor;
             }
             state = this.calculateHouse(state, factor + nationalFactor);
-            if (state.prezMargin < 0) {
-                state.dRemaining =
-                    state.dRemaining -
-                    Math.round((state.prezMargin * -100) / 2);
-                state.rRemaining =
-                    state.rRemaining +
-                    Math.round((state.prezMargin * -100) / 2);
-            } else {
-                state.dRemaining =
-                    state.dRemaining + Math.round((state.prezMargin * 100) / 2);
-                state.rRemaining =
-                    state.rRemaining - Math.round((state.prezMargin * 100) / 2);
-            }
+            let voteMargin = Math.round(
+                state.totalVote * (state.prezMargin / 100)
+            );
+            let senateVoteMargin = Math.round(
+                state.totalVote * (state.senateMargin / 100)
+            );
+            state.dRemaining = state.dRemaining + voteMargin;
+            state.rRemaining = state.rRemaining - voteMargin;
 
-            if (state.senateMargin && state.senateMargin < 0) {
-                state.dSenRemaining =
-                    state.dSenRemaining -
-                    Math.round((state.senateMargin * -100) / 2);
-                state.rSenRemaining =
-                    state.rSenRemaining +
-                    Math.round((state.senateMargin * -100) / 2);
-            }
-            if (state.senateMargin && state.senateMargin > 0) {
-                state.dSenRemaining =
-                    state.dSenRemaining +
-                    Math.round((state.senateMargin * 100) / 2);
-                state.rSenRemaining =
-                    state.rSenRemaining -
-                    Math.round((state.senateMargin * 100) / 2);
+            if (state.senateMargin) {
+                state.dSenRemaining += senateVoteMargin;
+                state.rSenRemaining -= senateVoteMargin;
             }
         });
-        this.hour = "06";
+        this.hour = "18";
         this.minute = "59";
         setInterval(() => {
             if (this.ticking) {
@@ -92,6 +82,9 @@ class SimulationVM {
         if (minutevalue >= 60) {
             let hourValue = Number(this.hour);
             hourValue++;
+            if (hourValue >= 24) {
+                hourValue = 0;
+            }
             this.hour = hourValue.toString();
             this.minute = "00";
         } else if (minutevalue < 10) {
@@ -104,29 +97,27 @@ class SimulationVM {
         this.stateList.forEach((state) => {
             if (state.closeTime === timeCodeforEval) {
                 this.activeStates.push(state);
-                const elem = document.getElementsByClassName(state.code);
-                if (elem) {
-                    elem[0].classList.add("too-early");
-                }
+                state.active = true;
+                // const elem = document.getElementsByClassName(state.code);
+                // if (elem) {
+                //     elem[0].classList.add("too-early");
+                // }
             }
         });
+        this.log.push(``); //necessary for the clock to refresh properly
         this.activeStates.forEach((state) => this.reportVote(state));
         if (this.REVs > 269 && !this.called) {
-            this.log.push(
-                `${this.hour}:${this.minute} - Trump wins presidency!`
-            );
+            this.log.push(`Trump wins presidency!`);
             this.called = true;
         } else if (this.REVs > 269 && !this.called) {
-            this.log.push(
-                `${this.hour}:${this.minute} - Harris wins presidency!`
-            );
+            this.log.push(`Harris wins presidency!`);
             this.called = true;
         }
     }
     reportVote(state) {
         if (Math.random() < state.countSpeed) {
-            let rFactor = Math.random() * (0.1 - 0.01) + 0.01;
-            let dFactor = Math.random() * (0.1 - 0.01) + 0.01;
+            let rFactor = Math.random() * (0.15 - 0.01) + 0.01;
+            let dFactor = Math.random() * (0.15 - 0.01) + 0.01;
             let rTranche = Math.ceil(state.rRemaining * rFactor);
             let dTranche = Math.ceil(state.dRemaining * dFactor);
             state.rRemaining = state.rRemaining - rTranche;
@@ -141,7 +132,11 @@ class SimulationVM {
                 state.dSenRemaining = state.dSenRemaining - dSenateTranche;
                 state.dSenReporting = state.dSenReporting + dSenateTranche;
             }
-            this.countHouse(state);
+            let reportedVote = (
+                ((state.dReporting + state.rReporting) / state.totalVote) *
+                100
+            ).toFixed(0);
+            this.countHouse(state, reportedVote);
             if (!state.called) {
                 if (state.prezMargin > 15 || state.prezMargin < -15) {
                     if (state.prezMargin > 0) {
@@ -161,27 +156,27 @@ class SimulationVM {
                     }
                 }
             }
-            if (!state.called && state.rReporting + state.dReporting > 3000) {
+            if (!state.called && reportedVote > 30) {
                 if (state.rReporting > state.dReporting) {
-                    const elem = document.getElementsByClassName(state.code);
-                    if (elem) {
-                        elem[0].classList.remove("too-early", "leaning-blue");
-                        elem[0].classList.add("leaning-red");
-                    }
+                    // const elem = document.getElementsByClassName(state.code);
+                    // if (elem) {
+                    //     elem[0].classList.remove("too-early", "leaning-blue");
+                    //     elem[0].classList.add("leaning-red");
+                    // }
                 } else {
-                    const elem = document.getElementsByClassName(state.code);
-                    if (elem) {
-                        elem[0].classList.remove("too-early", "leaning-red");
-                        elem[0].classList.add("leaning-blue");
-                    }
+                    // const elem = document.getElementsByClassName(state.code);
+                    // if (elem) {
+                    //     elem[0].classList.remove("too-early", "leaning-red");
+                    //     elem[0].classList.add("leaning-blue");
+                    // }
                 }
             }
             if (state.senateMargin && !state.senateCalled) {
                 if (state.senateMargin > 10 || state.senateMargin < -10) {
                     if (
-                        state.dSenReporting + state.rSenReporting > 1000 ||
-                        state.senateMargin > 20 ||
-                        state.senateMargin < -20
+                        reportedVote > 10 ||
+                        state.senateMargin > 15 ||
+                        state.senateMargin < -15
                     ) {
                         if (state.senateMargin > 0) {
                             this.callBlueSen(state);
@@ -192,9 +187,9 @@ class SimulationVM {
                 }
                 if (
                     state.dSenReporting - state.rSenReporting >
-                        state.rSenRemaining * 0.9 ||
+                        state.rSenRemaining ||
                     state.rSenReporting - state.dSenReporting >
-                        state.dSenRemaining * 0.9
+                        state.dSenRemaining
                 ) {
                     if (state.senateMargin > 0) {
                         this.callBlueSen(state);
@@ -206,35 +201,33 @@ class SimulationVM {
         }
     }
     callBlue(state) {
-        console.log(`calling ${state.fullName}`);
         state.called = true;
         this.DEVs += state.evs;
-        const elem = document.getElementsByClassName(state.code);
-        if (elem) {
-            elem[0].classList.remove(
-                "too-early",
-                "leaning-blue",
-                "leaning-red"
-            );
-            elem[0].classList.add("called-blue");
-        }
+        // const elem = document.getElementsByClassName(state.code);
+        // if (elem) {
+        //     elem[0].classList.remove(
+        //         "too-early",
+        //         "leaning-blue",
+        //         "leaning-red"
+        //     );
+        //     elem[0].classList.add("called-blue");
+        // }
         this.log.push(
             `${this.hour}:${this.minute} - Harris wins ${state.fullName}`
         );
     }
     callRed(state) {
-        console.log(`calling ${state.fullName}`);
         state.called = true;
         this.REVs += state.evs;
-        const elem = document.getElementsByClassName(state.code);
-        if (elem) {
-            elem[0].classList.remove(
-                "too-early",
-                "leaning-blue",
-                "leaning-red"
-            );
-            elem[0].classList.add("called-red");
-        }
+        // const elem = document.getElementsByClassName(state.code);
+        // if (elem) {
+        //     elem[0].classList.remove(
+        //         "too-early",
+        //         "leaning-blue",
+        //         "leaning-red"
+        //     );
+        //     elem[0].classList.add("called-red");
+        // }
         this.log.push(
             `${this.hour}:${this.minute} - Trump wins ${state.fullName}`
         );
@@ -294,7 +287,7 @@ class SimulationVM {
             state.r60 += seats.leanR;
             state.r30 += seats.likelyR;
             state.r30 += seats.safeR;
-        } else if (totalMargin < -1) {
+        } else if (totalMargin < -2) {
             state.d30 += seats.safeD;
             state.d90 += seats.likelyD;
             state.d99 += seats.leanD;
@@ -302,7 +295,7 @@ class SimulationVM {
             state.r90 += seats.leanR;
             state.r60 += seats.likelyR;
             state.r30 += seats.safeR;
-        } else if (totalMargin > 1) {
+        } else if (totalMargin > 2) {
             state.d30 += seats.safeD;
             state.d30 += seats.likelyD;
             state.d60 += seats.leanD;
@@ -330,28 +323,68 @@ class SimulationVM {
         delete state.houseSeats;
         return state;
     }
-    countHouse(state) {
-        if (state.rReporting + state.dReporting > 3000) {
+    countHouse(state, reportedVote) {
+        if (reportedVote > 30) {
             this.DHouse += state.d30;
             this.RHouse += state.r30;
+            if (state.d30) {
+                this.log.push(
+                    `${this.hour}:${this.minute} - Democrats win ${state.d30} Safe D seats in ${state.fullName}`
+                );
+            }
+            if (state.r30) {
+                this.log.push(
+                    `${this.hour}:${this.minute} - Republicans win ${state.r30} Safe R seats in ${state.fullName}`
+                );
+            }
             state.d30 = 0;
             state.r30 = 0;
         }
-        if (state.rReporting + state.dReporting > 6000) {
+        if (reportedVote > 60) {
             this.DHouse += state.d60;
             this.RHouse += state.r60;
+            if (state.d60) {
+                this.log.push(
+                    `${this.hour}:${this.minute} - Democrats win ${state.d60} Likely D seats in ${state.fullName}`
+                );
+            }
+            if (state.r60) {
+                this.log.push(
+                    `${this.hour}:${this.minute} - Republicans win ${state.r60} Likely R seats in ${state.fullName}`
+                );
+            }
             state.d60 = 0;
             state.r60 = 0;
         }
-        if (state.rReporting + state.dReporting > 9000) {
+        if (reportedVote > 90) {
             this.DHouse += state.d90;
             this.RHouse += state.r90;
+            if (state.d90) {
+                this.log.push(
+                    `${this.hour}:${this.minute} - Democrats win ${state.d90} Lean D seats in ${state.fullName}`
+                );
+            }
+            if (state.r90) {
+                this.log.push(
+                    `${this.hour}:${this.minute} - Republicans win ${state.r90} Lean R seats in ${state.fullName}`
+                );
+            }
             state.d90 = 0;
             state.r90 = 0;
         }
-        if (state.rReporting + state.dReporting > 9900) {
+        if (reportedVote > 98) {
             this.DHouse += state.d99;
             this.RHouse += state.r99;
+            if (state.d99) {
+                this.log.push(
+                    `${this.hour}:${this.minute} - Democrats win ${state.d99} Tossup seats in ${state.fullName}`
+                );
+            }
+            if (state.r99) {
+                this.log.push(
+                    `${this.hour}:${this.minute} - Republicans win ${state.r99} Tossup seats in ${state.fullName}`
+                );
+            }
             state.d99 = 0;
             state.r99 = 0;
         }

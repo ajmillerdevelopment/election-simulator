@@ -57,6 +57,7 @@
         "evs": 54,
         "countSpeed": 0.05,
         "DSenateName": "Schiff",
+        "RSenateName": "Garvey",
         "senateMargin": 29,
         "totalVote": 17000000,
         "houseSeats": {
@@ -91,6 +92,7 @@
         "totalVote": 1800000,
         "senateInc": "D",
         "DSenateName": "Murphy",
+        "RSenateName": "Corey",
         "senateMargin": 20,
         "houseSeats": {
             "safeD": 4,
@@ -114,6 +116,7 @@
         "countSpeed": 0.3,
         "totalVote": 500000,
         "DSenateName": "Rochester",
+        "RSenateName": "Hansen",
         "senateMargin": 20,
         "houseSeats": {
             "safeD": 1
@@ -158,6 +161,7 @@
         "totalVote": 570000,
         "senateInc": "D",
         "DSenateName": "Hirono",
+        "RSenateName": "McDermott",
         "senateMargin": 32,
         "houseSeats": {
             "safeD": 2
@@ -207,6 +211,7 @@
         "totalVote": 3000000,
         "senateInc": "R",
         "RSenateName": "Banks",
+        "DSenateName": "McCray",
         "senateMargin": -12,
         "houseSeats": {
             "safeR": 7,
@@ -258,6 +263,7 @@
         "countSpeed": 0.1,
         "senateInc": "D",
         "DSenateName": "Warren",
+        "RSenateName": "TBD",
         "senateMargin": 33,
         "totalVote": 3600000,
         "houseSeats": {
@@ -271,6 +277,7 @@
         "evs": 10,
         "countSpeed": 0.1,
         "DSenateName": "Alsobrooks",
+        "RSenateName": "Hogan",
         "senateMargin": 12,
         "totalVote": 3000000,
         "houseSeats": {
@@ -287,6 +294,7 @@
         "countSpeed": 0.1,
         "senateInc": "I",
         "DSenateName": "King",
+        "RSenateName": "Kouzounas",
         "totalVote": 800000,
         "senateMargin": 12,
         "houseSeats": { "safeD": 1, "tossup": 1 }
@@ -318,6 +326,7 @@
         "countSpeed": 0.2,
         "senateInc": "D",
         "DSenateName": "Klobuchar",
+        "RSenateName": "White",
         "senateMargin": 8,
         "totalVote": 3200000,
 
@@ -335,6 +344,7 @@
         "countSpeed": 0.3,
         "senateInc": "R",
         "RSenateName": "Hawley",
+        "DSenateName": "Kunce",
         "senateMargin": -12,
         "totalVote": 3000000,
         "houseSeats": {
@@ -350,6 +360,7 @@
         "countSpeed": 0.1,
         "senateInc": "R",
         "RSenateName": "Wicker",
+        "DSenateName": "Pinkins",
         "totalVote": 3000000,
 
         "senateMargin": -7,
@@ -397,6 +408,7 @@
         "countSpeed": 0.3,
         "senateInc": "R",
         "RSenateName": "Cramer",
+        "DSenateName": "Christiansen",
         "totalVote": 300000,
 
         "senateMargin": -30,
@@ -440,6 +452,7 @@
         "evs": 14,
         "countSpeed": 0.2,
         "DSenateName": "Kim",
+        "RSenateName": "Bashaw",
         "totalVote": 4500000,
 
         "senateMargin": 17,
@@ -458,6 +471,7 @@
         "totalVote": 8600000,
         "senateInc": "D",
         "DSenateName": "Gillibrand",
+        "RSenateName": "Sapraicone",
         "senateMargin": 20,
         "houseSeats": {
             "safeD": 14,
@@ -496,6 +510,7 @@
 
         "senateInc": "D",
         "DSenateName": "Heinrich",
+        "RSenateName": "Domenici",
         "senateMargin": 8,
         "houseSeats": {
             "safeD": 2,
@@ -578,6 +593,7 @@
         "countSpeed": 0.2,
         "senateInc": "D",
         "DSenateName": "Whitehouse",
+        "RSenateName": "TBD",
         "totalVote": 500000,
         "houseSeats": {
             "safeD": 2
@@ -617,6 +633,7 @@
         "senateInc": "R",
         "totalVote": 3000000,
         "RSenateName": "Blackburn",
+        "DSenateName": "Johnson",
         "senateMargin": -20,
         "houseSeats": {
             "safeD": 1,
@@ -648,7 +665,8 @@
         "evs": 6,
         "countSpeed": 0.05,
         "senateInc": "R",
-        "RSenateName": "Romney",
+        "RSenateName": "Curtis",
+        "DSenateName": "Gleich",
         "totalVote": 1400000,
         "senateMargin": -18,
         "houseSeats": {
@@ -663,6 +681,7 @@
         "countSpeed": 0.2,
         "senateInc": "D",
         "DSenateName": "Kaine",
+        "RSenateName": "Cao",
         "totalVote": 4000000,
 
         "senateMargin": 14,
@@ -681,6 +700,7 @@
         "countSpeed": 0.3,
         "senateInc": "I",
         "DSenateName": "Sanders",
+        "RSenateName": "Malloy",
         "totalVote": 400000,
 
         "senateMargin": 36,
@@ -696,6 +716,7 @@
         "countSpeed": 0.05,
         "senateInc": "D",
         "DSenateName": "Cantwell",
+        "RSenateName": "Garcia",
         "totalVote": 4000000,
 
         "senateMargin": 18,
@@ -732,6 +753,7 @@
         "countSpeed": 0.3,
         "senateInc": "D",
         "RSenateName": "Justice",
+        "DSenateName": "Elliot",
         "totalVote": 700000,
         "senateMargin": -30,
         "houseSeats": {
@@ -746,6 +768,7 @@
         "countSpeed": 0.2,
         "senateInc": "R",
         "RSenateName": "Barasso",
+        "DSenateName": "Morrow",
         "totalVote": 2000000,
         "senateMargin": -40,
         "houseSeats": {
