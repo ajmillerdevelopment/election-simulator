@@ -10,11 +10,48 @@ class SimulationVM {
             minute: observable,
             timeCode: observable,
         });
+    }
+    instantiate(baseSwing) {
         this.stateList = Object.values(stateValues);
         this.stateCodes = Object.keys(stateValues);
         let nationalFactor = Math.random() * (2 - -2) + -2;
+        nationalFactor += baseSwing / 2;
+        let neFactor = Math.random() * (2 - -2) + -2;
+        let sFactor = Math.random() * (2 - -2) + -2;
+        let mwFactor = Math.random() * (2 - -2) + -2;
+        let mtFactor = Math.random() * (2 - -2) + -2;
+        let swFactor = Math.random() * (2 - -2) + -2;
+        let wFactor = Math.random() * (2 - -2) + -2;
         console.log(nationalFactor);
+        console.log(`NE: ${neFactor}`);
+        console.log(`S: ${sFactor}`);
+        console.log(`MW: ${mwFactor}`);
+        console.log(`MT: ${mtFactor}`);
+        console.log(`SW: ${swFactor}`);
+        console.log(`W: ${wFactor}`);
         this.stateList.forEach((state, i) => {
+            switch (state.region) {
+                case "NE":
+                    state.regionalFactor = neFactor;
+                    break;
+                case "S":
+                    state.regionalFactor = sFactor;
+                    break;
+                case "MW":
+                    state.regionalFactor = mwFactor;
+                    break;
+                case "MT":
+                    state.regionalFactor = mtFactor;
+                    break;
+                case "SW":
+                    state.regionalFactor = swFactor;
+                    break;
+                case "W":
+                    state.regionalFactor = wFactor;
+                    break;
+                default:
+                    state.regionalFactor = 0;
+            }
             state.totalVote = state.totalVote * 0.8;
             state.dReporting = 0;
             state.dRemaining = Math.round(state.totalVote / 2);
@@ -34,18 +71,19 @@ class SimulationVM {
                 state.rGovRemaining = Math.round(state.totalVote / 2);
             }
             state.called = false;
-            let factor = Math.random() * (2.2 - -2.2) + -2.2;
-            let senateFactor = Math.random() * (2.2 - -2.2) + -2.2;
-            let govFactor = Math.random() * (2.2 - -2.2) + -2.2;
-            state.prezMargin += factor;
+            let stateFactor = Math.random() * (2.2 - -2.2) + -2.2;
+            state.prezMargin += stateFactor;
             state.prezMargin += nationalFactor;
+            state.prezMargin += state.regionalFactor;
             if (state.senateMargin) {
-                state.senateMargin += senateFactor;
+                state.senateMargin += stateFactor;
                 state.senateMargin += nationalFactor;
+                state.senateMargin += state.regionalFactor;
             }
             if (state.govMargin) {
-                state.govMargin += govFactor;
-                state.govMargin += senateFactor;
+                state.govMargin += stateFactor;
+                state.govMargin += nationalFactor;
+                state.govMargin += state.regionalFactor;
             }
             let voteMargin = Math.round(
                 state.totalVote * (state.prezMargin / 100)
@@ -69,10 +107,11 @@ class SimulationVM {
             //House Districts Init
             state.houseSeats?.contested?.forEach((district) => {
                 district.countSpeed = state.countSpeed;
-                let districtFactor = Math.random() * (2.2 - -2.2) + -2.2;
-                district.districtMargin += nationalFactor;
+                let districtFactor = Math.random() * (4.2 - -4.2) + -4.2;
+                district.districtMargin += nationalFactor * 2;
                 district.districtMargin += districtFactor;
-                district.districtMargin += factor;
+                district.districtMargin += stateFactor;
+                district.districtMargin += state.regionalFactor;
                 district.districtMargin += 1;
                 let voteMargin = Math.round(
                     200000 * (district.districtMargin / 100)
@@ -91,7 +130,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 10);
+        }, 100);
     }
     ticking = false;
     hour;
@@ -307,6 +346,7 @@ class SimulationVM {
     callBlueSen(state) {
         state.senateCalled = true;
         this.DSen++;
+        console.log(`calling ${state.fullName}`);
         if (
             state.senateInc &&
             (state.senateInc === "D" || state.senateInc === "I")
@@ -323,6 +363,7 @@ class SimulationVM {
     callRedSen(state) {
         state.senateCalled = true;
         this.RSen++;
+        console.log(`calling ${state.fullName}`);
         if (state.senateInc && state.senateInc === "R") {
             this.log.push(
                 `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) re-elected to the Senate`

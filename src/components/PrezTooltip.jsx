@@ -24,7 +24,7 @@ const PrezTooltip = (props) => {
     return (
         <Tooltip id={`${state.code}-tip`}>
             <div className="tooltip">
-                <strong>{state.fullName}</strong>
+                <strong>{state.fullName}</strong> {state.evs}
                 {state.dReporting > state.rReporting ? (
                     <>
                         <p>
