@@ -36,7 +36,10 @@ const SenTooltip = (props) => {
     return (
         <Tooltip id={`${state.code}-sen-tip`}>
             <div className="tooltip">
-                <strong>{state.fullName}</strong>
+                <strong>{state.fullName}</strong>{" "}
+                <span style={{ color: "black" }}>
+                    {state.EVs} {state.senateMargin.toFixed(2)}
+                </span>
                 <>
                     {state.dSenReporting > state.rSenReporting ? (
                         <>

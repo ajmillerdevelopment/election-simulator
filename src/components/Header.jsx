@@ -4,7 +4,13 @@ import SimulationVM from "./../viewmodels/simulation";
 import styles from "./header.css";
 
 export default function Header(props) {
+    const formatter = new Intl.NumberFormat("en-US");
     const vm = SimulationVM;
+    let rVotes = formatter.format(vm.rPop);
+    let dVotes = formatter.format(vm.dPop);
+    let totalVote = vm.rPop + vm.dPop;
+    let rPercent = ((vm.rPop / totalVote) * 100).toFixed(2);
+    let dPercent = ((vm.dPop / totalVote) * 100).toFixed(2);
     return (
         <div className="header">
             <h2 className="clock">
@@ -45,12 +51,27 @@ export default function Header(props) {
                 >
                     <h3>President</h3>
                     <div>
-                        <strong style={{ color: "red", margin: "0 5px" }}>
-                            Trump: {vm.REVs} {vm.REVs > 269 ? "✓" : null}{" "}
-                        </strong>{" "}
-                        <strong style={{ color: "blue" }}>
-                            Harris: {vm.DEVs} {vm.DEVs > 269 ? "✓" : null}
-                        </strong>
+                        <div
+                            style={{ display: "flex", flexDirection: "column" }}
+                        >
+                            {" "}
+                            <strong style={{ color: "red", margin: "0 5px" }}>
+                                Trump: {vm.REVs} {vm.REVs > 269 ? "✓" : null}{" "}
+                            </strong>{" "}
+                            <span>
+                                {rVotes} {rPercent}%
+                            </span>
+                        </div>
+                        <div
+                            style={{ display: "flex", flexDirection: "column" }}
+                        >
+                            <strong style={{ color: "blue" }}>
+                                Harris: {vm.DEVs} {vm.DEVs > 269 ? "✓" : null}
+                            </strong>
+                            <span>
+                                {dVotes} {dPercent}%
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div

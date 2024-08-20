@@ -312,7 +312,7 @@
                     "rating": "Likely R"
                 }
             ],
-            "safeR": 19
+            "safeR": 16
         }
     },
     "ga": {
@@ -324,7 +324,7 @@
         "totalVote": 5000000,
         "region": "S",
         "houseSeats": {
-            "safeD": 5,
+            "safeD": 4,
             "safeR": 9,
             "contested": [
                 {
@@ -465,7 +465,7 @@
                     "rating": "Likely R"
                 }
             ],
-            "safeR": 3
+            "safeR": 2
         }
     },
     "ky": {
@@ -603,7 +603,7 @@
                     "rating": "Likely R"
                 }
             ],
-            "safeR": 5
+            "safeR": 4
         }
     },
     "mn": {
@@ -628,25 +628,13 @@
                     "rating": "Lean D"
                 },
                 {
-                    "districtName": "MN-01",
-                    "districtMargin": -14.3,
-                    "incumbent": "Finstad (R)",
-                    "rating": "Likely R"
-                },
-                {
                     "districtName": "MN-08",
                     "districtMargin": -15.4,
                     "incumbent": "Stauber (R)",
                     "rating": "Likely R"
-                },
-                {
-                    "districtName": "MN-03",
-                    "districtMargin": 14.1,
-                    "incumbent": "Morrison (D)",
-                    "rating": "Likely D"
                 }
             ],
-            "safeR": 4
+            "safeR": 3
         }
     },
     "mo": {
@@ -680,7 +668,7 @@
         "DSenateName": "Pinkins",
         "totalVote": 3000000,
         "region": "S",
-        "senateMargin": 33.5,
+        "senateMargin": -33.5,
         "houseSeats": {
             "safeR": 3,
             "safeD": 1
@@ -746,7 +734,7 @@
                     "rating": "Likely R"
                 }
             ],
-            "safeR": 10
+            "safeR": 8
         }
     },
     "nd": {
@@ -832,7 +820,7 @@
         "region": "NE",
         "senateMargin": 16.3,
         "houseSeats": {
-            "safeD": 9,
+            "safeD": 8,
             "contested": [
                 {
                     "districtName": "NJ-07",
@@ -1050,7 +1038,7 @@
                     "rating": "Tossup"
                 }
             ],
-            "safeD": 1
+            "safeD": 2
         }
     },
     "pa": {
@@ -1128,7 +1116,7 @@
         "countSpeed": 0.3,
         "houseSeats": {
             "safeD": 1,
-            "safeR": 6,
+            "safeR": 5,
             "contested": [
                 {
                     "districtName": "SC-01",
@@ -1222,7 +1210,7 @@
                     "rating": "Likely R"
                 }
             ],
-            "safeR": 24
+            "safeR": 23
         }
     },
     "ut": {
@@ -1257,7 +1245,7 @@
         "region": "S",
         "senateMargin": 16.9,
         "houseSeats": {
-            "safeD": 5,
+            "safeD": 4,
             "contested": [
                 {
                     "districtName": "VA-07",
@@ -1284,7 +1272,7 @@
                     "rating": "Likely R"
                 }
             ],
-            "safeR": 4
+            "safeR": 3
         }
     },
     "vt": {
@@ -1349,7 +1337,7 @@
                     "rating": "Tossup"
                 }
             ],
-            "safeR": 2
+            "safeR": 1
         }
     },
     "wi": {
@@ -1386,7 +1374,7 @@
                     "rating": "Likely R"
                 }
             ],
-            "safeR": 4
+            "safeR": 3
         }
     },
     "wv": {

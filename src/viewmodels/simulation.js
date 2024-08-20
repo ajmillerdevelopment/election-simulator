@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { makeAutoObservable, action, observable } from "mobx";
+import { makeAutoObservable, action, observable, computed } from "mobx";
 import stateValues from "../data/states.json";
 
 class SimulationVM {
@@ -9,6 +9,8 @@ class SimulationVM {
             hour: observable,
             minute: observable,
             timeCode: observable,
+            rPop: computed,
+            dPop: computed,
         });
     }
     instantiate(baseSwing) {
@@ -108,7 +110,7 @@ class SimulationVM {
             state.houseSeats?.contested?.forEach((district) => {
                 district.countSpeed = state.countSpeed;
                 let districtFactor = Math.random() * (4.2 - -4.2) + -4.2;
-                district.districtMargin += nationalFactor * 2;
+                district.districtMargin += nationalFactor * 4;
                 district.districtMargin += districtFactor;
                 district.districtMargin += stateFactor;
                 district.districtMargin += state.regionalFactor;
@@ -130,7 +132,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 100);
+        }, 10);
     }
     ticking = false;
     hour;
@@ -149,6 +151,17 @@ class SimulationVM {
     RGovs = 19;
     DGovs = 20;
     called = false;
+
+    get rPop() {
+        let sum = 0;
+        this.activeStates.forEach((state) => (sum += state.rReporting));
+        return sum;
+    }
+    get dPop() {
+        let sum = 0;
+        this.activeStates.forEach((state) => (sum += state.dReporting));
+        return sum;
+    }
     tick() {
         let minutevalue = Number(this.minute);
         minutevalue++;
@@ -330,57 +343,67 @@ class SimulationVM {
         }
     }
     callBlue(state) {
-        state.called = true;
-        this.DEVs += state.evs;
-        this.log.push(
-            `${this.hour}:${this.minute} - Harris wins ${state.fullName}`
-        );
+        if (!state.called) {
+            state.called = true;
+            this.DEVs += state.evs;
+            this.log.push(
+                `${this.hour}:${this.minute} - Harris wins ${state.fullName}`
+            );
+        }
     }
     callRed(state) {
-        state.called = true;
-        this.REVs += state.evs;
-        this.log.push(
-            `${this.hour}:${this.minute} - Trump wins ${state.fullName}`
-        );
+        if (!state.called) {
+            state.called = true;
+            this.REVs += state.evs;
+            this.log.push(
+                `${this.hour}:${this.minute} - Trump wins ${state.fullName}`
+            );
+        }
     }
     callBlueSen(state) {
-        state.senateCalled = true;
-        this.DSen++;
-        console.log(`calling ${state.fullName}`);
-        if (
-            state.senateInc &&
-            (state.senateInc === "D" || state.senateInc === "I")
-        ) {
-            this.log.push(
-                `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) re-elected to the Senate`
-            );
-        } else {
-            this.log.push(
-                `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) elected to the Senate`
-            );
+        if (!state.senateCalled) {
+            state.senateCalled = true;
+            this.DSen++;
+            if (
+                state.senateInc &&
+                (state.senateInc === "D" || state.senateInc === "I")
+            ) {
+                this.log.push(
+                    `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) re-elected to the Senate`
+                );
+            } else {
+                this.log.push(
+                    `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) elected to the Senate`
+                );
+            }
         }
     }
     callRedSen(state) {
-        state.senateCalled = true;
-        this.RSen++;
-        console.log(`calling ${state.fullName}`);
-        if (state.senateInc && state.senateInc === "R") {
-            this.log.push(
-                `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) re-elected to the Senate`
-            );
-        } else {
-            this.log.push(
-                `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) elected to the Senate`
-            );
+        if (!state.senateCalled) {
+            state.senateCalled = true;
+            this.RSen++;
+            if (state.senateInc && state.senateInc === "R") {
+                this.log.push(
+                    `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) re-elected to the Senate`
+                );
+            } else {
+                this.log.push(
+                    `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) elected to the Senate`
+                );
+            }
         }
     }
     callBlueGov(state) {
-        state.govCalled = true;
-        this.DGovs++;
+        if (!state.govCalled) {
+            state.govCalled = true;
+            this.DGovs++;
+        }
     }
     callRedGov(state) {
-        state.govCalled = true;
-        this.RGovs++;
+        if (!state.govCalled) {
+            state.govCalled = true;
+            this.RGovs++;
+        }
     }
 }
 
