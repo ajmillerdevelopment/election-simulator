@@ -25,9 +25,7 @@ const PrezTooltip = (props) => {
         <Tooltip id={`${state.code}-tip`}>
             <div className="tooltip">
                 <strong>{state.fullName}</strong>{" "}
-                <span style={{ color: "black" }}>
-                    {state.EVs} {state.prezMargin.toFixed(2)}
-                </span>
+                <span style={{ color: "black" }}>{state.EVs}</span>
                 {state.dReporting > state.rReporting ? (
                     <>
                         <p>

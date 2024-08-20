@@ -20,10 +20,7 @@ export default function Header(props) {
     return (
         <div className="district-box">
             <div className={`district-header ${dist.districtName}`}>
-                <h4>{dist.districtName}</h4>{" "}
-                <span>
-                    {dist.incumbent} {dist.districtMargin.toFixed(2)}
-                </span>
+                <h4>{dist.districtName}</h4> <span>{dist.incumbent}</span>
             </div>
             <div className="vote-box">
                 {dist.dReporting > dist.rReporting ? (
