@@ -9,8 +9,8 @@ export default function Header(props) {
     let rVotes = formatter.format(vm.rPop);
     let dVotes = formatter.format(vm.dPop);
     let totalVote = vm.rPop + vm.dPop;
-    let rPercent = ((vm.rPop / totalVote) * 100).toFixed(2);
-    let dPercent = ((vm.dPop / totalVote) * 100).toFixed(2);
+    let rPercent = ((vm.rPop / totalVote) * 100).toFixed(1);
+    let dPercent = ((vm.dPop / totalVote) * 100).toFixed(1);
     return (
         <div className="header">
             <h2 className="clock">

@@ -17,7 +17,7 @@ class SimulationVM {
         this.stateList = Object.values(stateValues);
         this.stateCodes = Object.keys(stateValues);
         let nationalFactor = Math.random() * (2 - -2) + -2;
-        nationalFactor += baseSwing / 2;
+        nationalFactor += baseSwing;
         let neFactor = Math.random() * (2 - -2) + -2;
         let sFactor = Math.random() * (2 - -2) + -2;
         let mwFactor = Math.random() * (2 - -2) + -2;
@@ -74,17 +74,21 @@ class SimulationVM {
             }
             state.called = false;
             let stateFactor = Math.random() * (2.2 - -2.2) + -2.2;
+            if (
+                state.prezMargin < 10 ||
+                state.senateMargin < 10 ||
+                state.govMargin < 10
+            ) {
+                stateFactor += nationalFactor / 2;
+            } else stateFactor += nationalFactor;
             state.prezMargin += stateFactor;
-            state.prezMargin += nationalFactor;
             state.prezMargin += state.regionalFactor;
             if (state.senateMargin) {
                 state.senateMargin += stateFactor;
-                state.senateMargin += nationalFactor;
                 state.senateMargin += state.regionalFactor;
             }
             if (state.govMargin) {
                 state.govMargin += stateFactor;
-                state.govMargin += nationalFactor;
                 state.govMargin += state.regionalFactor;
             }
             let voteMargin = Math.round(
@@ -110,9 +114,8 @@ class SimulationVM {
             state.houseSeats?.contested?.forEach((district) => {
                 district.countSpeed = state.countSpeed;
                 let districtFactor = Math.random() * (4.2 - -4.2) + -4.2;
-                district.districtMargin += nationalFactor * 4;
                 district.districtMargin += districtFactor;
-                district.districtMargin += stateFactor;
+                district.districtMargin += stateFactor * 2;
                 district.districtMargin += state.regionalFactor;
                 district.districtMargin += 1;
                 let voteMargin = Math.round(
@@ -132,7 +135,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 1000);
+        }, 100);
     }
     ticking = false;
     hour;
@@ -248,8 +251,9 @@ class SimulationVM {
                     }
                 }
                 if (
-                    state.dReporting - state.rReporting > state.rRemaining ||
-                    state.rReporting - state.dReporting > state.dRemaining
+                    state.dReporting - state.rReporting >
+                        state.rRemaining * 1.1 ||
+                    state.rReporting - state.dReporting > state.dRemaining * 1.1
                 ) {
                     if (state.prezMargin > 0) {
                         this.callBlue(state);
@@ -274,9 +278,9 @@ class SimulationVM {
                 }
                 if (
                     state.dSenReporting - state.rSenReporting >
-                        state.rSenRemaining ||
+                        state.rSenRemaining * 1.1 ||
                     state.rSenReporting - state.dSenReporting >
-                        state.dSenRemaining
+                        state.dSenRemaining * 1.1
                 ) {
                     if (state.senateMargin > 0) {
                         this.callBlueSen(state);
