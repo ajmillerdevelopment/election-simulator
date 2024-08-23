@@ -100,15 +100,18 @@ class SimulationVM {
             let govVoteMargin = Math.round(
                 state.totalVote * (state.govMargin / 100)
             );
-            state.dRemaining = state.dRemaining + voteMargin;
-            state.rRemaining = state.rRemaining - voteMargin;
+            console.log(state.dRemaining);
+            console.log(voteMargin);
+            state.dRemaining = state.dRemaining + voteMargin / 2;
+            state.rRemaining = state.rRemaining - voteMargin / 2;
+            console.log(state.dRemaining);
             if (state.senateMargin) {
-                state.dSenRemaining += senateVoteMargin;
-                state.rSenRemaining -= senateVoteMargin;
+                state.dSenRemaining += senateVoteMargin / 2;
+                state.rSenRemaining -= senateVoteMargin / 2;
             }
             if (state.govMargin) {
-                state.dGovRemaining += govVoteMargin;
-                state.rGovRemaining -= govVoteMargin;
+                state.dGovRemaining += govVoteMargin / 2;
+                state.rGovRemaining -= govVoteMargin / 2;
             }
             //House Districts Init
             state.houseSeats?.contested?.forEach((district) => {
@@ -118,15 +121,15 @@ class SimulationVM {
                 district.districtMargin += stateFactor * 2;
                 district.districtMargin += state.regionalFactor;
                 district.districtMargin += 1;
-                let voteMargin = Math.round(
+                let houseMargin = Math.round(
                     200000 * (district.districtMargin / 100)
                 );
                 district.dReporting = 0;
                 district.dRemaining = 100000;
                 district.rReporting = 0;
                 district.rRemaining = 100000;
-                district.dRemaining += voteMargin;
-                district.rRemaining -= voteMargin;
+                district.dRemaining += houseMargin / 2;
+                district.rRemaining -= houseMargin / 2;
             });
         });
         this.hour = "18";
@@ -135,7 +138,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 1000);
+        }, 100);
     }
     ticking = false;
     hour;
@@ -263,11 +266,11 @@ class SimulationVM {
                 }
             }
             if (state.senateMargin && !state.senateCalled) {
-                if (state.senateMargin > 10 || state.senateMargin < -10) {
+                if (state.senateMargin > 15 || state.senateMargin < -15) {
                     if (
                         reportedVote > 10 ||
-                        state.senateMargin > 15 ||
-                        state.senateMargin < -15
+                        state.senateMargin > 20 ||
+                        state.senateMargin < -20
                     ) {
                         if (state.senateMargin > 0) {
                             this.callBlueSen(state);
@@ -290,11 +293,11 @@ class SimulationVM {
                 }
             }
             if (state.govMargin && !state.govCalled) {
-                if (state.govMargin > 10 || state.govMargin < -10) {
+                if (state.govMargin > 15 || state.govMargin < -15) {
                     if (
                         reportedVote > 10 ||
-                        state.govMargin > 15 ||
-                        state.govMargin < -15
+                        state.govMargin > 20 ||
+                        state.govMargin < -20
                     ) {
                         if (state.govMargin > 0) {
                             this.callBlueGov(state);
