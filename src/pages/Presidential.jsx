@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { observer } from "mobx-react-lite";
 import SimulationVM from "./../viewmodels/simulation";
 import PrezTooltip from "./../components/PrezTooltip";
 import Map from "../components/Map";
@@ -58,7 +57,7 @@ export default function Presidential() {
                 }
             }
         });
-    }, [vm.timeCode]);
+    }, [vm.stateList, vm.timeCode]);
     return (
         <div
             style={{

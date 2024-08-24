@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import react from "react";
 import { observer } from "mobx-react-lite";
 import { Tooltip } from "react-tooltip";

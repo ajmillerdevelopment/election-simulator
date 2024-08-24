@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { observer } from "mobx-react-lite";
 import SimulationVM from "./../viewmodels/simulation";
 import GovMap from "../components/GovMap";
 import GovTooltip from "../components/GovTooltip";
@@ -66,6 +65,7 @@ function Senate() {
                 }
             }
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [vm.timeCode]);
     return (
         <div

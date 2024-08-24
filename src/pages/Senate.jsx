@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { observer } from "mobx-react-lite";
 import SimulationVM from "./../viewmodels/simulation";
 import SenMap from "../components/SenMap";
 import SenateTooltip from "../components/SenateTooltip";
@@ -65,7 +64,7 @@ function Senate() {
                 }
             }
         });
-    }, [vm.timeCode]);
+    }, [vm.stateList, vm.timeCode]);
     return (
         <div
             style={{

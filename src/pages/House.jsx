@@ -66,7 +66,7 @@ export default function House() {
                 }
             }
         });
-    }, [vm.timeCode]);
+    }, [vm.activeDistricts, vm.timeCode]);
     return (
         <div className="box-container">
             <div className="likelyD boxcol">

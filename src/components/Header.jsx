@@ -1,6 +1,6 @@
 import React from "react";
-import { observer } from "mobx-react-lite";
 import SimulationVM from "./../viewmodels/simulation";
+// eslint-disable-next-line no-unused-vars
 import styles from "./header.css";
 
 export default function Header(props) {
