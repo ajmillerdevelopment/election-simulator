@@ -59,7 +59,15 @@
     background-color: blue;
     color: white;
 }
+.called-blue-flip-box {
+    background-color: darkblue;
+    color: white;
+}
 .called-red-box {
     background-color: red;
+    color: white;
+}
+.called-red-flip-box {
+    background-color: darkred;
     color: white;
 }

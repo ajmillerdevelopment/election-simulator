@@ -100,12 +100,16 @@ export default function Header(props) {
                             {vm.RSen > 50 || (vm.RSen === 50 && vm.REVs > 269)
                                 ? "✓"
                                 : null}
+                            {vm.RSenGain > -1 ? "+" : null}
+                            {vm.RSenGain}
                         </strong>{" "}
                         <strong style={{ color: "blue" }}>
                             Dems: {vm.DSen}{" "}
                             {vm.DSen > 50 || (vm.DSen === 50 && vm.DEVs > 269)
                                 ? "✓"
                                 : null}
+                            {vm.DSenGain > -1 ? "+" : null}
+                            {vm.DSenGain}
                         </strong>
                     </div>
                 </div>
@@ -131,9 +135,13 @@ export default function Header(props) {
                     <div>
                         <strong style={{ color: "red", margin: "0 5px" }}>
                             GOP: {vm.RGovs}
+                            {vm.RGovGain > -1 ? "+" : null}
+                            {vm.RGovGain}
                         </strong>{" "}
                         <strong style={{ color: "blue" }}>
                             Dems: {vm.DGovs}
+                            {vm.DGovGain > -1 ? "+" : null}
+                            {vm.DGovGain}
                         </strong>
                     </div>
                 </div>
@@ -160,10 +168,14 @@ export default function Header(props) {
                         <strong style={{ color: "red", margin: "0 5px" }}>
                             GOP: {vm.RHouse}
                             {vm.RHouse > 217 ? "✓" : null}
+                            {vm.RHouseGain > -1 ? "+" : null}
+                            {vm.RHouseGain}
                         </strong>{" "}
                         <strong style={{ color: "blue" }}>
                             Dems: {vm.DHouse}
                             {vm.DHouse > 217 ? "✓" : null}
+                            {vm.DHouseGain > -1 ? "+" : null}
+                            {vm.DHouseGain}
                         </strong>
                     </div>
                 </div>

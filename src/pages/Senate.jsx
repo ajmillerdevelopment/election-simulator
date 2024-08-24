@@ -25,12 +25,20 @@ function Senate() {
                 if (state.active) {
                     if (state.senateCalled) {
                         if (state.senateMargin < 0) {
-                            elem[0]?.classList.add("called-red");
+                            if (state.lastSen === "D") {
+                                elem[0]?.classList.add("called-red-flip");
+                            } else {
+                                elem[0]?.classList.add("called-red");
+                            }
                             elem[0]?.classList.remove("leaning-red");
                             elem[0]?.classList.remove("leaning-blue");
                             elem[0]?.classList.remove("too-early");
                         } else {
-                            elem[0]?.classList.add("called-blue");
+                            if (state.lastSen === "D") {
+                                elem[0]?.classList.add("called-blue");
+                            } else {
+                                elem[0]?.classList.add("called-blue-flip");
+                            }
                             elem[0]?.classList.remove("leaning-red");
                             elem[0]?.classList.remove("leaning-blue");
                             elem[0]?.classList.remove("too-early");

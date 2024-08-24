@@ -40,11 +40,19 @@ export default function House() {
             ).toFixed(0);
             if (district.called) {
                 if (district.districtMargin < 0) {
-                    elem[0]?.classList.add("called-red-box");
+                    if (district.last === "D") {
+                        elem[0]?.classList.add("called-red-flip-box");
+                    } else {
+                        elem[0]?.classList.add("called-red-box");
+                    }
                     elem[0]?.classList.remove("leaning-red-box");
                     elem[0]?.classList.remove("leaning-blue-box");
                 } else {
-                    elem[0]?.classList.add("called-blue-box");
+                    if (district.last === "R") {
+                        elem[0]?.classList.add("called-blue-flip-box");
+                    } else {
+                        elem[0]?.classList.add("called-blue-box");
+                    }
                     elem[0]?.classList.remove("leaning-red-box");
                     elem[0]?.classList.remove("leaning-blue-box");
                 }

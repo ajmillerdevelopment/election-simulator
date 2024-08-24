@@ -100,11 +100,8 @@ class SimulationVM {
             let govVoteMargin = Math.round(
                 state.totalVote * (state.govMargin / 100)
             );
-            console.log(state.dRemaining);
-            console.log(voteMargin);
             state.dRemaining = state.dRemaining + voteMargin / 2;
             state.rRemaining = state.rRemaining - voteMargin / 2;
-            console.log(state.dRemaining);
             if (state.senateMargin) {
                 state.dSenRemaining += senateVoteMargin / 2;
                 state.rSenRemaining -= senateVoteMargin / 2;
@@ -152,10 +149,16 @@ class SimulationVM {
     DEVs = 0;
     RSen = 39;
     DSen = 28;
+    RSenGain = 0;
+    DSenGain = 0;
     RHouse = 0;
     DHouse = 0;
+    RHouseGain = 0;
+    DHouseGain = 0;
     RGovs = 19;
+    RGovGain = 0;
     DGovs = 20;
+    DGovGain = 0;
     called = false;
 
     get rPop() {
@@ -188,6 +191,11 @@ class SimulationVM {
         let timeCodeforEval = Number(this.timeCode);
         this.stateList.forEach((state) => {
             if (state.closeTime === timeCodeforEval && !state.called) {
+                if (state.fullName === "North Carolina") {
+                    //Accounting for Safe R Pickups in NC
+                    this.RHouseGain += 3;
+                    this.DHouseGain -= 3;
+                }
                 this.activeStates.push(state);
                 state.active = true;
                 if (state.houseSeats) {
@@ -341,9 +349,17 @@ class SimulationVM {
                     if (district.districtMargin > 0) {
                         district.called = true;
                         this.DHouse++;
+                        if (district.last === "R") {
+                            this.DHouseGain++;
+                            this.RHouseGain--;
+                        }
                     } else {
                         district.called = true;
                         this.RHouse++;
+                        if (district.last === "D") {
+                            this.DHouseGain--;
+                            this.RHouseGain++;
+                        }
                     }
                 }
             }
@@ -353,6 +369,9 @@ class SimulationVM {
         if (!state.called) {
             state.called = true;
             this.DEVs += state.evs;
+            if (state.lastPrez === "R") {
+                console.log(`Dems flip ${state.fullName}`);
+            }
             this.log.push(
                 `${this.hour}:${this.minute} - Harris wins ${state.fullName}`
             );
@@ -362,6 +381,9 @@ class SimulationVM {
         if (!state.called) {
             state.called = true;
             this.REVs += state.evs;
+            if (state.lastPrez === "D") {
+                console.log(`Reps flip ${state.fullName}`);
+            }
             this.log.push(
                 `${this.hour}:${this.minute} - Trump wins ${state.fullName}`
             );
@@ -371,6 +393,10 @@ class SimulationVM {
         if (!state.senateCalled) {
             state.senateCalled = true;
             this.DSen++;
+            if (state.lastSen === "R") {
+                this.DSenGain++;
+                this.RSenGain--;
+            }
             if (
                 state.senateInc &&
                 (state.senateInc === "D" || state.senateInc === "I")
@@ -389,6 +415,10 @@ class SimulationVM {
         if (!state.senateCalled) {
             state.senateCalled = true;
             this.RSen++;
+            if (state.lastSen === "D") {
+                this.DSenGain--;
+                this.RSenGain++;
+            }
             if (state.senateInc && state.senateInc === "R") {
                 this.log.push(
                     `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) re-elected to the Senate`
@@ -404,12 +434,20 @@ class SimulationVM {
         if (!state.govCalled) {
             state.govCalled = true;
             this.DGovs++;
+            if (state.lastGov === "R") {
+                this.DGovGain++;
+                this.RGovGain--;
+            }
         }
     }
     callRedGov(state) {
         if (!state.govCalled) {
             state.govCalled = true;
             this.RGovs++;
+            if (state.lastGov === "D") {
+                this.RGovGain++;
+                this.DGovGain--;
+            }
         }
     }
 }

@@ -19,12 +19,20 @@ export default function Presidential() {
             if (state.active) {
                 if (state.called) {
                     if (state.prezMargin < 0) {
-                        elem[0]?.classList.add("called-red");
+                        if (state.lastPrez === "D") {
+                            elem[0]?.classList.add("called-red-flip");
+                        } else {
+                            elem[0]?.classList.add("called-red");
+                        }
                         elem[0]?.classList.remove("leaning-red");
                         elem[0]?.classList.remove("leaning-blue");
                         elem[0]?.classList.remove("too-early");
                     } else {
-                        elem[0]?.classList.add("called-blue");
+                        if (state.lastPrez === "R") {
+                            elem[0]?.classList.add("called-blue-flip");
+                        } else {
+                            elem[0]?.classList.add("called-blue");
+                        }
                         elem[0]?.classList.remove("leaning-red");
                         elem[0]?.classList.remove("leaning-blue");
                         elem[0]?.classList.remove("too-early");

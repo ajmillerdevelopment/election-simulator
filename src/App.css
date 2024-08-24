@@ -24,6 +24,12 @@
 .called-red {
     fill: red;
 }
+.called-red-flip {
+    fill: darkred;
+}
+.called-blue-flip {
+    fill: darkblue;
+}
 .leaning-blue {
     fill: lightblue;
 }
