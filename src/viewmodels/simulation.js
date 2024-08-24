@@ -138,7 +138,7 @@ class SimulationVM {
             }
         }, 1000);
     }
-    ticking = false;
+    ticking = true;
     hour;
     minute;
     timeCode;

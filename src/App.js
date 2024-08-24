@@ -12,6 +12,11 @@ import Governors from "./pages/Governors";
 function App() {
     let vm = SimulationVM;
     const [module, setModule] = useState("start");
+    let logElements = vm.log.map((x) => {
+        return <p style={{ margin: 1 }}>{x}</p>;
+    });
+    // eslint-disable-next-line no-unused-vars
+    logElements = logElements.reverse();
 
     useEffect(() => {}, [vm.timeCode]);
     return (
