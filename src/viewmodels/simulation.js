@@ -233,8 +233,8 @@ class SimulationVM {
     }
     reportVote(state) {
         if (Math.random() < state.countSpeed || state.dReporting === 0) {
-            let rFactor = Math.random() * (0.15 - 0.01) + 0.01;
-            let dFactor = Math.random() * (0.15 - 0.01) + 0.01;
+            let rFactor = Math.random() * (0.07 - 0.01) + 0.01;
+            let dFactor = Math.random() * (0.07 - 0.01) + 0.01;
             rFactor -= state.cooldown / 200;
             dFactor -= state.cooldown / 200;
             if (rFactor < 0) rFactor = 0.01;
@@ -296,8 +296,8 @@ class SimulationVM {
     }
     reportDistrictVote(district) {
         if (Math.random() < district.countSpeed) {
-            let rFactor = Math.random() * (0.15 - 0.01) + 0.01;
-            let dFactor = Math.random() * (0.15 - 0.01) + 0.01;
+            let rFactor = Math.random() * (0.07 - 0.01) + 0.01;
+            let dFactor = Math.random() * (0.07 - 0.01) + 0.01;
             let rTranche = Math.ceil(district.rRemaining * rFactor);
             let dTranche = Math.ceil(district.dRemaining * dFactor);
             district.rRemaining = district.rRemaining - rTranche;
