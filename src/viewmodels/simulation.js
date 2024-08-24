@@ -14,6 +14,7 @@ class SimulationVM {
         });
     }
     instantiate(baseSwing) {
+        console.log(baseSwing);
         this.stateList = Object.values(stateValues);
         this.stateCodes = Object.keys(stateValues);
         let nationalFactor = Math.random() * (2 - -2) + -2;
