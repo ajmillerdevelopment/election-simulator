@@ -17,14 +17,14 @@ class SimulationVM {
         console.log(baseSwing);
         this.stateList = Object.values(stateValues);
         this.stateCodes = Object.keys(stateValues);
-        let nationalFactor = Math.random() * (2 - -2) + -2;
+        let nationalFactor = Math.random() * (3 - -3) + -3;
         nationalFactor += baseSwing;
-        let neFactor = Math.random() * (2 - -2) + -2;
-        let sFactor = Math.random() * (2 - -2) + -2;
-        let mwFactor = Math.random() * (2 - -2) + -2;
-        let mtFactor = Math.random() * (2 - -2) + -2;
-        let swFactor = Math.random() * (2 - -2) + -2;
-        let wFactor = Math.random() * (2 - -2) + -2;
+        let neFactor = Math.random() * (1 - -1) + -1;
+        let sFactor = Math.random() * (1 - -1) + -1;
+        let mwFactor = Math.random() * (1 - -1) + -1;
+        let mtFactor = Math.random() * (1 - -1) + -1;
+        let swFactor = Math.random() * (1 - -1) + -1;
+        let wFactor = Math.random() * (1 - -1) + -1;
         console.log(nationalFactor);
         console.log(`NE: ${neFactor}`);
         console.log(`S: ${sFactor}`);
@@ -81,10 +81,12 @@ class SimulationVM {
             if (state.senateMargin) {
                 state.senateMargin += stateFactor;
                 state.senateMargin += state.regionalFactor;
+                state.senateMargin += -1;
             }
             if (state.govMargin) {
                 state.govMargin += stateFactor;
                 state.govMargin += state.regionalFactor;
+                state.govMargin += -1;
             }
             let voteMargin = Math.round(
                 state.totalVote * (state.prezMargin / 100)
@@ -111,8 +113,8 @@ class SimulationVM {
                 let districtFactor = Math.random() * (4.2 - -4.2) + -4.2;
                 district.districtMargin += districtFactor;
                 district.districtMargin += stateFactor * 2;
-                district.districtMargin += state.regionalFactor;
-                district.districtMargin += 1;
+                district.districtMargin += state.regionalFactor * 2;
+                district.districtMargin += -1;
                 let houseMargin = Math.round(
                     200000 * (district.districtMargin / 100)
                 );
