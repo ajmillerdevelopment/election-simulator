@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { observer } from "mobx-react-lite";
 import SimulationVM from "./../viewmodels/simulation";
 import DistrictBox from "../components/DistrictBox";
+// eslint-disable-next-line no-unused-vars
 import styles from "../components/districtbox.css";
 
 export default function House() {
