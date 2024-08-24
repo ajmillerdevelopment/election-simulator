@@ -6,7 +6,7 @@ import Map from "../components/Map";
 
 export default function Presidential() {
     const vm = SimulationVM;
-    const toolTips = vm.activeStates.map((state) => {
+    const toolTips = vm.stateList.map((state) => {
         return <PrezTooltip state={state} />;
     });
     useEffect(() => {

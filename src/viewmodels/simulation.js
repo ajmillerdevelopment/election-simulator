@@ -74,13 +74,7 @@ class SimulationVM {
             }
             state.called = false;
             let stateFactor = Math.random() * (2.2 - -2.2) + -2.2;
-            if (
-                state.prezMargin < 10 ||
-                state.senateMargin < 10 ||
-                state.govMargin < 10
-            ) {
-                stateFactor += nationalFactor / 2;
-            } else stateFactor += nationalFactor;
+            stateFactor += nationalFactor;
             state.prezMargin += stateFactor;
             state.prezMargin += state.regionalFactor;
             if (state.senateMargin) {
@@ -128,6 +122,13 @@ class SimulationVM {
                 district.dRemaining += houseMargin / 2;
                 district.rRemaining -= houseMargin / 2;
             });
+            state.percentile = this.calculatePrezPercentile(state);
+            if (state.senateMargin) {
+                state.senPercentile = this.calculateSenatePercentile(state);
+            }
+            if (state.govMargin) {
+                state.govPercentile = this.calculateGovPercentile(state);
+            }
         });
         this.hour = "18";
         this.minute = "59";
@@ -135,7 +136,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 100);
+        }, 1000);
     }
     ticking = false;
     hour;
@@ -198,6 +199,7 @@ class SimulationVM {
                 }
                 this.activeStates.push(state);
                 state.active = true;
+                state.cooldown = 30;
                 if (state.houseSeats) {
                     if (state.houseSeats.safeD)
                         this.DHouse += state.houseSeats.safeD;
@@ -211,7 +213,10 @@ class SimulationVM {
             }
         });
         this.log.push(``); //necessary for the clock to refresh properly
-        this.activeStates.forEach((state) => this.reportVote(state));
+        this.activeStates.forEach((state) => {
+            this.reportVote(state);
+            if (state.cooldown > 0) state.cooldown--;
+        });
         this.activeDistricts.forEach((district) =>
             this.reportDistrictVote(district)
         );
@@ -224,9 +229,13 @@ class SimulationVM {
         }
     }
     reportVote(state) {
-        if (Math.random() < state.countSpeed) {
+        if (Math.random() < state.countSpeed || state.dReporting === 0) {
             let rFactor = Math.random() * (0.15 - 0.01) + 0.01;
             let dFactor = Math.random() * (0.15 - 0.01) + 0.01;
+            rFactor -= state.cooldown / 200;
+            dFactor -= state.cooldown / 200;
+            if (rFactor < 0) rFactor = 0.01;
+            if (dFactor < 0) dFactor = 0.01;
             let rTranche = Math.ceil(state.rRemaining * rFactor);
             let dTranche = Math.ceil(state.dRemaining * dFactor);
             state.rRemaining = state.rRemaining - rTranche;
@@ -249,80 +258,33 @@ class SimulationVM {
                 state.dGovRemaining = state.dGovRemaining - dGovTranche;
                 state.dGovReporting = state.dGovReporting + dGovTranche;
             }
-            let reportedVote = (
-                ((state.dReporting + state.rReporting) / state.totalVote) *
-                100
-            ).toFixed(0);
+            state.percentile = this.calculatePrezPercentile(state);
             if (!state.called) {
-                if (state.prezMargin > 15 || state.prezMargin < -15) {
-                    if (state.prezMargin > 0) {
-                        this.callBlue(state);
-                    } else {
-                        this.callRed(state);
-                    }
+                if (state.percentile > 120) {
+                    this.callBlue(state);
                 }
-                if (
-                    state.dReporting - state.rReporting >
-                        state.rRemaining * 1.1 ||
-                    state.rReporting - state.dReporting > state.dRemaining * 1.1
-                ) {
-                    if (state.prezMargin > 0) {
-                        this.callBlue(state);
-                    } else {
-                        this.callRed(state);
-                    }
+                if (state.percentile < -120) {
+                    this.callRed(state);
                 }
             }
-            if (state.senateMargin && !state.senateCalled) {
-                if (state.senateMargin > 15 || state.senateMargin < -15) {
-                    if (
-                        reportedVote > 10 ||
-                        state.senateMargin > 20 ||
-                        state.senateMargin < -20
-                    ) {
-                        if (state.senateMargin > 0) {
-                            this.callBlueSen(state);
-                        } else {
-                            this.callRedSen(state);
-                        }
-                    }
-                }
-                if (
-                    state.dSenReporting - state.rSenReporting >
-                        state.rSenRemaining * 1.1 ||
-                    state.rSenReporting - state.dSenReporting >
-                        state.dSenRemaining * 1.1
-                ) {
-                    if (state.senateMargin > 0) {
+            if (state.senateMargin) {
+                state.senPercentile = this.calculateSenatePercentile(state);
+                if (!state.senateCalled) {
+                    if (state.senPercentile > 120) {
                         this.callBlueSen(state);
-                    } else {
+                    }
+                    if (state.senPercentile < -120) {
                         this.callRedSen(state);
                     }
                 }
             }
-            if (state.govMargin && !state.govCalled) {
-                if (state.govMargin > 15 || state.govMargin < -15) {
-                    if (
-                        reportedVote > 10 ||
-                        state.govMargin > 20 ||
-                        state.govMargin < -20
-                    ) {
-                        if (state.govMargin > 0) {
-                            this.callBlueGov(state);
-                        } else {
-                            this.callRedGov(state);
-                        }
-                    }
-                }
-                if (
-                    state.dGovReporting - state.rGovReporting >
-                        state.rGovRemaining ||
-                    state.rGovReporting - state.dGovReporting >
-                        state.dGovRemaining
-                ) {
-                    if (state.govMargin > 0) {
+            if (state.govMargin) {
+                state.govPercentile = this.calculateGovPercentile(state);
+                if (!state.govCalled) {
+                    if (state.govPercentile > 120) {
                         this.callBlueGov(state);
-                    } else {
+                    }
+                    if (state.govPercentile < -120) {
                         this.callRedGov(state);
                     }
                 }
@@ -339,27 +301,22 @@ class SimulationVM {
             district.rReporting = district.rReporting + rTranche;
             district.dRemaining = district.dRemaining - dTranche;
             district.dReporting = district.dReporting + dTranche;
+            district.percentile = this.calculateDistPercentile(district);
             if (!district.called) {
-                if (
-                    district.dReporting - district.rReporting >
-                        district.rRemaining ||
-                    district.rReporting - district.dReporting >
-                        district.dRemaining
-                ) {
-                    if (district.districtMargin > 0) {
-                        district.called = true;
-                        this.DHouse++;
-                        if (district.last === "R") {
-                            this.DHouseGain++;
-                            this.RHouseGain--;
-                        }
-                    } else {
-                        district.called = true;
-                        this.RHouse++;
-                        if (district.last === "D") {
-                            this.DHouseGain--;
-                            this.RHouseGain++;
-                        }
+                if (district.percentile > 120) {
+                    district.called = true;
+                    this.DHouse++;
+                    if (district.last === "R") {
+                        this.DHouseGain++;
+                        this.RHouseGain--;
+                    }
+                }
+                if (district.percentile < -120) {
+                    district.called = true;
+                    this.RHouse++;
+                    if (district.last === "D") {
+                        this.RHouseGain++;
+                        this.DHouseGain--;
                     }
                 }
             }
@@ -449,6 +406,102 @@ class SimulationVM {
                 this.DGovGain--;
             }
         }
+    }
+    calculatePrezPercentile(state) {
+        let dMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
+        let dMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
+        let rMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
+        let rMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
+
+        let dMax = Math.round(state.dRemaining * dMaxFactor) + state.dReporting;
+        let dMin = Math.round(state.dRemaining * dMinFactor) + state.dReporting;
+        let dMed = Math.round((dMax + dMin) / 2);
+
+        let rMax = Math.round(state.rRemaining * rMaxFactor) + state.rReporting;
+        let rMin = Math.round(state.rRemaining * rMinFactor) + state.rReporting;
+        let rMed = Math.round((rMax + rMin) / 2);
+
+        let dMaxMargin = dMax - rMin;
+        let median = dMed - rMed;
+        let rMaxMargin = dMin - rMax;
+        let totalWidth = dMaxMargin - rMaxMargin;
+
+        let distance = median - 0;
+        return (distance / totalWidth) * 100;
+    }
+    calculateSenatePercentile(state) {
+        let dMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
+        let dMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
+        let rMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
+        let rMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
+
+        let dMax =
+            Math.round(state.dSenRemaining * dMaxFactor) + state.dSenReporting;
+        let dMin =
+            Math.round(state.dSenRemaining * dMinFactor) + state.dSenReporting;
+        let dMed = Math.round((dMax + dMin) / 2);
+
+        let rMax =
+            Math.round(state.rSenRemaining * rMaxFactor) + state.rSenReporting;
+        let rMin =
+            Math.round(state.rSenRemaining * rMinFactor) + state.rSenReporting;
+        let rMed = Math.round((rMax + rMin) / 2);
+
+        let dMaxMargin = dMax - rMin;
+        let median = dMed - rMed;
+        let rMaxMargin = dMin - rMax;
+        let totalWidth = dMaxMargin - rMaxMargin;
+
+        let distance = median - 0;
+        return (distance / totalWidth) * 100;
+    }
+    calculateGovPercentile(state) {
+        let dMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
+        let dMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
+        let rMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
+        let rMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
+
+        let dMax =
+            Math.round(state.dGovRemaining * dMaxFactor) + state.dGovReporting;
+        let dMin =
+            Math.round(state.dGovRemaining * dMinFactor) + state.dGovReporting;
+        let dMed = Math.round((dMax + dMin) / 2);
+
+        let rMax =
+            Math.round(state.rGovRemaining * rMaxFactor) + state.rGovReporting;
+        let rMin =
+            Math.round(state.rGovRemaining * rMinFactor) + state.rGovReporting;
+        let rMed = Math.round((rMax + rMin) / 2);
+
+        let dMaxMargin = dMax - rMin;
+        let median = dMed - rMed;
+        let rMaxMargin = dMin - rMax;
+        let totalWidth = dMaxMargin - rMaxMargin;
+
+        let distance = median - 0;
+        return (distance / totalWidth) * 100;
+    }
+    calculateDistPercentile(dist) {
+        let dMaxFactor = Math.random() * (1.3 - 1.1) + 1.1;
+        let dMinFactor = Math.random() * (0.9 - 0.7) + 0.7;
+        let rMaxFactor = Math.random() * (1.3 - 1.1) + 1.1;
+        let rMinFactor = Math.random() * (0.9 - 0.7) + 0.7;
+
+        let dMax = Math.round(dist.dRemaining * dMaxFactor) + dist.dReporting;
+        let dMin = Math.round(dist.dRemaining * dMinFactor) + dist.dReporting;
+        let dMed = Math.round((dMax + dMin) / 2);
+
+        let rMax = Math.round(dist.rRemaining * rMaxFactor) + dist.rReporting;
+        let rMin = Math.round(dist.rRemaining * rMinFactor) + dist.rReporting;
+        let rMed = Math.round((rMax + rMin) / 2);
+
+        let dMaxMargin = dMax - rMin;
+        let median = dMed - rMed;
+        let rMaxMargin = dMin - rMax;
+        let totalWidth = dMaxMargin - rMaxMargin;
+
+        let distance = median - 0;
+        return (distance / totalWidth) * 100;
     }
 }
 

@@ -19,7 +19,7 @@ export default function Header(props) {
             <button
                 className="startButton"
                 onClick={() => {
-                    vm.instantiate(2);
+                    vm.instantiate(0);
                     props.setModule("presidential");
                 }}
             >

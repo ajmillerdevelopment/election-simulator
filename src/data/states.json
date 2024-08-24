@@ -90,7 +90,7 @@
                     "districtName": "AZ-04",
                     "incumbent": "Stanton (D)",
                     "rating": "Likely D",
-                    "last": "R"
+                    "last": "D"
                 }
             ],
             "safeR": 4
@@ -307,6 +307,8 @@
         "RSenateName": "Scott",
         "senateMargin": -5,
         "region": "S",
+        "lastPrez": "R",
+        "lastSen": "R",
         "houseSeats": {
             "safeD": 6,
             "contested": [
@@ -314,37 +316,43 @@
                     "districtName": "FL-09",
                     "districtMargin": 16.6,
                     "incumbent": "Soto (D)",
-                    "rating": "Likely D"
+                    "rating": "Likely D",
+                    "last": "D"
                 },
                 {
                     "districtName": "FL-23",
                     "districtMargin": 11.9,
                     "incumbent": "Moskowitz (D)",
-                    "rating": "Likely D"
+                    "rating": "Likely D",
+                    "last": "D"
                 },
                 {
                     "districtName": "FL-13",
                     "districtMargin": -12.2,
                     "incumbent": "Luna (R)",
-                    "rating": "Likely R"
+                    "rating": "Likely R",
+                    "last": "R"
                 },
                 {
                     "districtName": "FL-15",
                     "districtMargin": -12.3,
                     "incumbent": "Lee (R)",
-                    "rating": "Likely R"
+                    "rating": "Likely R",
+                    "last": "R"
                 },
                 {
                     "districtName": "FL-27",
                     "districtMargin": -7.3,
                     "incumbent": "Salazar (R)",
-                    "rating": "Likely R"
+                    "rating": "Likely R",
+                    "last": "R"
                 },
                 {
                     "districtName": "FL-28",
                     "districtMargin": -6.2,
                     "incumbent": "Giminez (R)",
-                    "rating": "Likely R"
+                    "rating": "Likely R",
+                    "last": "R"
                 }
             ],
             "safeR": 16

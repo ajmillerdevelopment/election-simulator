@@ -61,6 +61,7 @@ export default function Header(props) {
                             <span>
                                 {rVotes} {rPercent}%
                             </span>
+                            <span>{vm.REst}</span>
                         </div>
                         <div
                             style={{ display: "flex", flexDirection: "column" }}
@@ -71,6 +72,7 @@ export default function Header(props) {
                             <span>
                                 {dVotes} {dPercent}%
                             </span>
+                            <span>{vm.DEst}</span>
                         </div>
                     </div>
                 </div>

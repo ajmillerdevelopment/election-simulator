@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Header(props) {
     const dist = props.district;
+    const percentile = dist.percentile;
     const formatter = new Intl.NumberFormat("en-US");
     let reportedVote = (
         ((dist.dReporting + dist.rReporting) / 200000) *
@@ -17,6 +18,30 @@ export default function Header(props) {
     rtotal = dist.rReporting;
     dtotal = formatter.format(dtotal);
     rtotal = formatter.format(rtotal);
+
+    let needle = "Tossup";
+    if (percentile < 30 && percentile > -30) {
+        needle = "Tossup";
+    }
+    if (percentile >= 30 && percentile < 60) {
+        needle = "Lean D";
+    }
+    if (percentile >= 60 && percentile < 90) {
+        needle = "Likely D";
+    }
+    if (percentile >= 90) {
+        needle = "Safe D";
+    }
+    if (percentile <= -30 && percentile > -60) {
+        needle = "Lean R";
+    }
+    if (percentile <= -60 && percentile > -90) {
+        needle = "Likely R";
+    }
+    if (percentile <= -90) {
+        needle = "Safe R";
+    }
+
     return (
         <div className="district-box">
             <div className={`district-header ${dist.districtName}`}>
@@ -69,6 +94,7 @@ export default function Header(props) {
                 )}
             </div>
             <p>{reportedVote}% reporting</p>
+            <p>{needle}</p>
         </div>
     );
 }

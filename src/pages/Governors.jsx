@@ -6,7 +6,7 @@ import GovTooltip from "../components/GovTooltip";
 
 function Senate() {
     const vm = SimulationVM;
-    const toolTips = vm.activeStates.map((state) => {
+    const toolTips = vm.stateList.map((state) => {
         if (state.govMargin) {
             return <GovTooltip state={state} />;
         } else return null;

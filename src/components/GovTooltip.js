@@ -6,6 +6,7 @@ import styles from "./tooltip.css";
 const GovTooltip = (props) => {
     const formatter = new Intl.NumberFormat("en-US");
     const state = props.state;
+    const percentile = state.govPercentile;
     let reportedVote = (
         ((state.dReporting + state.rReporting) / state.totalVote) *
         100
@@ -29,6 +30,41 @@ const GovTooltip = (props) => {
         rGovTotal = state.rGovReporting;
         dGovTotal = formatter.format(dGovTotal);
         rGovTotal = formatter.format(rGovTotal);
+    }
+
+    let needle = "Tossup";
+    if (percentile < 30 && percentile > -30) {
+        needle = "Tossup";
+    }
+    if (percentile >= 30 && percentile < 60) {
+        needle = "Lean D";
+    }
+    if (percentile >= 60 && percentile < 90) {
+        needle = "Likely D";
+    }
+    if (percentile >= 90) {
+        needle = "Safe D";
+    }
+    if (percentile <= -30 && percentile > -60) {
+        needle = "Lean R";
+    }
+    if (percentile <= -60 && percentile > -90) {
+        needle = "Likely R";
+    }
+    if (percentile <= -90) {
+        needle = "Safe R";
+    }
+    let displayPercentile = percentile;
+    displayPercentile = Math.abs(displayPercentile);
+    displayPercentile = (
+        displayPercentile +
+        (100 - displayPercentile) / 2
+    ).toFixed(0);
+    if (displayPercentile > 100) displayPercentile = 100;
+    if (percentile > 0) {
+        displayPercentile = `${displayPercentile}% D`;
+    } else {
+        displayPercentile = `${displayPercentile}% R`;
     }
 
     return (
@@ -89,6 +125,9 @@ const GovTooltip = (props) => {
                     )}
                 </>
                 <p>{reportedVote}% reporting</p>
+                <p>
+                    {needle} {displayPercentile}
+                </p>
             </div>
         </Tooltip>
     );

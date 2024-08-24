@@ -14,7 +14,7 @@
 .district-box {
     border: 2px black solid;
     width: 200px;
-    height: 100px;
+    height: 120px;
     display: flex;
     flex-direction: column;
 }
