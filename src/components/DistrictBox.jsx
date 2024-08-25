@@ -4,10 +4,8 @@ export default function Header(props) {
     const dist = props.district;
     const percentile = dist.percentile;
     const formatter = new Intl.NumberFormat("en-US");
-    let reportedVote = (
-        ((dist.dReporting + dist.rReporting) / 200000) *
-        100
-    ).toFixed(0);
+    let reportedVote = ((dist.dReporting + dist.rReporting) / 200000) * 100;
+    reportedVote = Math.floor(reportedVote).toFixed(0);
     let totalReported = dist.dReporting + dist.rReporting;
     let dpercent = ((dist.dReporting / totalReported) * 100).toFixed(1);
     let rpercent = ((dist.rReporting / totalReported) * 100).toFixed(1);

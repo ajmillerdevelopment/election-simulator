@@ -8,10 +8,9 @@ const GovTooltip = (props) => {
     const formatter = new Intl.NumberFormat("en-US");
     const state = props.state;
     const percentile = state.govPercentile;
-    let reportedVote = (
-        ((state.dReporting + state.rReporting) / state.totalVote) *
-        100
-    ).toFixed(0);
+    let reportedVote =
+        ((state.dReporting + state.rReporting) / state.totalVote) * 100;
+    reportedVote = Math.floor(reportedVote).toFixed(0);
     let dGovPercent;
     let rGovPercent;
     let totalGovReported;
