@@ -55,7 +55,7 @@ class SimulationVM {
                 default:
                     state.regionalFactor = 0;
             }
-            state.totalVote = state.totalVote * 0.8;
+            state.totalVote = state.totalVote * 0.85;
             state.dReporting = 0;
             state.dRemaining = Math.round(state.totalVote / 2);
             state.rReporting = 0;
