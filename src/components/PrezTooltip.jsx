@@ -127,9 +127,11 @@ const PrezTooltip = (props) => {
                         <p>{reportedVote}% reporting</p>
                     </>
                 ) : null}
-                <p>
-                    {needle} {displayPercentile}
-                </p>
+                {state.called ? null : (
+                    <p>
+                        {needle} {displayPercentile}
+                    </p>
+                )}
             </div>
         </Tooltip>
     );

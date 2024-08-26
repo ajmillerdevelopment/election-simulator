@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Header(props) {
+    const [open, setOpen] = useState(false);
     const dist = props.district;
     const percentile = dist.percentile;
     const formatter = new Intl.NumberFormat("en-US");
@@ -42,57 +43,67 @@ export default function Header(props) {
 
     return (
         <div className="district-box">
-            <div className={`district-header ${dist.districtName}`}>
+            <div
+                className={`district-header ${dist.districtName}`}
+                onClick={() => {
+                    setOpen(!open);
+                }}
+            >
                 <h4>{dist.districtName}</h4> <span>{dist.incumbent}</span>
             </div>
-            <div className="vote-box">
-                {dist.dReporting > dist.rReporting ? (
-                    <>
-                        <div>
-                            {dtotal}{" "}
-                            <span className="dbox">
-                                {dpercent}%{" "}
-                                {dist.called && dist.districtMargin > 0
-                                    ? "✓"
-                                    : null}
-                            </span>
-                        </div>
-                        <div>
-                            {rtotal}{" "}
-                            <span className="rbox">
-                                {rpercent}%{" "}
-                                {dist.called && dist.districtMargin < 0
-                                    ? "✓"
-                                    : null}
-                            </span>
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        {" "}
-                        <div>
-                            {rtotal}{" "}
-                            <span className="rbox">
-                                {rpercent}%{" "}
-                                {dist.called && dist.districtMargin < 0
-                                    ? "✓"
-                                    : null}
-                            </span>
-                        </div>
-                        <div>
-                            {dtotal}{" "}
-                            <span className="dbox">
-                                {dpercent}%{" "}
-                                {dist.called && dist.districtMargin > 0
-                                    ? "✓"
-                                    : null}
-                            </span>
-                        </div>
-                    </>
-                )}
-            </div>
-            <p>{reportedVote}% reporting</p>
-            <p>{needle}</p>
+            {open ? (
+                <>
+                    {" "}
+                    <div className="vote-box">
+                        {dist.dReporting > dist.rReporting ? (
+                            <>
+                                <div>
+                                    {dtotal}{" "}
+                                    <span className="dbox">
+                                        {dpercent}%{" "}
+                                        {dist.called && dist.districtMargin > 0
+                                            ? "✓"
+                                            : null}
+                                    </span>
+                                </div>
+                                <div>
+                                    {rtotal}{" "}
+                                    <span className="rbox">
+                                        {rpercent}%{" "}
+                                        {dist.called && dist.districtMargin < 0
+                                            ? "✓"
+                                            : null}
+                                    </span>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                {" "}
+                                <div>
+                                    {rtotal}{" "}
+                                    <span className="rbox">
+                                        {rpercent}%{" "}
+                                        {dist.called && dist.districtMargin < 0
+                                            ? "✓"
+                                            : null}
+                                    </span>
+                                </div>
+                                <div>
+                                    {dtotal}{" "}
+                                    <span className="dbox">
+                                        {dpercent}%{" "}
+                                        {dist.called && dist.districtMargin > 0
+                                            ? "✓"
+                                            : null}
+                                    </span>
+                                </div>
+                            </>
+                        )}
+                    </div>
+                    <p>{reportedVote}% reporting</p>
+                    <p>{needle}</p>
+                </>
+            ) : null}
         </div>
     );
 }
