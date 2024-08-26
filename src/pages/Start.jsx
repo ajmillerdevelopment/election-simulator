@@ -56,6 +56,21 @@ export default function Header(props) {
             >
                 Start
             </button>
+            <button
+                onClick={() => {
+                    setBaseError(!baseError);
+                    setDistError(!distError);
+                    setMidwestError(!mwError);
+                    setSError(!sError);
+                    setSwError(!swError);
+                    setNEError(!neError);
+                    setMtError(!mtError);
+                    setwError(!wError);
+                    setStateError(!stateError);
+                }}
+            >
+                Toggle All Polling Error
+            </button>
             <p>
                 Set custom national swing (note that the base scenario is
                 already D+3)
