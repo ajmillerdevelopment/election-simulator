@@ -13,18 +13,56 @@ class SimulationVM {
             dPop: computed,
         });
     }
-    instantiate(baseSwing) {
-        console.log(baseSwing);
+    instantiate(options) {
+        const [
+            base,
+            baseError,
+            neSwing,
+            neError,
+            sSwing,
+            sError,
+            mwSwing,
+            mwError,
+            mtSwing,
+            mtError,
+            swSwing,
+            swError,
+            wSwing,
+            wError,
+            stateError,
+            distError,
+        ] = options;
         this.stateList = Object.values(stateValues);
         this.stateCodes = Object.keys(stateValues);
-        let nationalFactor = Math.random() * (3 - -3) + -3;
-        nationalFactor += baseSwing;
-        let neFactor = Math.random() * (1 - -1) + -1;
-        let sFactor = Math.random() * (1 - -1) + -1;
-        let mwFactor = Math.random() * (1 - -1) + -1;
-        let mtFactor = Math.random() * (1 - -1) + -1;
-        let swFactor = Math.random() * (1 - -1) + -1;
-        let wFactor = Math.random() * (1 - -1) + -1;
+        let nationalFactor = 0;
+        if (baseError) {
+            nationalFactor += Math.random() * (3 - -3) + -3;
+        }
+        nationalFactor += base;
+        let neFactor = neSwing;
+        if (neError) {
+            neFactor += Math.random() * (1 - -1) + -1;
+        }
+        let sFactor = sSwing;
+        if (sError) {
+            sFactor += Math.random() * (1 - -1) + -1;
+        }
+        let mwFactor = mwSwing;
+        if (mwError) {
+            mwFactor += Math.random() * (1 - -1) + -1;
+        }
+        let mtFactor = mtSwing;
+        if (mtError) {
+            mtFactor += Math.random() * (1 - -1) + -1;
+        }
+        let swFactor = swSwing;
+        if (swError) {
+            swFactor += Math.random() * (1 - -1) + -1;
+        }
+        let wFactor = wSwing;
+        if (wError) {
+            wFactor += Math.random() * (1 - -1) + -1;
+        }
         console.log(nationalFactor);
         console.log(`NE: ${neFactor}`);
         console.log(`S: ${sFactor}`);
@@ -74,7 +112,10 @@ class SimulationVM {
                 state.rGovRemaining = Math.round(state.totalVote / 2);
             }
             state.called = false;
-            let stateFactor = Math.random() * (2.2 - -2.2) + -2.2;
+            let stateFactor = 0;
+            if (stateError) {
+                stateFactor = Math.random() * (2.2 - -2.2) + -2.2;
+            }
             stateFactor += nationalFactor;
             state.prezMargin += stateFactor;
             state.prezMargin += state.regionalFactor;
@@ -110,7 +151,10 @@ class SimulationVM {
             //House Districts Init
             state.houseSeats?.contested?.forEach((district) => {
                 district.countSpeed = state.countSpeed;
-                let districtFactor = Math.random() * (4.2 - -4.2) + -4.2;
+                let districtFactor = 0;
+                if (distError) {
+                    districtFactor = Math.random() * (4.2 - -4.2) + -4.2;
+                }
                 district.districtMargin += districtFactor;
                 district.districtMargin += stateFactor * 2;
                 district.districtMargin += state.regionalFactor * 2;
@@ -139,7 +183,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 1000);
+        }, 10);
     }
     ticking = true;
     hour;
