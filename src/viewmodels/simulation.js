@@ -37,7 +37,7 @@ class SimulationVM {
         this.stateCodes = Object.keys(stateValues);
         let nationalFactor = 0;
         if (baseError) {
-            nationalFactor += this.roll(0, 2);
+            nationalFactor += this.roll(0, 2.5);
             alert(nationalFactor);
         }
         nationalFactor += base;
