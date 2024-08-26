@@ -37,8 +37,7 @@ class SimulationVM {
         this.stateCodes = Object.keys(stateValues);
         let nationalFactor = 0;
         if (baseError) {
-            nationalFactor += this.roll(0, 2.5);
-            alert(nationalFactor);
+            nationalFactor += this.roll(0, 2);
         }
         nationalFactor += base;
         let neFactor = neSwing;
