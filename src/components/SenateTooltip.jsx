@@ -131,9 +131,11 @@ const SenTooltip = (props) => {
                     )}
                 </>
                 <p>{reportedVote}% reporting</p>
-                <p>
-                    {needle} {displayPercentile}
-                </p>
+                {state.senateCalled ? null : (
+                    <p>
+                        {needle} {displayPercentile}
+                    </p>
+                )}
             </div>
         </Tooltip>
     );
