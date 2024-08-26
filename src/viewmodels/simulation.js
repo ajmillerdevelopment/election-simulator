@@ -37,7 +37,7 @@ class SimulationVM {
         this.stateCodes = Object.keys(stateValues);
         let nationalFactor = 0;
         if (baseError) {
-            nationalFactor += this.roll(0, 2);
+            nationalFactor += this.roll(0, 2.5);
             alert(nationalFactor);
         }
         nationalFactor += base;
@@ -159,7 +159,7 @@ class SimulationVM {
                 district.countSpeed = state.countSpeed;
                 let districtFactor = 0;
                 if (distError) {
-                    districtFactor += this.roll(0, 2);
+                    districtFactor += this.roll(0, 3);
                 }
                 district.districtMargin += districtFactor;
                 district.districtMargin += stateFactor * 2;
@@ -189,7 +189,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 100);
+        }, 1000);
     }
     ticking = true;
     hour;
