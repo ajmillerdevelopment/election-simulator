@@ -95,24 +95,41 @@ export default function Header(props) {
                     }}
                 >
                     <h3>Senate</h3>
-                    <div>
-                        {" "}
-                        <strong style={{ color: "red", margin: "0 5px" }}>
-                            GOP: {vm.RSen}{" "}
-                            {vm.RSen > 50 || (vm.RSen === 50 && vm.REVs > 269)
-                                ? "✓"
-                                : null}
-                            {vm.RSenGain > -1 ? "+" : null}
-                            {vm.RSenGain}
-                        </strong>{" "}
-                        <strong style={{ color: "blue" }}>
-                            Dems: {vm.DSen}{" "}
-                            {vm.DSen > 50 || (vm.DSen === 50 && vm.DEVs > 269)
-                                ? "✓"
-                                : null}
-                            {vm.DSenGain > -1 ? "+" : null}
-                            {vm.DSenGain}
-                        </strong>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                        <div>
+                            {" "}
+                            <strong style={{ color: "red", margin: "0 5px" }}>
+                                GOP: {vm.RSen}{" "}
+                                {vm.RSen > 50 ||
+                                (vm.RSen === 50 && vm.REVs > 269)
+                                    ? "✓"
+                                    : null}
+                            </strong>{" "}
+                            <strong style={{ color: "blue" }}>
+                                Dems: {vm.DSen}{" "}
+                                {vm.DSen > 50 ||
+                                (vm.DSen === 50 && vm.DEVs > 269)
+                                    ? "✓"
+                                    : null}
+                            </strong>
+                        </div>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row",
+                            }}
+                        >
+                            <strong style={{ color: "red", margin: "0 5px" }}>
+                                {" "}
+                                {vm.RSenGain > -1 ? "+" : null}
+                                {vm.RSenGain}
+                            </strong>
+                            <strong style={{ color: "blue", margin: "0 5px" }}>
+                                {" "}
+                                {vm.DSenGain > -1 ? "+" : null}
+                                {vm.DSenGain}
+                            </strong>
+                        </div>
                     </div>
                 </div>
                 <div
@@ -134,17 +151,33 @@ export default function Header(props) {
                     }}
                 >
                     <h3>Governors</h3>
-                    <div>
-                        <strong style={{ color: "red", margin: "0 5px" }}>
-                            GOP: {vm.RGovs}
-                            {vm.RGovGain > -1 ? "+" : null}
-                            {vm.RGovGain}
-                        </strong>{" "}
-                        <strong style={{ color: "blue" }}>
-                            Dems: {vm.DGovs}
-                            {vm.DGovGain > -1 ? "+" : null}
-                            {vm.DGovGain}
-                        </strong>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                        {" "}
+                        <div>
+                            <strong style={{ color: "red", margin: "0 5px" }}>
+                                GOP: {vm.RGovs}
+                            </strong>{" "}
+                            <strong style={{ color: "blue" }}>
+                                Dems: {vm.DGovs}
+                            </strong>
+                        </div>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row",
+                            }}
+                        >
+                            <strong style={{ color: "red", margin: "0 5px" }}>
+                                {" "}
+                                {vm.RGovGain > -1 ? "+" : null}
+                                {vm.RGovGain}
+                            </strong>
+                            <strong style={{ color: "blue", margin: "0 5px" }}>
+                                {" "}
+                                {vm.DGovGain > -1 ? "+" : null}
+                                {vm.DGovGain}
+                            </strong>
+                        </div>
                     </div>
                 </div>
                 <div
@@ -166,19 +199,30 @@ export default function Header(props) {
                     }}
                 >
                     <h3>House</h3>
-                    <div>
-                        <strong style={{ color: "red", margin: "0 5px" }}>
-                            GOP: {vm.RHouse}
-                            {vm.RHouse > 217 ? "✓" : null}
-                            {vm.RHouseGain > -1 ? "+" : null}
-                            {vm.RHouseGain}
-                        </strong>{" "}
-                        <strong style={{ color: "blue" }}>
-                            Dems: {vm.DHouse}
-                            {vm.DHouse > 217 ? "✓" : null}
-                            {vm.DHouseGain > -1 ? "+" : null}
-                            {vm.DHouseGain}
-                        </strong>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                        <div>
+                            {" "}
+                            <strong style={{ color: "red", margin: "0 5px" }}>
+                                GOP: {vm.RHouse}
+                                {vm.RHouse > 217 ? "✓" : null}
+                            </strong>{" "}
+                            <strong style={{ color: "blue" }}>
+                                Dems: {vm.DHouse}
+                                {vm.DHouse > 217 ? "✓" : null}
+                            </strong>
+                        </div>
+                        <div>
+                            <strong style={{ color: "red", margin: "0 5px" }}>
+                                {" "}
+                                {vm.RHouseGain > -1 ? "+" : null}
+                                {vm.RHouseGain}
+                            </strong>
+                            <strong style={{ color: "blue", margin: "0 5px" }}>
+                                {" "}
+                                {vm.DHouseGain > -1 ? "+" : null}
+                                {vm.DHouseGain}
+                            </strong>
+                        </div>
                     </div>
                 </div>
             </div>
