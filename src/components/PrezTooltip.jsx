@@ -8,10 +8,9 @@ const PrezTooltip = (props) => {
     const formatter = new Intl.NumberFormat("en-US");
     const state = props.state;
     const percentile = state.percentile;
-    let reportedVote = (
-        ((state.dReporting + state.rReporting) / state.totalVote) *
-        100
-    ).toFixed(0);
+    let reportedVote =
+        ((state.dReporting + state.rReporting) / state.totalVote) * 100;
+    reportedVote = Math.floor(reportedVote).toFixed(0);
     let totalReported = state.dReporting + state.rReporting;
     let dpercent = ((state.dReporting / totalReported) * 100).toFixed(1);
     let rpercent = ((state.rReporting / totalReported) * 100).toFixed(1);
