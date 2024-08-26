@@ -96,4 +96,5 @@ class NeedleVM {
         return (distance / totalWidth) * 100;
     }
 }
+// eslint-disable-next-line import/no-anonymous-default-export
 export default new NeedleVM();
