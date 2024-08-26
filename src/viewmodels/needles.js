@@ -1,5 +1,4 @@
 class NeedleVM {
-    constructor() {}
     calculatePrezPercentile(state) {
         let dMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
         let dMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
