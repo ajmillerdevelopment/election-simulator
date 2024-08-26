@@ -37,32 +37,33 @@ class SimulationVM {
         this.stateCodes = Object.keys(stateValues);
         let nationalFactor = 0;
         if (baseError) {
-            nationalFactor += Math.random() * (3 - -3) + -3;
+            nationalFactor += this.roll(0, 2);
+            alert(nationalFactor);
         }
         nationalFactor += base;
         let neFactor = neSwing;
         if (neError) {
-            neFactor += Math.random() * (1 - -1) + -1;
+            neFactor += this.roll(0, 0.5);
         }
         let sFactor = sSwing;
         if (sError) {
-            sFactor += Math.random() * (1 - -1) + -1;
+            sFactor += this.roll(0, 0.5);
         }
         let mwFactor = mwSwing;
         if (mwError) {
-            mwFactor += Math.random() * (1 - -1) + -1;
+            mwFactor += this.roll(0, 0.5);
         }
         let mtFactor = mtSwing;
         if (mtError) {
-            mtFactor += Math.random() * (1 - -1) + -1;
+            mtFactor += this.roll(0, 0.5);
         }
         let swFactor = swSwing;
         if (swError) {
-            swFactor += Math.random() * (1 - -1) + -1;
+            swFactor += this.roll(0, 0.5);
         }
         let wFactor = wSwing;
         if (wError) {
-            wFactor += Math.random() * (1 - -1) + -1;
+            wFactor += this.roll(0, 0.5);
         }
         console.log(nationalFactor);
         console.log(`NE: ${neFactor}`);
@@ -115,20 +116,24 @@ class SimulationVM {
             state.called = false;
             let stateFactor = 0;
             if (stateError) {
-                stateFactor = Math.random() * (2.2 - -2.2) + -2.2;
+                stateFactor += this.roll(0, 1);
             }
-            stateFactor += nationalFactor;
+            if (state.prezMargin < 10 && state.prezMargin > -10) {
+                stateFactor += nationalFactor / 2; //swing state races should be closer & less sensitive to polling swings
+            } else {
+                stateFactor += nationalFactor;
+            }
             state.prezMargin += stateFactor;
             state.prezMargin += state.regionalFactor;
             if (state.senateMargin) {
                 state.senateMargin += stateFactor;
                 state.senateMargin += state.regionalFactor;
-                state.senateMargin += -1;
+                state.senateMargin += -1; //extra downballot juice for the GOP
             }
             if (state.govMargin) {
                 state.govMargin += stateFactor;
                 state.govMargin += state.regionalFactor;
-                state.govMargin += -1;
+                state.govMargin += -1; //extra downballot juice for the GOP
             }
             let voteMargin = Math.round(
                 state.totalVote * (state.prezMargin / 100)
@@ -154,7 +159,7 @@ class SimulationVM {
                 district.countSpeed = state.countSpeed;
                 let districtFactor = 0;
                 if (distError) {
-                    districtFactor = Math.random() * (4.2 - -4.2) + -4.2;
+                    districtFactor += this.roll(0, 2);
                 }
                 district.districtMargin += districtFactor;
                 district.districtMargin += stateFactor * 2;
@@ -184,7 +189,7 @@ class SimulationVM {
             if (this.ticking) {
                 this.tick();
             }
-        }, 1000);
+        }, 100);
     }
     ticking = true;
     hour;
@@ -308,20 +313,20 @@ class SimulationVM {
             }
             state.percentile = NeedleVM.calculatePrezPercentile(state);
             if (!state.called) {
-                if (state.percentile > 120) {
+                if (state.percentile > 110) {
                     this.callBlue(state);
                 }
-                if (state.percentile < -120) {
+                if (state.percentile < -110) {
                     this.callRed(state);
                 }
             }
             if (state.senateMargin) {
                 state.senPercentile = NeedleVM.calculateSenatePercentile(state);
                 if (!state.senateCalled) {
-                    if (state.senPercentile > 120) {
+                    if (state.senPercentile > 110) {
                         this.callBlueSen(state);
                     }
-                    if (state.senPercentile < -120) {
+                    if (state.senPercentile < -110) {
                         this.callRedSen(state);
                     }
                 }
@@ -329,10 +334,10 @@ class SimulationVM {
             if (state.govMargin) {
                 state.govPercentile = NeedleVM.calculateGovPercentile(state);
                 if (!state.govCalled) {
-                    if (state.govPercentile > 120) {
+                    if (state.govPercentile > 110) {
                         this.callBlueGov(state);
                     }
-                    if (state.govPercentile < -120) {
+                    if (state.govPercentile < -110) {
                         this.callRedGov(state);
                     }
                 }
@@ -351,7 +356,7 @@ class SimulationVM {
             district.dReporting = district.dReporting + dTranche;
             district.percentile = NeedleVM.calculateDistPercentile(district);
             if (!district.called) {
-                if (district.percentile > 120) {
+                if (district.percentile > 110) {
                     district.called = true;
                     this.DHouse++;
                     if (district.last === "R") {
@@ -359,7 +364,7 @@ class SimulationVM {
                         this.RHouseGain--;
                     }
                 }
-                if (district.percentile < -120) {
+                if (district.percentile < -110) {
                     district.called = true;
                     this.RHouse++;
                     if (district.last === "D") {
@@ -454,6 +459,13 @@ class SimulationVM {
                 this.DGovGain--;
             }
         }
+    }
+    roll(mean = 0, stdev = 1) {
+        const u = 1 - Math.random(); // Converting [0,1) to (0,1]
+        const v = Math.random();
+        const z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+        // Transform to the desired mean and standard deviation:
+        return z * stdev + mean;
     }
 }
 
