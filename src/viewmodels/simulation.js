@@ -159,7 +159,7 @@ class SimulationVM {
                 district.countSpeed = state.countSpeed;
                 let districtFactor = 0;
                 if (distError) {
-                    districtFactor += this.roll(0, 2);
+                    districtFactor += this.roll(0, 3);
                 }
                 district.districtMargin += districtFactor;
                 district.districtMargin += stateFactor * 2;
