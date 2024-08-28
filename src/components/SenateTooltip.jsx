@@ -35,22 +35,22 @@ const SenTooltip = (props) => {
     }
 
     let needle = "Tossup";
-    if (percentile < 30 && percentile > -30) {
+    if (percentile < 20 && percentile > -20) {
         needle = "Tossup";
     }
-    if (percentile >= 30 && percentile < 60) {
+    if (percentile >= 20 && percentile < 40) {
         needle = "Lean D";
     }
-    if (percentile >= 60 && percentile < 90) {
+    if (percentile >= 40 && percentile < 90) {
         needle = "Likely D";
     }
     if (percentile >= 90) {
         needle = "Safe D";
     }
-    if (percentile <= -30 && percentile > -60) {
+    if (percentile <= -20 && percentile > -40) {
         needle = "Lean R";
     }
-    if (percentile <= -60 && percentile > -90) {
+    if (percentile <= -40 && percentile > -90) {
         needle = "Likely R";
     }
     if (percentile <= -90) {
