@@ -129,6 +129,8 @@ class SimulationVM {
                 state.senateMargin += stateFactor;
                 state.senateMargin += state.regionalFactor;
                 state.senateMargin += -1; //extra downballot juice for the GOP
+                state.senateMargin +=
+                    (state.prezMargin - state.senateMargin) / 3; //skew downballot statewides towards POTUS result
             }
             if (state.govMargin) {
                 state.govMargin += stateFactor;
