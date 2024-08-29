@@ -119,9 +119,9 @@ class SimulationVM {
                 stateFactor += this.roll(0, 1);
             }
             if (state.prezMargin < 10 && state.prezMargin > -10) {
-                stateFactor += nationalFactor / 2; //swing state races should be closer & less sensitive to polling swings
+                stateFactor += nationalFactor / 1.2; //swing state races should be closer & less sensitive to polling swings
             } else {
-                stateFactor += nationalFactor;
+                stateFactor += nationalFactor * 1.2;
             }
             state.prezMargin += stateFactor;
             state.prezMargin += state.regionalFactor;
@@ -130,7 +130,7 @@ class SimulationVM {
                 state.senateMargin += state.regionalFactor;
                 state.senateMargin += -1; //extra downballot juice for the GOP
                 state.senateMargin +=
-                    (state.prezMargin - state.senateMargin) / 3; //skew downballot statewides towards POTUS result
+                    (state.prezMargin - state.senateMargin) / 4; //skew downballot statewides towards POTUS result
             }
             if (state.govMargin) {
                 state.govMargin += stateFactor;
@@ -166,7 +166,7 @@ class SimulationVM {
                 district.districtMargin += districtFactor;
                 district.districtMargin += stateFactor * 2;
                 district.districtMargin += state.regionalFactor * 2;
-                district.districtMargin += -1;
+                // district.districtMargin -= 1; //Extra downballot juice for the GOP
                 let houseMargin = Math.round(
                     200000 * (district.districtMargin / 100)
                 );
