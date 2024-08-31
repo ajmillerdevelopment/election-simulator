@@ -18,14 +18,21 @@ export default function Header(props) {
                 {vm.ticking ? <span className="blink">:</span> : ":"}
                 {vm.minute.toString()}
             </h2>
-            <div className="controls">
+            <div
+                className="controls"
+                style={{ display: "flex", flexDirection: "column" }}
+            >
                 <button
                     onClick={() => {
                         vm.ticking = !vm.ticking;
+                        vm.speedCounter = 0;
                     }}
                 >
                     {vm.ticking ? "Pause" : "Play"}
                 </button>
+                <button onClick={() => vm.changeSpeed("slow")}>Slow</button>
+                <button onClick={() => vm.changeSpeed("normal")}>Normal</button>
+                <button onClick={() => vm.changeSpeed("fast")}>Fast</button>
             </div>
 
             {/* <h4>{vm.timeCode}</h4> */}
