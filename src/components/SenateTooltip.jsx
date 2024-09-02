@@ -75,67 +75,84 @@ const SenTooltip = (props) => {
                 <span style={{ color: "black" }}>{state.EVs}</span>
                 <>
                     {state.dSenReporting > state.rSenReporting ? (
-                        <>
-                            <p>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                width: "240px",
+                                height: "50px",
+                                justifyContent: "center",
+                                // border: "1px red solid",
+                            }}
+                        >
+                            <div className="tooltip-col">
                                 <p>{state.DSenateName}</p>
-                                <span>{dSenTotal}</span>
-                                <span className="dbox">
-                                    {" "}
-                                    {dSenatePercent}%{" "}
-                                    {state.senateCalled &&
-                                    state.senateMargin > 0
-                                        ? "✓"
-                                        : null}
-                                </span>
-                            </p>
-                            <p>
                                 <p>{state.RSenateName}</p>
+                            </div>
+                            <div className="tooltip-col">
+                                <span>{dSenTotal}</span>
                                 <span>{rSenTotal}</span>
+                            </div>
+                            <div className="tooltip-col">
+                                <span className="dbox">
+                                    <span>
+                                        {dSenatePercent}%{" "}
+                                        {state.called && state.senateMargin > 0
+                                            ? "✓"
+                                            : null}
+                                    </span>
+                                </span>
                                 <span className="rbox">
                                     {" "}
                                     {rSenatePercent}%{" "}
-                                    {state.senateCalled &&
-                                    state.senateMargin < 0
+                                    {state.called && state.senateMargin < 0
                                         ? "✓"
                                         : null}
                                 </span>
-                            </p>
-                        </>
+                            </div>
+                        </div>
                     ) : (
-                        <>
-                            <p>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                width: "240px",
+                                height: "50px",
+                                justifyContent: "center",
+                                // border: "1px red solid",
+                            }}
+                        >
+                            <div className="tooltip-col">
                                 <p>{state.RSenateName}</p>
+                                <p>{state.DSenateName}</p>
+                            </div>
+                            <div className="tooltip-col">
                                 <span>{rSenTotal}</span>
+
+                                <span>{dSenTotal}</span>
+                            </div>
+                            <div className="tooltip-col">
                                 <span className="rbox">
                                     {" "}
                                     {rSenatePercent}%{" "}
-                                    {state.senateCalled &&
-                                    state.senateMargin < 0
+                                    {state.called && state.senateMargin < 0
                                         ? "✓"
                                         : null}
                                 </span>
-                            </p>
-                            <p>
-                                <p>{state.DSenateName}</p>
-                                <span>{dSenTotal}</span>
                                 <span className="dbox">
-                                    {" "}
-                                    {dSenatePercent}%{" "}
-                                    {state.senateCalled &&
-                                    state.senateMargin > 0
-                                        ? "✓"
-                                        : null}
+                                    <span>
+                                        {dSenatePercent}%{" "}
+                                        {state.called && state.senateMargin > 0
+                                            ? "✓"
+                                            : null}
+                                    </span>
                                 </span>
-                            </p>
-                        </>
+                            </div>
+                        </div>
                     )}
                 </>
                 <p>{reportedVote}% reporting</p>
-                {state.senateCalled ? null : (
-                    <p>
-                        {needle} {displayPercentile}
-                    </p>
-                )}
+                {state.senateCalled ? null : <p>{needle}</p>}
             </div>
         </Tooltip>
     );

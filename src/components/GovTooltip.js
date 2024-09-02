@@ -73,63 +73,84 @@ const GovTooltip = (props) => {
                 <strong>{state.fullName}</strong>
                 <>
                     {state.dGovReporting > state.rGovReporting ? (
-                        <>
-                            <p>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                width: "240px",
+                                height: "50px",
+                                justifyContent: "center",
+                                // border: "1px red solid",
+                            }}
+                        >
+                            <div className="tooltip-col">
                                 <p>{state.DGovName}</p>
-                                <span>{dGovTotal}</span>
-                                <span className="dbox">
-                                    {" "}
-                                    {dGovPercent}%{" "}
-                                    {state.govCalled && state.govMargin > 0
-                                        ? "✓"
-                                        : null}
-                                </span>
-                            </p>
-                            <p>
                                 <p>{state.RGovName}</p>
+                            </div>
+                            <div className="tooltip-col">
+                                <span>{dGovTotal}</span>
                                 <span>{rGovTotal}</span>
+                            </div>
+                            <div className="tooltip-col">
+                                <span className="dbox">
+                                    <span>
+                                        {dGovPercent}%{" "}
+                                        {state.called && state.govMargin > 0
+                                            ? "✓"
+                                            : null}
+                                    </span>
+                                </span>
                                 <span className="rbox">
                                     {" "}
                                     {rGovPercent}%{" "}
-                                    {state.govCalled && state.govMargin < 0
+                                    {state.called && state.govMargin < 0
                                         ? "✓"
                                         : null}
                                 </span>
-                            </p>
-                        </>
+                            </div>
+                        </div>
                     ) : (
-                        <>
-                            <p>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                width: "240px",
+                                height: "50px",
+                                justifyContent: "center",
+                                // border: "1px red solid",
+                            }}
+                        >
+                            <div className="tooltip-col">
                                 <p>{state.RGovName}</p>
+                                <p>{state.DGovName}</p>
+                            </div>
+                            <div className="tooltip-col">
                                 <span>{rGovTotal}</span>
+
+                                <span>{dGovTotal}</span>
+                            </div>
+                            <div className="tooltip-col">
                                 <span className="rbox">
                                     {" "}
                                     {rGovPercent}%{" "}
-                                    {state.govCalled && state.govMargin < 0
+                                    {state.called && state.govMargin < 0
                                         ? "✓"
                                         : null}
                                 </span>
-                            </p>
-                            <p>
-                                <p>{state.DGovName}</p>
-                                <span>{dGovTotal}</span>
                                 <span className="dbox">
-                                    {" "}
-                                    {dGovPercent}%{" "}
-                                    {state.govCalled && state.govMargin > 0
-                                        ? "✓"
-                                        : null}
+                                    <span>
+                                        {dGovPercent}%{" "}
+                                        {state.called && state.govMargin > 0
+                                            ? "✓"
+                                            : null}
+                                    </span>
                                 </span>
-                            </p>
-                        </>
+                            </div>
+                        </div>
                     )}
                 </>
                 <p>{reportedVote}% reporting</p>
-                {state.govCalled ? null : (
-                    <p>
-                        {needle} {displayPercentile}
-                    </p>
-                )}
+                {state.govCalled ? null : <p>{needle}</p>}
             </div>
         </Tooltip>
     );

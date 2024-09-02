@@ -73,21 +73,31 @@ const PrezTooltip = (props) => {
                     <>
                         {" "}
                         {state.dReporting > state.rReporting ? (
-                            <>
-                                <p>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    width: "220px",
+                                    height: "50px",
+                                    justifyContent: "center",
+                                    // border: "1px red solid",
+                                }}
+                            >
+                                <div className="tooltip-col">
                                     <p>Harris</p>
-                                    <span> {dtotal} </span>
-
+                                    <p>Trump</p>
+                                </div>
+                                <div className="tooltip-col">
+                                    <span>{dtotal}</span>
+                                    <span>{rtotal}</span>
+                                </div>
+                                <div className="tooltip-col">
                                     <span className="dbox">
                                         {dpercent}%{" "}
                                         {state.called && state.prezMargin > 0
                                             ? "✓"
                                             : null}
                                     </span>
-                                </p>
-                                <p>
-                                    <p>Trump</p>
-                                    <span>{rtotal}</span>
                                     <span className="rbox">
                                         {" "}
                                         {rpercent}%{" "}
@@ -95,14 +105,29 @@ const PrezTooltip = (props) => {
                                             ? "✓"
                                             : null}
                                     </span>
-                                </p>
-                            </>
+                                </div>
+                            </div>
                         ) : (
-                            <>
-                                {" "}
-                                <p>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    width: "220px",
+                                    height: "50px",
+                                    justifyContent: "center",
+                                    // border: "1px red solid",
+                                }}
+                            >
+                                <div className="tooltip-col">
                                     <p>Trump</p>
+                                    <p>Harris</p>
+                                </div>
+                                <div className="tooltip-col">
                                     <span>{rtotal}</span>
+
+                                    <span>{dtotal}</span>
+                                </div>
+                                <div className="tooltip-col">
                                     <span className="rbox">
                                         {" "}
                                         {rpercent}%{" "}
@@ -110,28 +135,19 @@ const PrezTooltip = (props) => {
                                             ? "✓"
                                             : null}
                                     </span>
-                                </p>
-                                <p>
-                                    <p>Harris</p>
-                                    <span> {dtotal} </span>
-
                                     <span className="dbox">
                                         {dpercent}%{" "}
                                         {state.called && state.prezMargin > 0
                                             ? "✓"
                                             : null}
                                     </span>
-                                </p>
-                            </>
+                                </div>
+                            </div>
                         )}
                         <p>{reportedVote}% reporting</p>
                     </>
                 ) : null}
-                {state.called ? null : (
-                    <p>
-                        {needle} {displayPercentile}
-                    </p>
-                )}
+                {state.called ? null : <p>{needle}</p>}
             </div>
         </Tooltip>
     );
