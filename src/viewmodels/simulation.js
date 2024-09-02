@@ -346,20 +346,20 @@ class SimulationVM {
             }
             state.percentile = NeedleVM.calculatePrezPercentile(state);
             if (!state.called) {
-                if (state.percentile > 140) {
+                if (state.percentile > 100) {
                     this.callBlue(state);
                 }
-                if (state.percentile < -140) {
+                if (state.percentile < -100) {
                     this.callRed(state);
                 }
             }
             if (state.senateMargin) {
                 state.senPercentile = NeedleVM.calculateSenatePercentile(state);
                 if (!state.senateCalled) {
-                    if (state.senPercentile > 140) {
+                    if (state.senPercentile > 100) {
                         this.callBlueSen(state);
                     }
-                    if (state.senPercentile < -140) {
+                    if (state.senPercentile < -100) {
                         this.callRedSen(state);
                     }
                 }
@@ -367,10 +367,10 @@ class SimulationVM {
             if (state.govMargin) {
                 state.govPercentile = NeedleVM.calculateGovPercentile(state);
                 if (!state.govCalled) {
-                    if (state.govPercentile > 140) {
+                    if (state.govPercentile > 100) {
                         this.callBlueGov(state);
                     }
-                    if (state.govPercentile < -140) {
+                    if (state.govPercentile < -100) {
                         this.callRedGov(state);
                     }
                 }
@@ -389,7 +389,7 @@ class SimulationVM {
             district.dReporting = district.dReporting + dTranche;
             district.percentile = NeedleVM.calculateDistPercentile(district);
             if (!district.called) {
-                if (district.percentile > 140) {
+                if (district.percentile > 100) {
                     district.called = true;
                     this.DHouse++;
                     if (!this.houseCalled && this.DHouse >= 218) {
@@ -412,7 +412,7 @@ class SimulationVM {
                         );
                     }
                 }
-                if (district.percentile < -140) {
+                if (district.percentile < -100) {
                     district.called = true;
                     this.RHouse++;
                     if (!this.houseCalled && this.RHouse >= 218) {

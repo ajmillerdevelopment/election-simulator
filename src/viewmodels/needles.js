@@ -1,9 +1,9 @@
 class NeedleVM {
     calculatePrezPercentile(state) {
-        let dMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
-        let dMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
-        let rMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
-        let rMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
+        let dMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
+        let dMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
+        let rMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
+        let rMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
 
         let dMax = Math.round(state.dRemaining * dMaxFactor) + state.dReporting;
         let dMin = Math.round(state.dRemaining * dMinFactor) + state.dReporting;
@@ -19,13 +19,13 @@ class NeedleVM {
         let totalWidth = dMaxMargin - rMaxMargin;
 
         let distance = median - 0;
-        return (distance / totalWidth) * 2 * 100;
+        return (distance / totalWidth) * 100;
     }
     calculateSenatePercentile(state) {
-        let dMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
-        let dMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
-        let rMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
-        let rMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
+        let dMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
+        let dMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
+        let rMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
+        let rMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
 
         let dMax =
             Math.round(state.dSenRemaining * dMaxFactor) + state.dSenReporting;
@@ -45,13 +45,13 @@ class NeedleVM {
         let totalWidth = dMaxMargin - rMaxMargin;
 
         let distance = median - 0;
-        return (distance / totalWidth) * 2 * 100;
+        return (distance / totalWidth) * 100;
     }
     calculateGovPercentile(state) {
-        let dMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
-        let dMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
-        let rMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
-        let rMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
+        let dMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
+        let dMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
+        let rMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
+        let rMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
 
         let dMax =
             Math.round(state.dGovRemaining * dMaxFactor) + state.dGovReporting;
@@ -71,12 +71,12 @@ class NeedleVM {
         let totalWidth = dMaxMargin - rMaxMargin;
 
         let distance = median - 0;
-        return (distance / totalWidth) * 2 * 100;
+        return (distance / totalWidth) * 100;
     }
     calculateDistPercentile(dist) {
-        let dMaxFactor = Math.random() * (1.3 - 1.1) + 1.1;
+        let dMaxFactor = Math.random() * (1.3 - 1.07) + 1.07;
         let dMinFactor = Math.random() * (0.9 - 0.7) + 0.7;
-        let rMaxFactor = Math.random() * (1.3 - 1.1) + 1.1;
+        let rMaxFactor = Math.random() * (1.3 - 1.07) + 1.07;
         let rMinFactor = Math.random() * (0.9 - 0.7) + 0.7;
 
         let dMax = Math.round(dist.dRemaining * dMaxFactor) + dist.dReporting;
@@ -93,7 +93,7 @@ class NeedleVM {
         let totalWidth = dMaxMargin - rMaxMargin;
 
         let distance = median - 0;
-        return (distance / totalWidth) * 2 * 100;
+        return (distance / totalWidth) * 100;
     }
 }
 // eslint-disable-next-line import/no-anonymous-default-export
