@@ -73,85 +73,91 @@ const SenTooltip = (props) => {
             <div className="tooltip">
                 <strong>{state.fullName}</strong>{" "}
                 <span style={{ color: "black" }}>{state.EVs}</span>
-                <>
-                    {state.dSenReporting > state.rSenReporting ? (
-                        <div
-                            style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                width: "240px",
-                                height: "50px",
-                                justifyContent: "center",
-                                // border: "1px red solid",
-                            }}
-                        >
-                            <div className="tooltip-col">
-                                <p>{state.DSenateName}</p>
-                                <p>{state.RSenateName}</p>
-                            </div>
-                            <div className="tooltip-col">
-                                <span>{dSenTotal}</span>
-                                <span>{rSenTotal}</span>
-                            </div>
-                            <div className="tooltip-col">
-                                <span className="dbox">
-                                    <span>
-                                        {dSenatePercent}%{" "}
-                                        {state.called && state.senateMargin > 0
+                {state.active ? (
+                    <>
+                        {state.dSenReporting > state.rSenReporting ? (
+                            <div
+                                style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    width: "240px",
+                                    height: "50px",
+                                    justifyContent: "center",
+                                    // border: "1px red solid",
+                                }}
+                            >
+                                <div className="tooltip-col">
+                                    <p>{state.DSenateName}</p>
+                                    <p>{state.RSenateName}</p>
+                                </div>
+                                <div className="tooltip-col">
+                                    <span>{dSenTotal}</span>
+                                    <span>{rSenTotal}</span>
+                                </div>
+                                <div className="tooltip-col">
+                                    <span className="dbox">
+                                        <span>
+                                            {dSenatePercent}%{" "}
+                                            {state.senateCalled &&
+                                            state.senateMargin > 0
+                                                ? "✓"
+                                                : null}
+                                        </span>
+                                    </span>
+                                    <span className="rbox">
+                                        {" "}
+                                        {rSenatePercent}%{" "}
+                                        {state.senateCalled &&
+                                        state.senateMargin < 0
                                             ? "✓"
                                             : null}
                                     </span>
-                                </span>
-                                <span className="rbox">
-                                    {" "}
-                                    {rSenatePercent}%{" "}
-                                    {state.called && state.senateMargin < 0
-                                        ? "✓"
-                                        : null}
-                                </span>
+                                </div>
                             </div>
-                        </div>
-                    ) : (
-                        <div
-                            style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                width: "240px",
-                                height: "50px",
-                                justifyContent: "center",
-                                // border: "1px red solid",
-                            }}
-                        >
-                            <div className="tooltip-col">
-                                <p>{state.RSenateName}</p>
-                                <p>{state.DSenateName}</p>
-                            </div>
-                            <div className="tooltip-col">
-                                <span>{rSenTotal}</span>
+                        ) : (
+                            <div
+                                style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    width: "240px",
+                                    height: "50px",
+                                    justifyContent: "center",
+                                    // border: "1px red solid",
+                                }}
+                            >
+                                <div className="tooltip-col">
+                                    <p>{state.RSenateName}</p>
+                                    <p>{state.DSenateName}</p>
+                                </div>
+                                <div className="tooltip-col">
+                                    <span>{rSenTotal}</span>
 
-                                <span>{dSenTotal}</span>
-                            </div>
-                            <div className="tooltip-col">
-                                <span className="rbox">
-                                    {" "}
-                                    {rSenatePercent}%{" "}
-                                    {state.called && state.senateMargin < 0
-                                        ? "✓"
-                                        : null}
-                                </span>
-                                <span className="dbox">
-                                    <span>
-                                        {dSenatePercent}%{" "}
-                                        {state.called && state.senateMargin > 0
+                                    <span>{dSenTotal}</span>
+                                </div>
+                                <div className="tooltip-col">
+                                    <span className="rbox">
+                                        {" "}
+                                        {rSenatePercent}%{" "}
+                                        {state.senateCalled &&
+                                        state.senateMargin < 0
                                             ? "✓"
                                             : null}
                                     </span>
-                                </span>
+                                    <span className="dbox">
+                                        <span>
+                                            {dSenatePercent}%{" "}
+                                            {state.senateCalled &&
+                                            state.senateMargin > 0
+                                                ? "✓"
+                                                : null}
+                                        </span>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                    )}
-                </>
-                <p>{reportedVote}% reporting</p>
+                        )}
+                        <p>{reportedVote}% reporting</p>
+                    </>
+                ) : null}
                 {state.senateCalled ? null : <p>{needle}</p>}
             </div>
         </Tooltip>
