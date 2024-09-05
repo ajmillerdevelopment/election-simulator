@@ -43,27 +43,27 @@ class SimulationVM {
         nationalFactor += base;
         let neFactor = neSwing;
         if (neError) {
-            neFactor += this.roll(0, 0.5);
+            neFactor += this.roll(0, 1);
         }
         let sFactor = sSwing;
         if (sError) {
-            sFactor += this.roll(0, 0.5);
+            sFactor += this.roll(0, 1);
         }
         let mwFactor = mwSwing;
         if (mwError) {
-            mwFactor += this.roll(0, 0.5);
+            mwFactor += this.roll(0, 1);
         }
         let mtFactor = mtSwing;
         if (mtError) {
-            mtFactor += this.roll(0, 0.5);
+            mtFactor += this.roll(0, 1);
         }
         let swFactor = swSwing;
         if (swError) {
-            swFactor += this.roll(0, 0.5);
+            swFactor += this.roll(0, 1);
         }
         let wFactor = wSwing;
         if (wError) {
-            wFactor += this.roll(0, 0.5);
+            wFactor += this.roll(0, 1);
         }
         console.log(nationalFactor);
         console.log(`NE: ${neFactor}`);
@@ -215,8 +215,6 @@ class SimulationVM {
                 this.speedCounter = 0;
                 this.tick();
             }
-            console.log(this.speedCode);
-            console.log(this.speedCounter);
             this.speedCounter++;
         }, 100);
     }
