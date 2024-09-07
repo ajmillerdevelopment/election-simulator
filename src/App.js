@@ -36,7 +36,7 @@ function App() {
             {module === "senate" ? <Senate /> : null}
             {module === "governors" ? <Governors /> : null}
             {module === "house" ? <House /> : null}
-            <ToastContainer position="bottom-right" hideProgressBar />
+            {/* <ToastContainer position="bottom-right" hideProgressBar /> */}
         </div>
     );
 }
