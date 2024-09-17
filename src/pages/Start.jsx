@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SimulationVM from "./../viewmodels/simulation";
+import data from "../data/2024.json";
 
 export default function Header(props) {
     const vm = SimulationVM;
@@ -50,7 +51,7 @@ export default function Header(props) {
             <button
                 className="startButton"
                 onClick={() => {
-                    vm.instantiate(options);
+                    vm.instantiate(options, data);
                     props.setModule("presidential");
                 }}
             >

@@ -1,8 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { makeAutoObservable, action, observable, computed } from "mobx";
-import stateValues from "../data/states.json";
 import NeedleVM from "./needles";
-import { toast } from "react-toastify";
 
 class SimulationVM {
     constructor() {
@@ -15,7 +13,7 @@ class SimulationVM {
             dPop: computed,
         });
     }
-    instantiate(options) {
+    instantiate(options, data) {
         const [
             base,
             baseError,
@@ -34,8 +32,8 @@ class SimulationVM {
             stateError,
             distError,
         ] = options;
-        this.stateList = Object.values(stateValues);
-        this.stateCodes = Object.keys(stateValues);
+        this.stateList = Object.values(data);
+        this.stateCodes = Object.keys(data);
         let nationalFactor = 0;
         if (baseError) {
             nationalFactor += this.roll(0, 2);
@@ -101,6 +99,7 @@ class SimulationVM {
             state.rReporting = 0;
             state.rRemaining = Math.round(state.totalVote / 2);
             state.code = this.stateCodes[i];
+            state.cooldown = 30;
             if (state.senateMargin) {
                 state.dSenReporting = 0;
                 state.dSenRemaining = Math.round(state.totalVote / 2);
@@ -123,8 +122,8 @@ class SimulationVM {
             } else {
                 stateFactor += nationalFactor * 1.2;
             }
-            state.prezMargin += stateFactor;
             state.prezMargin += state.regionalFactor;
+            state.prezMargin += stateFactor;
             if (state.senateMargin) {
                 state.senateMargin += stateFactor;
                 state.senateMargin += state.regionalFactor;
@@ -159,6 +158,7 @@ class SimulationVM {
             //House Districts Init
             state.houseSeats?.contested?.forEach((district) => {
                 district.countSpeed = state.countSpeed;
+                district.cooldown = 30;
                 let districtFactor = 0;
                 if (distError) {
                     districtFactor += this.roll(0, 3);
@@ -284,13 +284,18 @@ class SimulationVM {
                     //Accounting for Safe R Pickups in NC
                     this.RHouseGain += 3;
                     this.DHouseGain -= 3;
-                    toast(`Republicans flip NC-06!`);
-                    toast(`Republicans flip NC-13!`);
-                    toast(`Republicans flip NC-14!`);
+                    this.log.push(
+                        `${this.hour}:${this.minute} - Republicans flip NC-06!`
+                    );
+                    this.log.push(
+                        `${this.hour}:${this.minute} - Republicans flip NC-13!`
+                    );
+                    this.log.push(
+                        `${this.hour}:${this.minute} - Republicans flip NC-14!`
+                    );
                 }
                 this.activeStates.push(state);
                 state.active = true;
-                state.cooldown = 30;
                 if (state.houseSeats) {
                     if (state.houseSeats.safeD)
                         this.DHouse += state.houseSeats.safeD;
@@ -308,18 +313,21 @@ class SimulationVM {
             this.reportVote(state);
             if (state.cooldown > 0) state.cooldown--;
         });
-        this.activeDistricts.forEach((district) =>
-            this.reportDistrictVote(district)
-        );
+        this.activeDistricts.forEach((district) => {
+            this.reportDistrictVote(district);
+            if (district.cooldown > 0) district.cooldown--;
+        });
     }
     reportVote(state) {
-        if (Math.random() < state.countSpeed || state.dReporting === 0) {
+        if (Math.random() < state.countSpeed / 1.8) {
             let rFactor = Math.random() * (0.07 - 0.01) + 0.01;
             let dFactor = Math.random() * (0.07 - 0.01) + 0.01;
             rFactor -= state.cooldown / 200;
             dFactor -= state.cooldown / 200;
-            if (rFactor < 0) rFactor = 0.01;
-            if (dFactor < 0) dFactor = 0.01;
+            if (rFactor < 0) rFactor = 0.001;
+            if (dFactor < 0) dFactor = 0.001;
+            if (rFactor > 0 && dFactor <= 0) dFactor = 0.001;
+            if (dFactor > 0 && rFactor <= 0) rFactor = 0.001;
             let rTranche = Math.ceil(state.rRemaining * rFactor);
             let dTranche = Math.ceil(state.dRemaining * dFactor);
             state.rRemaining = state.rRemaining - rTranche;
@@ -379,6 +387,12 @@ class SimulationVM {
         if (Math.random() < district.countSpeed) {
             let rFactor = Math.random() * (0.07 - 0.01) + 0.01;
             let dFactor = Math.random() * (0.07 - 0.01) + 0.01;
+            rFactor -= district.cooldown / 200;
+            dFactor -= district.cooldown / 200;
+            if (rFactor < 0) rFactor = 0.001;
+            if (dFactor < 0) dFactor = 0.001;
+            if (rFactor > 0 && dFactor <= 0) dFactor = 0.001;
+            if (dFactor > 0 && rFactor <= 0) rFactor = 0.001;
             let rTranche = Math.ceil(district.rRemaining * rFactor);
             let dTranche = Math.ceil(district.dRemaining * dFactor);
             district.rRemaining = district.rRemaining - rTranche;
@@ -391,22 +405,22 @@ class SimulationVM {
                     district.called = true;
                     this.DHouse++;
                     if (!this.houseCalled && this.DHouse >= 218) {
-                        toast(`Democrats flip the House!`);
+                        this.log.push(`Democrats flip the House!`);
                         this.houseCalled = true;
                     }
                     if (district.last === "R") {
                         this.DHouseGain++;
                         this.RHouseGain--;
-                        toast(
-                            `Democrats flip ${district.districtName} (${district.incumbent})!`
+                        this.log.push(
+                            `${this.hour}:${this.minute} - Democrats flip ${district.districtName} (${district.incumbent})!`
                         );
                     } else if (
                         district.rating === "Tossup" ||
                         district.rating === "Lean D" ||
                         district.rating === "Lean R"
                     ) {
-                        toast(
-                            `Democrats hold ${district.districtName} (${district.incumbent})`
+                        this.log.push(
+                            `${this.hour}:${this.minute} - Democrats hold ${district.districtName} (${district.incumbent})`
                         );
                     }
                 }
@@ -414,22 +428,22 @@ class SimulationVM {
                     district.called = true;
                     this.RHouse++;
                     if (!this.houseCalled && this.RHouse >= 218) {
-                        toast(`Republicans hold the House!`);
+                        this.log.push(`Republicans hold the House!`);
                         this.houseCalled = true;
                     }
                     if (district.last === "D") {
                         this.RHouseGain++;
                         this.DHouseGain--;
-                        toast(
-                            `Republicans flip ${district.districtName} (${district.incumbent})!`
+                        this.log.push(
+                            `${this.hour}:${this.minute} - Republicans flip ${district.districtName} (${district.incumbent})!`
                         );
                     } else if (
                         district.rating === "Tossup" ||
                         district.rating === "Lean D" ||
                         district.rating === "Lean R"
                     ) {
-                        toast(
-                            `Republicans hold ${district.districtName} (${district.incumbent})`
+                        this.log.push(
+                            `${this.hour}:${this.minute} - Republicans hold ${district.districtName} (${district.incumbent})`
                         );
                     }
                 }
@@ -441,15 +455,15 @@ class SimulationVM {
             state.called = true;
             if (!this.called && this.DEVs + state.evs >= 270) {
                 this.called = true;
-                toast(`Kamala Harris elected President!`);
+                this.log.push(`Kamala Harris elected President!`);
             }
             this.DEVs += state.evs;
             if (state.lastPrez === "R") {
-                toast(
+                this.log.push(
                     `${this.hour}:${this.minute} - Kamala Harris flips ${state.fullName}!`
                 );
             } else {
-                toast(
+                this.log.push(
                     `${this.hour}:${this.minute} - Kamala Harris wins ${state.fullName}`
                 );
             }
@@ -463,15 +477,15 @@ class SimulationVM {
             state.called = true;
             if (!this.called && this.REVs + state.evs >= 270) {
                 this.called = true;
-                toast(`Donald Trump re-elected President!`);
+                this.log.push(`Donald Trump re-elected President!`);
             }
             this.REVs += state.evs;
             if (state.lastPrez === "D") {
-                toast(
+                this.log.push(
                     `${this.hour}:${this.minute} - Donald Trump flips ${state.fullName}!`
                 );
             } else {
-                toast(
+                this.log.push(
                     `${this.hour}:${this.minute} - Donald Trump wins ${state.fullName}`
                 );
             }
@@ -488,7 +502,7 @@ class SimulationVM {
                 !this.senateCalled &&
                 (this.DSen > 50 || (this.DSen === 5 && this.DEVs >= 270))
             ) {
-                toast(`Democrats hold the Senate!`);
+                this.log.push(`Democrats hold the Senate!`);
                 this.senateCalled = true;
             }
             if (state.lastSen === "R") {
@@ -502,14 +516,8 @@ class SimulationVM {
                 this.log.push(
                     `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) re-elected to the Senate`
                 );
-                toast(
-                    `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) re-elected to the Senate`
-                );
             } else {
                 this.log.push(
-                    `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) elected to the Senate`
-                );
-                toast(
                     `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) elected to the Senate`
                 );
             }
@@ -523,7 +531,7 @@ class SimulationVM {
                 !this.senateCalled &&
                 (this.RSen > 50 || (this.RSen === 5 && this.REVs >= 270))
             ) {
-                toast(`Republicans flip the Senate!`);
+                this.log.push(`Republicans flip the Senate!`);
                 this.senateCalled = true;
             }
             if (state.lastSen === "D") {
@@ -534,14 +542,8 @@ class SimulationVM {
                 this.log.push(
                     `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) re-elected to the Senate`
                 );
-                toast(
-                    `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) re-elected to the Senate`
-                );
             } else {
                 this.log.push(
-                    `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) elected to the Senate`
-                );
-                toast(
                     `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) elected to the Senate`
                 );
             }
@@ -555,7 +557,7 @@ class SimulationVM {
                 this.DGovGain++;
                 this.RGovGain--;
             }
-            toast(
+            this.log.push(
                 `${this.hour}:${this.minute} - ${state.DGovName} elected Governor of ${state.fullName} `
             );
         }
@@ -568,7 +570,7 @@ class SimulationVM {
                 this.RGovGain++;
                 this.DGovGain--;
             }
-            toast(
+            this.log.push(
                 `${this.hour}:${this.minute} - ${state.RGovName} elected Governor of ${state.fullName} `
             );
         }

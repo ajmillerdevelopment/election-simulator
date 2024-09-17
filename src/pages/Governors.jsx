@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SimulationVM from "./../viewmodels/simulation";
 import GovMap from "../components/GovMap";
 import GovTooltip from "../components/GovTooltip";
+import Log from "../components/Log";
 
 function Senate() {
     const vm = SimulationVM;
@@ -70,11 +71,13 @@ function Senate() {
     return (
         <div
             style={{
-                display: "column",
+                display: "flex",
                 flexDirection: "row",
-                alignItems: "center",
+                alignItems: "start",
+                justifyContent: "space-between",
             }}
         >
+            {/* <Log /> */}
             <GovMap />
             {toolTips}
         </div>
