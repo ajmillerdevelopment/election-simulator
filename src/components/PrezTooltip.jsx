@@ -9,61 +9,48 @@ const PrezTooltip = (props) => {
     const state = props.state;
     const percentile = state.percentile;
     let reportedVote =
-        ((state.dReporting + state.rReporting) / state.totalVote) * 100;
+        ((state.dReporting + state.rReporting + state.iReporting) /
+            state.totalVote) *
+        100;
+    if (reportedVote > 99) reportedVote = 99;
     reportedVote = Math.floor(reportedVote).toFixed(0);
-    let totalReported = state.dReporting + state.rReporting;
+    let totalReported = state.dReporting + state.rReporting + state.iReporting;
     let dpercent = ((state.dReporting / totalReported) * 100).toFixed(1);
     let rpercent = ((state.rReporting / totalReported) * 100).toFixed(1);
+    let ipercent = ((state.iReporting / totalReported) * 100).toFixed(1);
     let dtotal;
     let rtotal;
+    let itotal;
 
     dtotal = state.dReporting;
     rtotal = state.rReporting;
+    itotal = state.iReporting;
     dtotal = formatter.format(dtotal);
     rtotal = formatter.format(rtotal);
+    itotal = formatter.format(itotal);
 
     let needle = "Tossup";
     if (percentile < 20 && percentile > -20) {
         needle = "Tossup";
     }
-    if (percentile >= 20 && percentile < 40) {
+    if (percentile >= 20 && percentile < 60) {
         needle = "Lean D";
     }
-    if (percentile >= 40 && percentile < 80) {
+    if (percentile >= 60 && percentile < 110) {
         needle = "Likely D";
     }
-    if (percentile >= 80) {
+    if (percentile >= 110) {
         needle = "Safe D";
     }
-    if (percentile <= -20 && percentile > -40) {
+    if (percentile <= -20 && percentile > -60) {
         needle = "Lean R";
     }
-    if (percentile <= -40 && percentile > -80) {
+    if (percentile <= -60 && percentile > -110) {
         needle = "Likely R";
     }
-    if (percentile <= -80) {
+    if (percentile <= -110) {
         needle = "Safe R";
     }
-    let displayPercentile = percentile;
-    displayPercentile = Math.abs(displayPercentile);
-    displayPercentile = (
-        displayPercentile +
-        (100 - displayPercentile) / 2
-    ).toFixed(0);
-    if (displayPercentile > 100) displayPercentile = 100;
-    if (percentile > 0) {
-        displayPercentile = `${displayPercentile}% D`;
-    } else {
-        displayPercentile = `${displayPercentile}% R`;
-    }
-    // 100 > 100
-    // 0 > 50
-    // if (percentile > 0) {
-    //     displayPercentile = `${percentile + (percentile - 50)}% D`;
-    // }
-    // if (percentile < 0) {
-    //     displayPercentile = `${percentile * 1 + (percentile + 50)}% R`;
-    // }
     return (
         <Tooltip id={`${state.code}-tip`}>
             <div className="tooltip">

@@ -36,7 +36,7 @@ class SimulationVM {
         this.stateCodes = Object.keys(data);
         let nationalFactor = 0;
         if (baseError) {
-            nationalFactor += this.roll(0, 2);
+            nationalFactor += this.roll(0, 1.5);
         }
         nationalFactor += base;
         let neFactor = neSwing;
@@ -98,6 +98,20 @@ class SimulationVM {
             state.dRemaining = Math.round(state.totalVote / 2);
             state.rReporting = 0;
             state.rRemaining = Math.round(state.totalVote / 2);
+            let iFactor = Math.random() * (0.02 - 0.01) + 0.01;
+            if (state.fullName === "Michigan") iFactor *= 2;
+            state.iReporting = 0;
+            state.iRemaining = Math.round(state.totalVote * iFactor);
+            state.dExRemaining = state.dRemaining;
+            state.rExRemaining = state.rRemaining;
+            if (state.senateMargin) {
+                state.dExSenRemaining = state.dRemaining;
+                state.rExSenRemaining = state.rRemaining;
+            }
+            if (state.govMargin) {
+                state.dExGovRemaining = state.dRemaining;
+                state.rExGovRemaining = state.rRemaining;
+            }
             state.code = this.stateCodes[i];
             state.cooldown = 30;
             if (state.senateMargin) {
@@ -117,10 +131,44 @@ class SimulationVM {
             if (stateError) {
                 stateFactor += this.roll(0, 1);
             }
+            if (state.prezMargin < 5 && state.prezMargin > -5) {
+                console.warn(state.fullName);
+                console.log(`Base Margin: ${state.prezMargin}`);
+                console.log(`National Factor ${nationalFactor.toFixed(2)}`);
+                console.log(
+                    `Regional Factor ${state.regionalFactor.toFixed(2)}`
+                );
+                console.log(`State Factor ${stateFactor.toFixed(2)}`);
+                console.log(
+                    `Total Swing ${(
+                        nationalFactor +
+                        state.regionalFactor +
+                        stateFactor
+                    ).toFixed(2)}`
+                );
+                console.log(
+                    `Final Margin ${(
+                        nationalFactor +
+                        state.regionalFactor +
+                        stateFactor +
+                        state.prezMargin
+                    ).toFixed(2)}`
+                );
+            }
+
             if (state.prezMargin < 10 && state.prezMargin > -10) {
                 stateFactor += nationalFactor / 1.2; //swing state races should be closer & less sensitive to polling swings
             } else {
                 stateFactor += nationalFactor * 1.2;
+            }
+            let exMargin = state.prezMargin;
+            let exSenateMargin;
+            let exGovMargin;
+            if (state.senateMargin) {
+                exSenateMargin = state.senateMargin;
+            }
+            if (state.govMargin) {
+                exGovMargin = state.govMargin;
             }
             state.prezMargin += state.regionalFactor;
             state.prezMargin += stateFactor;
@@ -136,24 +184,31 @@ class SimulationVM {
                 state.govMargin += state.regionalFactor;
                 state.govMargin += -1; //extra downballot juice for the GOP
             }
-            let voteMargin = Math.round(
-                state.totalVote * (state.prezMargin / 100)
+            let voteMargin = state.totalVote * (state.prezMargin / 100);
+            let senateVoteMargin = state.totalVote * (state.senateMargin / 100);
+            let govVoteMargin = state.totalVote * (state.govMargin / 100);
+            let exVoteMargin = state.totalVote * (exMargin / 100);
+            let exSenateVoteMargin = state.totalVote * (exSenateMargin / 100);
+            let exGovVoteMargin = state.totalVote * (exGovMargin / 100);
+            state.dRemaining = Math.round(state.dRemaining + voteMargin / 2);
+            state.rRemaining = Math.round(state.rRemaining - voteMargin / 2);
+            state.dExRemaining = Math.round(
+                state.dExRemaining + exVoteMargin / 2
             );
-            let senateVoteMargin = Math.round(
-                state.totalVote * (state.senateMargin / 100)
+            state.rExRemaining = Math.round(
+                state.rExRemaining - exVoteMargin / 2
             );
-            let govVoteMargin = Math.round(
-                state.totalVote * (state.govMargin / 100)
-            );
-            state.dRemaining = state.dRemaining + voteMargin / 2;
-            state.rRemaining = state.rRemaining - voteMargin / 2;
             if (state.senateMargin) {
                 state.dSenRemaining += senateVoteMargin / 2;
                 state.rSenRemaining -= senateVoteMargin / 2;
+                state.dExSenRemaining += exSenateVoteMargin / 2;
+                state.rExSenRemaining -= exSenateVoteMargin / 2;
             }
             if (state.govMargin) {
                 state.dGovRemaining += govVoteMargin / 2;
                 state.rGovRemaining -= govVoteMargin / 2;
+                state.dExGovRemaining += exGovVoteMargin / 2;
+                state.rExGovRemaining -= exGovVoteMargin / 2;
             }
             //House Districts Init
             state.houseSeats?.contested?.forEach((district) => {
@@ -256,6 +311,11 @@ class SimulationVM {
         this.activeStates.forEach((state) => (sum += state.dReporting));
         return sum;
     }
+    get iPop() {
+        let sum = 0;
+        this.activeStates.forEach((state) => (sum += state.iReporting));
+        return sum;
+    }
     changeSpeed(speed) {
         this.speedCode = speed;
         this.speedCounter = 0;
@@ -280,20 +340,20 @@ class SimulationVM {
         let timeCodeforEval = Number(this.timeCode);
         this.stateList.forEach((state) => {
             if (state.closeTime === timeCodeforEval && !state.called) {
-                if (state.fullName === "North Carolina") {
-                    //Accounting for Safe R Pickups in NC
-                    this.RHouseGain += 3;
-                    this.DHouseGain -= 3;
-                    this.log.push(
-                        `${this.hour}:${this.minute} - Republicans flip NC-06!`
-                    );
-                    this.log.push(
-                        `${this.hour}:${this.minute} - Republicans flip NC-13!`
-                    );
-                    this.log.push(
-                        `${this.hour}:${this.minute} - Republicans flip NC-14!`
-                    );
-                }
+                // if (state.fullName === "North Carolina") {
+                //     //Accounting for Safe R Pickups in NC
+                //     this.RHouseGain += 3;
+                //     this.DHouseGain -= 3;
+                //     this.log.push(
+                //         `${this.hour}:${this.minute} - Republicans flip NC-06!`
+                //     );
+                //     this.log.push(
+                //         `${this.hour}:${this.minute} - Republicans flip NC-13!`
+                //     );
+                //     this.log.push(
+                //         `${this.hour}:${this.minute} - Republicans flip NC-14!`
+                //     );
+                // }
                 this.activeStates.push(state);
                 state.active = true;
                 if (state.houseSeats) {
@@ -306,6 +366,7 @@ class SimulationVM {
                             state.houseSeats.contested
                         );
                 }
+                this.checkForCalls(state);
             }
         });
         this.log.push(``); //necessary for the clock to refresh properly
@@ -322,18 +383,24 @@ class SimulationVM {
         if (Math.random() < state.countSpeed / 1.8) {
             let rFactor = Math.random() * (0.07 - 0.01) + 0.01;
             let dFactor = Math.random() * (0.07 - 0.01) + 0.01;
+            let iFactor = Math.random() * (0.07 - 0.01) + 0.01;
             rFactor -= state.cooldown / 200;
             dFactor -= state.cooldown / 200;
+            iFactor -= state.cooldown / 200;
             if (rFactor < 0) rFactor = 0.001;
             if (dFactor < 0) dFactor = 0.001;
+            if (iFactor < 0) iFactor = 0.001;
             if (rFactor > 0 && dFactor <= 0) dFactor = 0.001;
             if (dFactor > 0 && rFactor <= 0) rFactor = 0.001;
             let rTranche = Math.ceil(state.rRemaining * rFactor);
             let dTranche = Math.ceil(state.dRemaining * dFactor);
+            let iTranche = Math.ceil(state.iRemaining * iFactor);
             state.rRemaining = state.rRemaining - rTranche;
             state.rReporting = state.rReporting + rTranche;
             state.dRemaining = state.dRemaining - dTranche;
             state.dReporting = state.dReporting + dTranche;
+            state.iRemaining = state.iRemaining - iTranche;
+            state.iReporting = state.iReporting += iTranche;
             if (state.senateMargin) {
                 let rSenateTranche = Math.ceil(state.rSenRemaining * rFactor);
                 let dSenateTranche = Math.ceil(state.dSenRemaining * dFactor);
@@ -350,37 +417,7 @@ class SimulationVM {
                 state.dGovRemaining = state.dGovRemaining - dGovTranche;
                 state.dGovReporting = state.dGovReporting + dGovTranche;
             }
-            state.percentile = NeedleVM.calculatePrezPercentile(state);
-            if (!state.called) {
-                if (state.percentile > 100) {
-                    this.callBlue(state);
-                }
-                if (state.percentile < -100) {
-                    this.callRed(state);
-                }
-            }
-            if (state.senateMargin) {
-                state.senPercentile = NeedleVM.calculateSenatePercentile(state);
-                if (!state.senateCalled) {
-                    if (state.senPercentile > 100) {
-                        this.callBlueSen(state);
-                    }
-                    if (state.senPercentile < -100) {
-                        this.callRedSen(state);
-                    }
-                }
-            }
-            if (state.govMargin) {
-                state.govPercentile = NeedleVM.calculateGovPercentile(state);
-                if (!state.govCalled) {
-                    if (state.govPercentile > 100) {
-                        this.callBlueGov(state);
-                    }
-                    if (state.govPercentile < -100) {
-                        this.callRedGov(state);
-                    }
-                }
-            }
+            this.checkForCalls(state);
         }
     }
     reportDistrictVote(district) {
@@ -446,6 +483,39 @@ class SimulationVM {
                             `${this.hour}:${this.minute} - Republicans hold ${district.districtName} (${district.incumbent})`
                         );
                     }
+                }
+            }
+        }
+    }
+    checkForCalls(state) {
+        state.percentile = NeedleVM.calculatePrezPercentile(state);
+        if (!state.called) {
+            if (state.percentile > 120) {
+                this.callBlue(state);
+            }
+            if (state.percentile < -120) {
+                this.callRed(state);
+            }
+        }
+        if (state.senateMargin) {
+            state.senPercentile = NeedleVM.calculateSenatePercentile(state);
+            if (!state.senateCalled) {
+                if (state.senPercentile > 120) {
+                    this.callBlueSen(state);
+                }
+                if (state.senPercentile < -120) {
+                    this.callRedSen(state);
+                }
+            }
+        }
+        if (state.govMargin) {
+            state.govPercentile = NeedleVM.calculateGovPercentile(state);
+            if (!state.govCalled) {
+                if (state.govPercentile > 120) {
+                    this.callBlueGov(state);
+                }
+                if (state.govPercentile < -120) {
+                    this.callRedGov(state);
                 }
             }
         }
