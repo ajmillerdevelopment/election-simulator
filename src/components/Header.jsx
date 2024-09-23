@@ -8,7 +8,7 @@ export default function Header(props) {
     const vm = SimulationVM;
     let rVotes = formatter.format(vm.rPop);
     let dVotes = formatter.format(vm.dPop);
-    let totalVote = vm.rPop + vm.dPop;
+    let totalVote = vm.rPop + vm.dPop + vm.iPop;
     let rPercent = ((vm.rPop / totalVote) * 100).toFixed(1);
     let dPercent = ((vm.dPop / totalVote) * 100).toFixed(1);
     return (
@@ -33,6 +33,7 @@ export default function Header(props) {
                 <button onClick={() => vm.changeSpeed("slow")}>Slow</button>
                 <button onClick={() => vm.changeSpeed("normal")}>Normal</button>
                 <button onClick={() => vm.changeSpeed("fast")}>Fast</button>
+                {/* <button onClick={() => console.log(vm)}>Dump</button> */}
             </div>
 
             {/* <h4>{vm.timeCode}</h4> */}

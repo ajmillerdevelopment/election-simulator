@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Header(props) {
+export default function DistrictBox(props) {
     const [open, setOpen] = useState(false);
     const dist = props.district;
     const percentile = dist.percentile;

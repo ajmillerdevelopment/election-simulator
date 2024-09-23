@@ -9,7 +9,6 @@ import Senate from "./pages/Senate";
 import House from "./pages/House";
 import Governors from "./pages/Governors";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
 
 function App() {
     let vm = SimulationVM;
@@ -36,7 +35,7 @@ function App() {
             {module === "senate" ? <Senate /> : null}
             {module === "governors" ? <Governors /> : null}
             {module === "house" ? <House /> : null}
-            <ToastContainer position="bottom-right" hideProgressBar />
+            {/* <ToastContainer position="bottom-right" hideProgressBar /> */}
         </div>
     );
 }

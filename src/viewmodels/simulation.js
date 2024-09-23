@@ -1,8 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { makeAutoObservable, action, observable, computed } from "mobx";
-import stateValues from "../data/states.json";
 import NeedleVM from "./needles";
-import { toast } from "react-toastify";
 
 class SimulationVM {
     constructor() {
@@ -15,7 +13,7 @@ class SimulationVM {
             dPop: computed,
         });
     }
-    instantiate(options) {
+    instantiate(options, data) {
         const [
             base,
             baseError,
@@ -34,36 +32,36 @@ class SimulationVM {
             stateError,
             distError,
         ] = options;
-        this.stateList = Object.values(stateValues);
-        this.stateCodes = Object.keys(stateValues);
+        this.stateList = Object.values(data);
+        this.stateCodes = Object.keys(data);
         let nationalFactor = 0;
         if (baseError) {
-            nationalFactor += this.roll(0, 2);
+            nationalFactor += this.roll(0, 1.5);
         }
         nationalFactor += base;
         let neFactor = neSwing;
         if (neError) {
-            neFactor += this.roll(0, 0.5);
+            neFactor += this.roll(0, 1);
         }
         let sFactor = sSwing;
         if (sError) {
-            sFactor += this.roll(0, 0.5);
+            sFactor += this.roll(0, 1);
         }
         let mwFactor = mwSwing;
         if (mwError) {
-            mwFactor += this.roll(0, 0.5);
+            mwFactor += this.roll(0, 1);
         }
         let mtFactor = mtSwing;
         if (mtError) {
-            mtFactor += this.roll(0, 0.5);
+            mtFactor += this.roll(0, 1);
         }
         let swFactor = swSwing;
         if (swError) {
-            swFactor += this.roll(0, 0.5);
+            swFactor += this.roll(0, 1);
         }
         let wFactor = wSwing;
         if (wError) {
-            wFactor += this.roll(0, 0.5);
+            wFactor += this.roll(0, 1);
         }
         console.log(nationalFactor);
         console.log(`NE: ${neFactor}`);
@@ -100,7 +98,22 @@ class SimulationVM {
             state.dRemaining = Math.round(state.totalVote / 2);
             state.rReporting = 0;
             state.rRemaining = Math.round(state.totalVote / 2);
+            let iFactor = Math.random() * (0.02 - 0.01) + 0.01;
+            if (state.fullName === "Michigan") iFactor *= 2;
+            state.iReporting = 0;
+            state.iRemaining = Math.round(state.totalVote * iFactor);
+            state.dExRemaining = state.dRemaining;
+            state.rExRemaining = state.rRemaining;
+            if (state.senateMargin) {
+                state.dExSenRemaining = state.dRemaining;
+                state.rExSenRemaining = state.rRemaining;
+            }
+            if (state.govMargin) {
+                state.dExGovRemaining = state.dRemaining;
+                state.rExGovRemaining = state.rRemaining;
+            }
             state.code = this.stateCodes[i];
+            state.cooldown = 30;
             if (state.senateMargin) {
                 state.dSenReporting = 0;
                 state.dSenRemaining = Math.round(state.totalVote / 2);
@@ -118,13 +131,47 @@ class SimulationVM {
             if (stateError) {
                 stateFactor += this.roll(0, 1);
             }
+            if (state.prezMargin < 5 && state.prezMargin > -5) {
+                console.warn(state.fullName);
+                console.log(`Base Margin: ${state.prezMargin}`);
+                console.log(`National Factor ${nationalFactor.toFixed(2)}`);
+                console.log(
+                    `Regional Factor ${state.regionalFactor.toFixed(2)}`
+                );
+                console.log(`State Factor ${stateFactor.toFixed(2)}`);
+                console.log(
+                    `Total Swing ${(
+                        nationalFactor +
+                        state.regionalFactor +
+                        stateFactor
+                    ).toFixed(2)}`
+                );
+                console.log(
+                    `Final Margin ${(
+                        nationalFactor +
+                        state.regionalFactor +
+                        stateFactor +
+                        state.prezMargin
+                    ).toFixed(2)}`
+                );
+            }
+
             if (state.prezMargin < 10 && state.prezMargin > -10) {
                 stateFactor += nationalFactor / 1.2; //swing state races should be closer & less sensitive to polling swings
             } else {
                 stateFactor += nationalFactor * 1.2;
             }
-            state.prezMargin += stateFactor;
+            let exMargin = state.prezMargin;
+            let exSenateMargin;
+            let exGovMargin;
+            if (state.senateMargin) {
+                exSenateMargin = state.senateMargin;
+            }
+            if (state.govMargin) {
+                exGovMargin = state.govMargin;
+            }
             state.prezMargin += state.regionalFactor;
+            state.prezMargin += stateFactor;
             if (state.senateMargin) {
                 state.senateMargin += stateFactor;
                 state.senateMargin += state.regionalFactor;
@@ -137,28 +184,36 @@ class SimulationVM {
                 state.govMargin += state.regionalFactor;
                 state.govMargin += -1; //extra downballot juice for the GOP
             }
-            let voteMargin = Math.round(
-                state.totalVote * (state.prezMargin / 100)
+            let voteMargin = state.totalVote * (state.prezMargin / 100);
+            let senateVoteMargin = state.totalVote * (state.senateMargin / 100);
+            let govVoteMargin = state.totalVote * (state.govMargin / 100);
+            let exVoteMargin = state.totalVote * (exMargin / 100);
+            let exSenateVoteMargin = state.totalVote * (exSenateMargin / 100);
+            let exGovVoteMargin = state.totalVote * (exGovMargin / 100);
+            state.dRemaining = Math.round(state.dRemaining + voteMargin / 2);
+            state.rRemaining = Math.round(state.rRemaining - voteMargin / 2);
+            state.dExRemaining = Math.round(
+                state.dExRemaining + exVoteMargin / 2
             );
-            let senateVoteMargin = Math.round(
-                state.totalVote * (state.senateMargin / 100)
+            state.rExRemaining = Math.round(
+                state.rExRemaining - exVoteMargin / 2
             );
-            let govVoteMargin = Math.round(
-                state.totalVote * (state.govMargin / 100)
-            );
-            state.dRemaining = state.dRemaining + voteMargin / 2;
-            state.rRemaining = state.rRemaining - voteMargin / 2;
             if (state.senateMargin) {
                 state.dSenRemaining += senateVoteMargin / 2;
                 state.rSenRemaining -= senateVoteMargin / 2;
+                state.dExSenRemaining += exSenateVoteMargin / 2;
+                state.rExSenRemaining -= exSenateVoteMargin / 2;
             }
             if (state.govMargin) {
                 state.dGovRemaining += govVoteMargin / 2;
                 state.rGovRemaining -= govVoteMargin / 2;
+                state.dExGovRemaining += exGovVoteMargin / 2;
+                state.rExGovRemaining -= exGovVoteMargin / 2;
             }
             //House Districts Init
             state.houseSeats?.contested?.forEach((district) => {
                 district.countSpeed = state.countSpeed;
+                district.cooldown = 30;
                 let districtFactor = 0;
                 if (distError) {
                     districtFactor += this.roll(0, 3);
@@ -215,8 +270,6 @@ class SimulationVM {
                 this.speedCounter = 0;
                 this.tick();
             }
-            console.log(this.speedCode);
-            console.log(this.speedCounter);
             this.speedCounter++;
         }, 100);
     }
@@ -258,6 +311,11 @@ class SimulationVM {
         this.activeStates.forEach((state) => (sum += state.dReporting));
         return sum;
     }
+    get iPop() {
+        let sum = 0;
+        this.activeStates.forEach((state) => (sum += state.iReporting));
+        return sum;
+    }
     changeSpeed(speed) {
         this.speedCode = speed;
         this.speedCounter = 0;
@@ -282,17 +340,22 @@ class SimulationVM {
         let timeCodeforEval = Number(this.timeCode);
         this.stateList.forEach((state) => {
             if (state.closeTime === timeCodeforEval && !state.called) {
-                if (state.fullName === "North Carolina") {
-                    //Accounting for Safe R Pickups in NC
-                    this.RHouseGain += 3;
-                    this.DHouseGain -= 3;
-                    toast(`Republicans flip NC-06!`);
-                    toast(`Republicans flip NC-13!`);
-                    toast(`Republicans flip NC-14!`);
-                }
+                // if (state.fullName === "North Carolina") {
+                //     //Accounting for Safe R Pickups in NC
+                //     this.RHouseGain += 3;
+                //     this.DHouseGain -= 3;
+                //     this.log.push(
+                //         `${this.hour}:${this.minute} - Republicans flip NC-06!`
+                //     );
+                //     this.log.push(
+                //         `${this.hour}:${this.minute} - Republicans flip NC-13!`
+                //     );
+                //     this.log.push(
+                //         `${this.hour}:${this.minute} - Republicans flip NC-14!`
+                //     );
+                // }
                 this.activeStates.push(state);
                 state.active = true;
-                state.cooldown = 30;
                 if (state.houseSeats) {
                     if (state.houseSeats.safeD)
                         this.DHouse += state.houseSeats.safeD;
@@ -303,6 +366,7 @@ class SimulationVM {
                             state.houseSeats.contested
                         );
                 }
+                this.checkForCalls(state);
             }
         });
         this.log.push(``); //necessary for the clock to refresh properly
@@ -310,24 +374,33 @@ class SimulationVM {
             this.reportVote(state);
             if (state.cooldown > 0) state.cooldown--;
         });
-        this.activeDistricts.forEach((district) =>
-            this.reportDistrictVote(district)
-        );
+        this.activeDistricts.forEach((district) => {
+            this.reportDistrictVote(district);
+            if (district.cooldown > 0) district.cooldown--;
+        });
     }
     reportVote(state) {
-        if (Math.random() < state.countSpeed || state.dReporting === 0) {
+        if (Math.random() < state.countSpeed / 1.8) {
             let rFactor = Math.random() * (0.07 - 0.01) + 0.01;
             let dFactor = Math.random() * (0.07 - 0.01) + 0.01;
+            let iFactor = Math.random() * (0.07 - 0.01) + 0.01;
             rFactor -= state.cooldown / 200;
             dFactor -= state.cooldown / 200;
-            if (rFactor < 0) rFactor = 0.01;
-            if (dFactor < 0) dFactor = 0.01;
+            iFactor -= state.cooldown / 200;
+            if (rFactor < 0) rFactor = 0.001;
+            if (dFactor < 0) dFactor = 0.001;
+            if (iFactor < 0) iFactor = 0.001;
+            if (rFactor > 0 && dFactor <= 0) dFactor = 0.001;
+            if (dFactor > 0 && rFactor <= 0) rFactor = 0.001;
             let rTranche = Math.ceil(state.rRemaining * rFactor);
             let dTranche = Math.ceil(state.dRemaining * dFactor);
+            let iTranche = Math.ceil(state.iRemaining * iFactor);
             state.rRemaining = state.rRemaining - rTranche;
             state.rReporting = state.rReporting + rTranche;
             state.dRemaining = state.dRemaining - dTranche;
             state.dReporting = state.dReporting + dTranche;
+            state.iRemaining = state.iRemaining - iTranche;
+            state.iReporting = state.iReporting += iTranche;
             if (state.senateMargin) {
                 let rSenateTranche = Math.ceil(state.rSenRemaining * rFactor);
                 let dSenateTranche = Math.ceil(state.dSenRemaining * dFactor);
@@ -344,43 +417,19 @@ class SimulationVM {
                 state.dGovRemaining = state.dGovRemaining - dGovTranche;
                 state.dGovReporting = state.dGovReporting + dGovTranche;
             }
-            state.percentile = NeedleVM.calculatePrezPercentile(state);
-            if (!state.called) {
-                if (state.percentile > 100) {
-                    this.callBlue(state);
-                }
-                if (state.percentile < -100) {
-                    this.callRed(state);
-                }
-            }
-            if (state.senateMargin) {
-                state.senPercentile = NeedleVM.calculateSenatePercentile(state);
-                if (!state.senateCalled) {
-                    if (state.senPercentile > 100) {
-                        this.callBlueSen(state);
-                    }
-                    if (state.senPercentile < -100) {
-                        this.callRedSen(state);
-                    }
-                }
-            }
-            if (state.govMargin) {
-                state.govPercentile = NeedleVM.calculateGovPercentile(state);
-                if (!state.govCalled) {
-                    if (state.govPercentile > 100) {
-                        this.callBlueGov(state);
-                    }
-                    if (state.govPercentile < -100) {
-                        this.callRedGov(state);
-                    }
-                }
-            }
+            this.checkForCalls(state);
         }
     }
     reportDistrictVote(district) {
         if (Math.random() < district.countSpeed) {
             let rFactor = Math.random() * (0.07 - 0.01) + 0.01;
             let dFactor = Math.random() * (0.07 - 0.01) + 0.01;
+            rFactor -= district.cooldown / 200;
+            dFactor -= district.cooldown / 200;
+            if (rFactor < 0) rFactor = 0.001;
+            if (dFactor < 0) dFactor = 0.001;
+            if (rFactor > 0 && dFactor <= 0) dFactor = 0.001;
+            if (dFactor > 0 && rFactor <= 0) rFactor = 0.001;
             let rTranche = Math.ceil(district.rRemaining * rFactor);
             let dTranche = Math.ceil(district.dRemaining * dFactor);
             district.rRemaining = district.rRemaining - rTranche;
@@ -393,22 +442,22 @@ class SimulationVM {
                     district.called = true;
                     this.DHouse++;
                     if (!this.houseCalled && this.DHouse >= 218) {
-                        toast(`Democrats flip the House!`);
+                        this.log.push(`Democrats flip the House!`);
                         this.houseCalled = true;
                     }
                     if (district.last === "R") {
                         this.DHouseGain++;
                         this.RHouseGain--;
-                        toast(
-                            `Democrats flip ${district.districtName} (${district.incumbent})!`
+                        this.log.push(
+                            `${this.hour}:${this.minute} - Democrats flip ${district.districtName} (${district.incumbent})!`
                         );
                     } else if (
                         district.rating === "Tossup" ||
                         district.rating === "Lean D" ||
                         district.rating === "Lean R"
                     ) {
-                        toast(
-                            `Democrats hold ${district.districtName} (${district.incumbent})`
+                        this.log.push(
+                            `${this.hour}:${this.minute} - Democrats hold ${district.districtName} (${district.incumbent})`
                         );
                     }
                 }
@@ -416,24 +465,57 @@ class SimulationVM {
                     district.called = true;
                     this.RHouse++;
                     if (!this.houseCalled && this.RHouse >= 218) {
-                        toast(`Republicans hold the House!`);
+                        this.log.push(`Republicans hold the House!`);
                         this.houseCalled = true;
                     }
                     if (district.last === "D") {
                         this.RHouseGain++;
                         this.DHouseGain--;
-                        toast(
-                            `Republicans flip ${district.districtName} (${district.incumbent})!`
+                        this.log.push(
+                            `${this.hour}:${this.minute} - Republicans flip ${district.districtName} (${district.incumbent})!`
                         );
                     } else if (
                         district.rating === "Tossup" ||
                         district.rating === "Lean D" ||
                         district.rating === "Lean R"
                     ) {
-                        toast(
-                            `Republicans hold ${district.districtName} (${district.incumbent})`
+                        this.log.push(
+                            `${this.hour}:${this.minute} - Republicans hold ${district.districtName} (${district.incumbent})`
                         );
                     }
+                }
+            }
+        }
+    }
+    checkForCalls(state) {
+        state.percentile = NeedleVM.calculatePrezPercentile(state);
+        if (!state.called) {
+            if (state.percentile > 120) {
+                this.callBlue(state);
+            }
+            if (state.percentile < -120) {
+                this.callRed(state);
+            }
+        }
+        if (state.senateMargin) {
+            state.senPercentile = NeedleVM.calculateSenatePercentile(state);
+            if (!state.senateCalled) {
+                if (state.senPercentile > 120) {
+                    this.callBlueSen(state);
+                }
+                if (state.senPercentile < -120) {
+                    this.callRedSen(state);
+                }
+            }
+        }
+        if (state.govMargin) {
+            state.govPercentile = NeedleVM.calculateGovPercentile(state);
+            if (!state.govCalled) {
+                if (state.govPercentile > 120) {
+                    this.callBlueGov(state);
+                }
+                if (state.govPercentile < -120) {
+                    this.callRedGov(state);
                 }
             }
         }
@@ -443,15 +525,15 @@ class SimulationVM {
             state.called = true;
             if (!this.called && this.DEVs + state.evs >= 270) {
                 this.called = true;
-                toast(`Kamala Harris elected President!`);
+                this.log.push(`Kamala Harris elected President!`);
             }
             this.DEVs += state.evs;
             if (state.lastPrez === "R") {
-                toast(
+                this.log.push(
                     `${this.hour}:${this.minute} - Kamala Harris flips ${state.fullName}!`
                 );
             } else {
-                toast(
+                this.log.push(
                     `${this.hour}:${this.minute} - Kamala Harris wins ${state.fullName}`
                 );
             }
@@ -465,15 +547,15 @@ class SimulationVM {
             state.called = true;
             if (!this.called && this.REVs + state.evs >= 270) {
                 this.called = true;
-                toast(`Donald Trump re-elected President!`);
+                this.log.push(`Donald Trump re-elected President!`);
             }
             this.REVs += state.evs;
             if (state.lastPrez === "D") {
-                toast(
+                this.log.push(
                     `${this.hour}:${this.minute} - Donald Trump flips ${state.fullName}!`
                 );
             } else {
-                toast(
+                this.log.push(
                     `${this.hour}:${this.minute} - Donald Trump wins ${state.fullName}`
                 );
             }
@@ -490,7 +572,7 @@ class SimulationVM {
                 !this.senateCalled &&
                 (this.DSen > 50 || (this.DSen === 5 && this.DEVs >= 270))
             ) {
-                toast(`Democrats hold the Senate!`);
+                this.log.push(`Democrats hold the Senate!`);
                 this.senateCalled = true;
             }
             if (state.lastSen === "R") {
@@ -504,14 +586,8 @@ class SimulationVM {
                 this.log.push(
                     `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) re-elected to the Senate`
                 );
-                toast(
-                    `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) re-elected to the Senate`
-                );
             } else {
                 this.log.push(
-                    `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) elected to the Senate`
-                );
-                toast(
                     `${this.hour}:${this.minute} - ${state.DSenateName} (${state.fullName}) elected to the Senate`
                 );
             }
@@ -525,7 +601,7 @@ class SimulationVM {
                 !this.senateCalled &&
                 (this.RSen > 50 || (this.RSen === 5 && this.REVs >= 270))
             ) {
-                toast(`Republicans flip the Senate!`);
+                this.log.push(`Republicans flip the Senate!`);
                 this.senateCalled = true;
             }
             if (state.lastSen === "D") {
@@ -536,14 +612,8 @@ class SimulationVM {
                 this.log.push(
                     `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) re-elected to the Senate`
                 );
-                toast(
-                    `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) re-elected to the Senate`
-                );
             } else {
                 this.log.push(
-                    `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) elected to the Senate`
-                );
-                toast(
                     `${this.hour}:${this.minute} - ${state.RSenateName} (${state.fullName}) elected to the Senate`
                 );
             }
@@ -557,7 +627,7 @@ class SimulationVM {
                 this.DGovGain++;
                 this.RGovGain--;
             }
-            toast(
+            this.log.push(
                 `${this.hour}:${this.minute} - ${state.DGovName} elected Governor of ${state.fullName} `
             );
         }
@@ -570,7 +640,7 @@ class SimulationVM {
                 this.RGovGain++;
                 this.DGovGain--;
             }
-            toast(
+            this.log.push(
                 `${this.hour}:${this.minute} - ${state.RGovName} elected Governor of ${state.fullName} `
             );
         }

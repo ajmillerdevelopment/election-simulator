@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SimulationVM from "./../viewmodels/simulation";
 import PrezTooltip from "./../components/PrezTooltip";
 import Map from "../components/Map";
+import Log from "../components/Log";
 
 export default function Presidential() {
     const vm = SimulationVM;
@@ -61,11 +62,13 @@ export default function Presidential() {
     return (
         <div
             style={{
-                display: "column",
+                display: "flex",
                 flexDirection: "row",
-                alignItems: "center",
+                alignItems: "start",
+                justifyContent: "space-between",
             }}
         >
+            {/* <Log /> */}
             <Map />
             {toolTips}
         </div>
