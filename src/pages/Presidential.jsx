@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import SimulationVM from "./../viewmodels/simulation";
 import PrezTooltip from "./../components/PrezTooltip";
 import Map from "../components/Map";
-import Log from "../components/Log";
 
 export default function Presidential() {
     const vm = SimulationVM;
@@ -68,7 +67,6 @@ export default function Presidential() {
                 justifyContent: "space-between",
             }}
         >
-            {/* <Log /> */}
             <Map />
             {toolTips}
         </div>
