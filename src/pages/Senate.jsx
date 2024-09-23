@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import SimulationVM from "./../viewmodels/simulation";
 import SenMap from "../components/SenMap";
 import SenateTooltip from "../components/SenateTooltip";
-import Log from "../components/Log";
 
 function Senate() {
     const vm = SimulationVM;
@@ -75,7 +74,6 @@ function Senate() {
                 justifyContent: "space-between",
             }}
         >
-            {/* <Log /> */}
             <SenMap />
             {toolTips}
         </div>
