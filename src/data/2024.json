@@ -58,7 +58,7 @@
     "az": {
         "fullName": "Arizona",
         "closeTime": 2100,
-        "prezMargin": 0.4,
+        "prezMargin": -0.7,
         "evs": 11,
         "countSpeed": 0.2,
         "totalVote": 3300000,
@@ -69,38 +69,24 @@
         "lastPrez": "D",
         "lastSen": "D",
         "houseSeats": {
-            "safeD": 2,
+            "safeD": 3,
             "contested": [
                 {
                     "districtName": "AZ-1",
-                    "districtMargin": -3.1,
+                    "districtMargin": -3,
                     "incumbent": "Schweikert (R)",
                     "rating": "Tossup",
                     "last": "R"
                 },
                 {
-                    "districtMargin": -2.5,
+                    "districtMargin": -2.7,
                     "districtName": "AZ-6",
                     "incumbent": "Ciscomani (R)",
                     "rating": "Tossup",
                     "last": "R"
-                },
-                {
-                    "districtMargin": 15.2,
-                    "districtName": "AZ-4",
-                    "incumbent": "Stanton (D)",
-                    "rating": "Likely D",
-                    "last": "D"
-                },
-                {
-                    "districtMargin": -15,
-                    "districtName": "AZ-2",
-                    "incumbent": "Crane (R)",
-                    "rating": "Likely R",
-                    "last": "R"
                 }
             ],
-            "safeR": 3
+            "safeR": 4
         }
     },
     "ca": {
@@ -312,7 +298,7 @@
     "fl": {
         "fullName": "Florida",
         "closeTime": 2000,
-        "prezMargin": -3.4,
+        "prezMargin": -3.9,
         "evs": 30,
         "countSpeed": 0.5,
         "totalVote": 11000000,
@@ -375,7 +361,7 @@
     "ga": {
         "fullName": "Georgia",
         "closeTime": 1900,
-        "prezMargin": 0.1,
+        "prezMargin": -0.7,
         "evs": 16,
         "countSpeed": 0.4,
         "totalVote": 5000000,
@@ -684,7 +670,7 @@
     "mi": {
         "fullName": "Michigan",
         "closeTime": 2100,
-        "prezMargin": 3,
+        "prezMargin": 2.5,
         "evs": 15,
         "countSpeed": 0.4,
         "DSenateName": "Slotkin",
@@ -854,7 +840,7 @@
     "nc": {
         "fullName": "North Carolina",
         "closeTime": 1930,
-        "prezMargin": 0.2,
+        "prezMargin": -0.4,
         "evs": 16,
         "countSpeed": 0.4,
         "totalVote": 5500000,
@@ -1145,7 +1131,7 @@
     "nv": {
         "fullName": "Nevada",
         "closeTime": 2200,
-        "prezMargin": 1.5,
+        "prezMargin": 0.9,
         "evs": 6,
         "countSpeed": 0.2,
         "totalVote": 8000000,
@@ -1312,7 +1298,7 @@
     "pa": {
         "fullName": "Pennsylvania",
         "closeTime": 2000,
-        "prezMargin": 1.9,
+        "prezMargin": 1.4,
         "evs": 19,
         "countSpeed": 0.2,
         "senateInc": "D",
@@ -1457,7 +1443,7 @@
     "tx": {
         "fullName": "Texas",
         "closeTime": 2100,
-        "prezMargin": -4.8,
+        "prezMargin": -5.4,
         "evs": 40,
         "countSpeed": 0.4,
         "senateInc": "R",
@@ -1659,7 +1645,7 @@
     "wi": {
         "fullName": "Wisconsin",
         "closeTime": 2100,
-        "prezMargin": 2.4,
+        "prezMargin": 2.1,
         "evs": 10,
         "countSpeed": 0.5,
         "senateInc": "D",
