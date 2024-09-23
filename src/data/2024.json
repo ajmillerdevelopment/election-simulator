@@ -104,46 +104,39 @@
         "lastSen": "D",
         "houseSeats": {
             "safeD": 37,
-            "safeR": 4,
+            "safeR": 5,
             "contested": [
                 {
-                    "districtName": "CA-23",
-                    "districtMargin": -14.1,
-                    "incumbent": "Olbernolte (R)",
-                    "rating": "Likely R",
-                    "last": "R"
-                },
-                {
                     "districtName": "CA-9",
-                    "districtMargin": 7.8,
+                    "districtMargin": 7,
                     "incumbent": "Harder (D)",
-                    "rating": "Likely D",
+                    "rating": "Lean D",
                     "last": "D"
                 },
                 {
                     "districtName": "CA-49",
-                    "districtMargin": 12.9,
+                    "districtMargin": 13,
                     "incumbent": "Levin (D)",
                     "rating": "Likely D",
                     "last": "D"
                 },
                 {
                     "districtName": "CA-47",
-                    "districtMargin": 7.4,
+                    "districtMargin": 7,
                     "incumbent": "fmr. Porter (D)",
                     "rating": "Lean D",
                     "last": "D"
                 },
                 {
                     "districtName": "CA-13",
-                    "districtMargin": 4.8,
+                    "districtMargin": 4,
                     "incumbent": "Duarte (R)",
                     "rating": "Tossup",
                     "last": "R"
                 },
                 {
                     "districtName": "CA-22",
-                    "districtMargin": 2.2,
+                    "districtMargin": 2,
                     "incumbent": "Valadao (R)",
                     "rating": "Tossup",
                     "last": "R"
@@ -157,7 +150,7 @@
                 },
                 {
                     "districtName": "CA-41",
-                    "districtMargin": -3.5,
+                    "districtMargin": -1,
                     "incumbent": "Calvert (R)",
                     "rating": "Tossup",
                     "last": "R"
@@ -173,12 +166,12 @@
                     "districtName": "CA-3",
                     "districtMargin": -8,
                     "incumbent": "Kiley (R)",
-                    "rating": "Lean R",
+                    "rating": "Likely R",
                     "last": "R"
                 },
                 {
                     "districtName": "CA-40",
-                    "districtMargin": -13.2,
+                    "districtMargin": -13,
                     "incumbent": "Kim (R)",
                     "rating": "Likely R",
                     "last": "R"
@@ -206,13 +199,6 @@
                     "last": "R"
                 },
                 {
-                    "districtName": "CO-7",
-                    "districtMargin": 13.1,
-                    "incumbent": "Petterson (D)",
-                    "rating": "Likely D",
-                    "last": "D"
-                },
-                {
                     "districtName": "CO-8",
                     "districtMargin": 8.5,
                     "incumbent": "Caraveo (D)",
@@ -220,7 +206,7 @@
                     "last": "D"
                 }
             ],
-            "safeD": 3
+            "safeD": 4
         }
     },
     "ct": {
@@ -238,7 +224,7 @@
         "lastPrez": "D",
         "lastSen": "D",
         "houseSeats": {
-            "safeD": 2,
+            "safeD": 3,
             "contested": [
                 {
                     "districtName": "CT-5",
@@ -249,15 +235,8 @@
                 },
                 {
                     "districtName": "CT-2",
-                    "districtMargin": 11.9,
+                    "districtMargin": 11.5,
                     "incumbent": "Courtney (D)",
-                    "rating": "Likely D",
-                    "last": "D"
-                },
-                {
-                    "districtName": "CT-3",
-                    "districtMargin": 18,
-                    "incumbent": "Delauro (D)",
                     "rating": "Likely D",
                     "last": "D"
                 }
@@ -310,20 +289,13 @@
         "lastPrez": "R",
         "lastSen": "R",
         "houseSeats": {
-            "safeD": 7,
+            "safeD": 8,
             "contested": [
                 {
-                    "districtName": "FL-23",
-                    "districtMargin": 18.3,
-                    "incumbent": "Moskowitz (D)",
-                    "rating": "Likely D",
-                    "last": "D"
-                },
-                {
                     "districtName": "FL-13",
-                    "districtMargin": -2.2,
+                    "districtMargin": -5,
                     "incumbent": "Luna (R)",
-                    "rating": "Tossup",
+                    "rating": "Lean R",
                     "last": "R"
                 },
                 {
@@ -337,25 +309,11 @@
                     "districtName": "FL-28",
                     "districtMargin": -5.7,
                     "incumbent": "Giminez (R)",
-                    "rating": "Likely R",
-                    "last": "R"
-                },
-                {
-                    "districtName": "FL-4",
-                    "districtMargin": -16.5,
-                    "incumbent": "Bean (R)",
-                    "rating": "Likely R",
-                    "last": "R"
-                },
-                {
-                    "districtName": "FL-8",
-                    "districtMargin": -18.8,
-                    "incumbent": "fmr. Posey (R)",
-                    "rating": "Likely R",
+                    "rating": "Lean R",
                     "last": "R"
                 }
             ],
-            "safeR": 15
+            "safeR": 17
         }
     },
     "ga": {
@@ -411,14 +369,14 @@
             "contested": [
                 {
                     "districtName": "IA-3",
-                    "districtMargin": -5.4,
+                    "districtMargin": -4,
                     "incumbent": "Nunn (R)",
-                    "rating": "Tossup",
+                    "rating": "Lean R",
                     "last": "R"
                 },
                 {
                     "districtName": "IA-1",
-                    "districtMargin": -3.7,
+                    "districtMargin": -0.9,
                     "incumbent": "Miller-Meeks (R)",
                     "rating": "Tossup",
                     "last": "R"
@@ -448,20 +406,13 @@
         "lastPrez": "D",
         "region": "MW",
         "houseSeats": {
-            "safeD": 12,
+            "safeD": 13,
             "contested": [
                 {
                     "districtName": "IL-17",
                     "districtMargin": 13.1,
                     "incumbent": "Sorensen (D)",
                     "rating": "Lean D",
-                    "last": "D"
-                },
-                {
-                    "districtName": "IL-14",
-                    "districtMargin": 17.4,
-                    "incumbent": "Underwood (D)",
-                    "rating": "Likely D",
                     "last": "D"
                 }
             ],
@@ -521,7 +472,7 @@
                 {
                     "districtName": "KS-2",
                     "districtMargin": -16.6,
-                    "incumbent": "Schmidt (R)",
+                    "incumbent": "fmr. Turner (R)",
                     "rating": "Likely R",
                     "last": "R"
                 }
@@ -581,16 +532,7 @@
         "lastPrez": "D",
         "lastSen": "D",
         "houseSeats": {
-            "safeD": 8,
-            "contested": [
-                {
-                    "districtName": "MA-9",
-                    "districtMargin": 16.9,
-                    "incumbent": "Keating (D)",
-                    "rating": "Likely D",
-                    "last": "D"
-                }
-            ]
+            "safeD": 9
         }
     },
     "md": {
@@ -611,7 +553,7 @@
             "contested": [
                 {
                     "districtName": "MD-6",
-                    "districtMargin": 3.8,
+                    "districtMargin": 4.5,
                     "incumbent": "fmr. Trone (D)",
                     "rating": "Tossup",
                     "last": "D"
@@ -639,7 +581,7 @@
             "contested": [
                 {
                     "districtName": "ME-2",
-                    "districtMargin": 3,
+                    "districtMargin": 0.1,
                     "incumbent": "Golden (D)",
                     "rating": "Tossup",
                     "last": "D"
@@ -692,23 +634,23 @@
                 },
                 {
                     "districtName": "MI-7",
-                    "districtMargin": -1.4,
+                    "districtMargin": -1.1,
                     "incumbent": "fmr. Slotkin (D)",
                     "rating": "Tossup",
                     "last": "D"
                 },
                 {
                     "districtName": "MI-8",
-                    "districtMargin": 6.2,
+                    "districtMargin": 6.6,
                     "incumbent": "fmr. Kildee (D)",
                     "rating": "Tossup",
                     "last": "D"
                 },
                 {
                     "districtName": "MI-10",
-                    "districtMargin": -7.8,
+                    "districtMargin": -8.3,
                     "incumbent": "James (R)",
-                    "rating": "Lean R",
+                    "rating": "Likely R",
                     "last": "R"
                 },
                 {
@@ -745,23 +687,9 @@
                     "incumbent": "Craig (D)",
                     "rating": "Lean D",
                     "last": "D"
-                },
-                {
-                    "districtName": "MN-8",
-                    "districtMargin": -14.1,
-                    "incumbent": "Stauber (R)",
-                    "rating": "Likely R",
-                    "last": "R"
-                },
-                {
-                    "districtName": "MN-1",
-                    "districtMargin": -8,
-                    "incumbent": "Finstad (R)",
-                    "rating": "Likely R",
-                    "last": "R"
                 }
             ],
-            "safeR": 2
+            "safeR": 4
         }
     },
     "mo": {
@@ -829,7 +757,7 @@
             "contested": [
                 {
                     "districtName": "MT-1",
-                    "districtMargin": -8.5,
+                    "districtMargin": -5.9,
                     "incumbent": "Zinke (R)",
                     "rating": "Lean R",
                     "last": "R"
@@ -873,16 +801,9 @@
                     "incumbent": "fmr. Bishop (R)",
                     "rating": "Likely R",
                     "last": "R"
-                },
-                {
-                    "districtName": "NC-11",
-                    "districtMargin": -14.6,
-                    "incumbent": "Edwards (R)",
-                    "rating": "Likely R",
-                    "last": "R"
                 }
             ],
-            "safeR": 7
+            "safeR": 8
         }
     },
     "nd": {
@@ -926,7 +847,7 @@
             "contested": [
                 {
                     "districtName": "NE-2",
-                    "districtMargin": 0.4,
+                    "districtMargin": 2.3,
                     "incumbent": "Bacon (R)",
                     "last": "R",
                     "rating": "Tossup"
@@ -981,14 +902,14 @@
             "contested": [
                 {
                     "districtName": "NH-1",
-                    "districtMargin": 12.1,
+                    "districtMargin": 12,
                     "incumbent": "Pappas (D)",
                     "rating": "Likely D",
                     "last": "D"
                 },
                 {
                     "districtName": "NH-2",
-                    "districtMargin": 11.3,
+                    "districtMargin": 10,
                     "incumbent": "fmr. Kuster (D)",
                     "rating": "Lean D",
                     "last": "D"
@@ -1022,26 +943,19 @@
                 {
                     "districtName": "NJ-3",
                     "districtMargin": 14.5,
-                    "incumbent": "Conaway (D)",
+                    "incumbent": "fmr. Kim (D)",
                     "rating": "Likely D",
                     "last": "D"
                 },
                 {
                     "districtName": "NJ-9",
-                    "districtMargin": 17,
+                    "districtMargin": 16,
                     "incumbent": "fmr. Pascrell (D)",
                     "rating": "Likely D",
                     "last": "D"
-                },
-                {
-                    "districtName": "NJ-2",
-                    "districtMargin": -15.9,
-                    "incumbent": "Van Drew (R)",
-                    "rating": "Likely R",
-                    "last": "R"
                 }
             ],
-            "safeR": 1
+            "safeR": 2
         }
     },
     "ny": {
@@ -1059,7 +973,7 @@
         "lastPrez": "D",
         "lastSen": "D",
         "houseSeats": {
-            "safeD": 14,
+            "safeD": 15,
             "contested": [
                 {
                     "districtName": "NY-3",
@@ -1072,33 +986,33 @@
                     "districtName": "NY-18",
                     "districtMargin": 11.5,
                     "incumbent": "Ryan (D)",
-                    "rating": "Likely D",
+                    "rating": "Lean D",
                     "last": "D"
                 },
                 {
                     "districtName": "NY-22",
-                    "districtMargin": 2.7,
+                    "districtMargin": 2.9,
                     "incumbent": "Williams (R)",
                     "rating": "Tossup",
                     "last": "R"
                 },
                 {
                     "districtName": "NY-4",
-                    "districtMargin": 5.5,
+                    "districtMargin": 4.7,
                     "incumbent": "D'Esposito (R)",
                     "rating": "Tossup",
                     "last": "R"
                 },
                 {
                     "districtName": "NY-17",
-                    "districtMargin": 3.1,
+                    "districtMargin": 1.5,
                     "incumbent": "Lawler (R)",
                     "rating": "Tossup",
                     "last": "R"
                 },
                 {
                     "districtName": "NY-19",
-                    "districtMargin": -0.2,
+                    "districtMargin": 0.3,
                     "incumbent": "Molinero (R)",
                     "rating": "Tossup",
                     "last": "R"
@@ -1107,7 +1021,7 @@
                     "districtName": "NY-1",
                     "districtMargin": -4.6,
                     "incumbent": "LaLota (R)",
-                    "rating": "Tossup",
+                    "rating": "Lean R",
                     "last": "R"
                 },
                 {
@@ -1116,13 +1030,6 @@
                     "incumbent": "Gambarino (R)",
                     "rating": "Likely R",
                     "last": "R"
-                },
-                {
-                    "districtName": "NY-20",
-                    "districtMargin": 17.3,
-                    "incumbent": "Tonko (D)",
-                    "rating": "Likely D",
-                    "last": "D"
                 }
             ],
             "safeR": 4
@@ -1145,27 +1052,21 @@
         "houseSeats": {
             "contested": [
                 {
-                    "districtName": "NV-1",
-                    "districtMargin": 14.3,
-                    "incumbent": "Titus (D)",
-                    "rating": "Likely D",
-                    "last": "D"
-                },
-                {
                     "districtName": "NV-4",
-                    "districtMargin": 10.8,
+                    "districtMargin": 11,
                     "incumbent": "Horsford (D)",
                     "rating": "Likely D",
                     "last": "D"
                 },
                 {
                     "districtName": "NV-3",
-                    "districtMargin": 13.1,
+                    "districtMargin": 13,
                     "incumbent": "Lee (D)",
                     "rating": "Lean D",
                     "last": "D"
                 }
             ],
+            "safeD": 1,
             "safeR": 1
         }
     },
@@ -1188,7 +1089,7 @@
             "contested": [
                 {
                     "districtName": "NM-2",
-                    "districtMargin": 7.2,
+                    "districtMargin": 7,
                     "incumbent": "Vasquez (D)",
                     "rating": "Lean D",
                     "last": "D"
@@ -1222,27 +1123,20 @@
                 },
                 {
                     "districtName": "OH-9",
-                    "districtMargin": 9.4,
+                    "districtMargin": 9,
                     "incumbent": "Kaptur (D)",
-                    "rating": "Lean D",
+                    "rating": "Likely D",
                     "last": "D"
                 },
                 {
                     "districtName": "OH-13",
-                    "districtMargin": 10.2,
+                    "districtMargin": 10,
                     "incumbent": "Sykes (D)",
                     "rating": "Lean D",
                     "last": "D"
-                },
-                {
-                    "districtName": "OH-10",
-                    "districtMargin": -17,
-                    "incumbent": "Turner (R)",
-                    "rating": "Likely R",
-                    "last": "R"
                 }
             ],
-            "safeR": 9
+            "safeR": 10
         }
     },
     "ok": {
@@ -1272,21 +1166,21 @@
             "contested": [
                 {
                     "districtName": "OR-4",
-                    "districtMargin": 13.7,
+                    "districtMargin": 14,
                     "incumbent": "Hoyle (D)",
                     "rating": "Likely D",
                     "last": "D"
                 },
                 {
                     "districtName": "OR-6",
-                    "districtMargin": 13.4,
+                    "districtMargin": 14,
                     "incumbent": "Salinas (D)",
                     "rating": "Likely D",
                     "last": "D"
                 },
                 {
                     "districtName": "OR-5",
-                    "districtMargin": 1.3,
+                    "districtMargin": 1.2,
                     "incumbent": "Chavez (R)",
                     "rating": "Tossup",
                     "last": "R"
@@ -1314,14 +1208,14 @@
             "contested": [
                 {
                     "districtName": "PA-17",
-                    "districtMargin": 9.6,
+                    "districtMargin": 10,
                     "incumbent": "Deluzio (D)",
                     "rating": "Likely D",
                     "last": "D"
                 },
                 {
                     "districtName": "PA-7",
-                    "districtMargin": 6.5,
+                    "districtMargin": 7,
                     "incumbent": "Wild (D)",
                     "rating": "Lean D",
                     "last": "D"
@@ -1335,16 +1229,16 @@
                 },
                 {
                     "districtName": "PA-10",
-                    "districtMargin": -3.2,
+                    "districtMargin": -3.6,
                     "incumbent": "Perry (R)",
                     "rating": "Tossup",
                     "last": "R"
                 },
                 {
                     "districtName": "PA-1",
-                    "districtMargin": -4.1,
+                    "districtMargin": -6.4,
                     "incumbent": "Fitzpatrick (R)",
-                    "rating": "Lean R",
+                    "rating": "Likely R",
                     "last": "R"
                 }
             ],
@@ -1380,16 +1274,7 @@
         "lastPrez": "R",
         "houseSeats": {
             "safeD": 1,
-            "safeR": 5,
-            "contested": [
-                {
-                    "districtName": "SC-1",
-                    "districtMargin": -13.5,
-                    "incumbent": "Mace (R)",
-                    "rating": "Likely R",
-                    "last": "R"
-                }
-            ]
+            "safeR": 6
         }
     },
     "sd": {
@@ -1421,19 +1306,12 @@
         "region": "S",
         "houseSeats": {
             "safeD": 1,
-            "safeR": 6,
+            "safeR": 7,
             "contested": [
                 {
                     "districtName": "TN-7",
-                    "districtMargin": -11.3,
+                    "districtMargin": -11.2,
                     "incumbent": "Green (R)",
-                    "rating": "Likely R",
-                    "last": "R"
-                },
-                {
-                    "districtName": "TN-5",
-                    "districtMargin": -16.2,
-                    "incumbent": "Ogles (R)",
                     "rating": "Likely R",
                     "last": "R"
                 }
@@ -1467,8 +1345,8 @@
                 {
                     "districtName": "TX-34",
                     "districtMargin": 7,
-                    "incumbent": "Gonzolez (R)",
-                    "rating": "Lean D",
+                    "incumbent": "Gonzolez (D)",
+                    "rating": "Likely D",
                     "last": "D"
                 },
                 {
@@ -1477,23 +1355,9 @@
                     "incumbent": "De La Cruz (R)",
                     "rating": "Likely R",
                     "last": "R"
-                },
-                {
-                    "districtName": "TX-23",
-                    "districtMargin": -13.4,
-                    "incumbent": "Gonzalez (R)",
-                    "rating": "Likely R",
-                    "last": "R"
-                },
-                {
-                    "districtName": "TX-24",
-                    "districtMargin": -17,
-                    "incumbent": "Van Duyne (R)",
-                    "rating": "Likely R",
-                    "last": "R"
                 }
             ],
-            "safeR": 22
+            "safeR": 24
         }
     },
     "ut": {
@@ -1537,14 +1401,14 @@
             "contested": [
                 {
                     "districtName": "VA-7",
-                    "districtMargin": 7.6,
+                    "districtMargin": 8,
                     "incumbent": "fmr. Spanberger (D)",
                     "rating": "Lean D",
                     "last": "D"
                 },
                 {
                     "districtName": "VA-2",
-                    "districtMargin": -8.3,
+                    "districtMargin": -6,
                     "incumbent": "Kiggans (R)",
                     "rating": "Lean R",
                     "last": "R"
@@ -1558,20 +1422,13 @@
                 },
                 {
                     "districtName": "VA-5",
-                    "districtMargin": -18.2,
+                    "districtMargin": -18,
                     "incumbent": "fmr. Good (R)",
-                    "rating": "Likely R",
-                    "last": "R"
-                },
-                {
-                    "districtName": "VA-1",
-                    "districtMargin": -16.8,
-                    "incumbent": "Wittman (R)",
                     "rating": "Likely R",
                     "last": "R"
                 }
             ],
-            "safeR": 2
+            "safeR": 3
         }
     },
     "vt": {
@@ -1633,7 +1490,7 @@
                 },
                 {
                     "districtName": "WA-3",
-                    "districtMargin": 3.3,
+                    "districtMargin": 3.5,
                     "incumbent": "Perez (D)",
                     "rating": "Tossup",
                     "last": "D"
@@ -1661,21 +1518,21 @@
             "contested": [
                 {
                     "districtName": "WI-3",
-                    "districtMargin": -8.5,
+                    "districtMargin": -6.4,
                     "incumbent": "Van Orden (R)",
-                    "rating": "Likely R",
+                    "rating": "Lean R",
                     "last": "R"
                 },
                 {
                     "districtName": "WI-1",
-                    "districtMargin": -5.7,
+                    "districtMargin": -5.8,
                     "incumbent": "Stiel (R)",
-                    "rating": "Tossup",
+                    "rating": "Lean R",
                     "last": "R"
                 },
                 {
                     "districtName": "WI-8",
-                    "districtMargin": -6.7,
+                    "districtMargin": -6.8,
                     "incumbent": "fmr. Gallagher (R)",
                     "rating": "Lean R",
                     "last": "R"
