@@ -1,16 +1,12 @@
 class NeedleVM {
     calculatePrezPercentile(state) {
-        let reportedVote =
-            (state.dReporting + state.rReporting) / state.totalVote;
-        let remainingVote = 1 - reportedVote;
-
         let dMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
         let dMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
         let rMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
         let rMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
 
-        let dEst = state.dExRemaining * remainingVote;
-        let rEst = state.rExRemaining * remainingVote;
+        let dEst = state.dExRemaining;
+        let rEst = state.rExRemaining;
 
         let dMax = Math.round(dEst * dMaxFactor) + state.dReporting;
         let dMin = Math.round(dEst * dMinFactor) + state.dReporting;
@@ -33,16 +29,13 @@ class NeedleVM {
         return newPerc;
     }
     calculateSenatePercentile(state) {
-        let reportedVote =
-            (state.dSenReporting + state.rSenReporting) / state.totalVote;
-        let remainingVote = 1 - reportedVote;
-        let dMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
-        let dMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
-        let rMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
-        let rMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
+        let dMaxFactor = Math.random() * (1.06 - 1.05) + 1.05;
+        let dMinFactor = Math.random() * (0.95 - 0.94) + 0.94;
+        let rMaxFactor = Math.random() * (1.06 - 1.05) + 1.05;
+        let rMinFactor = Math.random() * (0.95 - 0.94) + 0.94;
 
-        let dEst = state.dExSenRemaining * remainingVote;
-        let rEst = state.rExSenRemaining * remainingVote;
+        let dEst = state.dSenExRemaining;
+        let rEst = state.rSenExRemaining;
 
         let dMax = Math.round(dEst * dMaxFactor) + state.dSenReporting;
         let dMin = Math.round(dEst * dMinFactor) + state.dSenReporting;
@@ -59,22 +52,19 @@ class NeedleVM {
 
         let distance = median - 0;
         let newPerc = (distance / totalWidth) * 100;
-        if (state.percentile) {
-            newPerc = (newPerc + state.percentile) / 2;
+        if (state.senPercentile) {
+            newPerc = (newPerc + state.senPercentile) / 2;
         }
         return newPerc;
     }
     calculateGovPercentile(state) {
-        let reportedVote =
-            (state.dGovReporting + state.rGovReporting) / state.totalVote;
-        let remainingVote = 1 - reportedVote;
         let dMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
         let dMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
         let rMaxFactor = Math.random() * (1.07 - 1.05) + 1.05;
         let rMinFactor = Math.random() * (0.95 - 0.93) + 0.93;
 
-        let dEst = state.dExGovRemaining * remainingVote;
-        let rEst = state.rExGovRemaining * remainingVote;
+        let dEst = state.dExGovRemaining;
+        let rEst = state.rExGovRemaining;
 
         let dMax = Math.round(dEst * dMaxFactor) + state.dGovReporting;
         let dMin = Math.round(dEst * dMinFactor) + state.dGovReporting;
@@ -91,8 +81,8 @@ class NeedleVM {
 
         let distance = median - 0;
         let newPerc = (distance / totalWidth) * 100;
-        if (state.percentile) {
-            newPerc = (newPerc + state.percentile) / 2;
+        if (state.govPercentile) {
+            newPerc = (newPerc + state.govPercentile) / 2;
         }
         return newPerc;
     }

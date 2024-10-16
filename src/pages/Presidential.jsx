@@ -8,6 +8,11 @@ export default function Presidential() {
     const toolTips = vm.stateList.map((state) => {
         return <PrezTooltip state={state} />;
     });
+    let logElements = vm.log.map((x) => {
+        return <p style={{ margin: 1 }}>{x}</p>;
+    });
+    // eslint-disable-next-line no-unused-vars
+    logElements = logElements.reverse();
     useEffect(() => {
         vm.stateList.forEach((state) => {
             const elem = document.getElementsByClassName(`${state.code}`);
@@ -67,6 +72,7 @@ export default function Presidential() {
                 justifyContent: "space-between",
             }}
         >
+            <div>{logElements}</div>
             <Map />
             {toolTips}
         </div>

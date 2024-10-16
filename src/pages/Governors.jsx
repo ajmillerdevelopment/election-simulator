@@ -10,7 +10,11 @@ function Senate() {
             return <GovTooltip state={state} />;
         } else return null;
     });
-
+    let logElements = vm.log.map((x) => {
+        return <p style={{ margin: 1 }}>{x}</p>;
+    });
+    // eslint-disable-next-line no-unused-vars
+    logElements = logElements.reverse();
     useEffect(() => {
         vm.stateList.forEach((state) => {
             const elem = document.getElementsByClassName(`gov-${state.code}`);
@@ -76,6 +80,8 @@ function Senate() {
                 justifyContent: "space-between",
             }}
         >
+            <div>{logElements}</div>
+
             <GovMap />
             {toolTips}
         </div>

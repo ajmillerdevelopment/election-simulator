@@ -17,17 +17,13 @@ const PrezTooltip = (props) => {
     let totalReported = state.dReporting + state.rReporting + state.iReporting;
     let dpercent = ((state.dReporting / totalReported) * 100).toFixed(1);
     let rpercent = ((state.rReporting / totalReported) * 100).toFixed(1);
-    let ipercent = ((state.iReporting / totalReported) * 100).toFixed(1);
     let dtotal;
     let rtotal;
-    let itotal;
 
     dtotal = state.dReporting;
     rtotal = state.rReporting;
-    itotal = state.iReporting;
     dtotal = formatter.format(dtotal);
     rtotal = formatter.format(rtotal);
-    itotal = formatter.format(itotal);
 
     let needle = "Tossup";
     if (percentile < 20 && percentile > -20) {
@@ -51,6 +47,8 @@ const PrezTooltip = (props) => {
     if (percentile <= -110) {
         needle = "Safe R";
     }
+    if (isNaN(rpercent)) rpercent = "0";
+    if (isNaN(dpercent)) dpercent = "0";
     return (
         <Tooltip id={`${state.code}-tip`}>
             <div className="tooltip">

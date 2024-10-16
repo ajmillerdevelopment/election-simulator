@@ -18,7 +18,6 @@ function App() {
     });
     // eslint-disable-next-line no-unused-vars
     logElements = logElements.reverse();
-
     useEffect(() => {}, [vm.timeCode]);
     return (
         <div

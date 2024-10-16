@@ -158,7 +158,12 @@ const SenTooltip = (props) => {
                         <p>{reportedVote}% reporting</p>
                     </>
                 ) : null}
-                {state.senateCalled ? null : <p>{needle}</p>}
+                {state.senateCalled ? null : (
+                    <p>
+                        {state.senateMargin.toFixed(2)} {needle}{" "}
+                        {percentile.toFixed(0)}
+                    </p>
+                )}
             </div>
         </Tooltip>
     );
