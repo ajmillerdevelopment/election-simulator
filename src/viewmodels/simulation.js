@@ -279,11 +279,14 @@ class SimulationVM {
                 district.rRemaining -= houseMargin / 2;
             });
             state.percentile = NeedleVM.calculatePrezPercentile(state);
+            state.percentile *= 3;
             if (state.senateMargin) {
                 state.senPercentile = NeedleVM.calculateSenatePercentile(state);
+                state.senPercentile *= 3;
             }
             if (state.govMargin) {
                 state.govPercentile = NeedleVM.calculateGovPercentile(state);
+                state.govPercentile *= 3;
             }
         });
         this.hour = "18";
@@ -445,8 +448,8 @@ class SimulationVM {
             state.dReporting = state.dReporting + dTranche;
             state.iRemaining = state.iRemaining - iTranche;
             state.iReporting = state.iReporting += iTranche;
-            if (state.dExRemaining > 0) state.dExRemaining -= dTranche;
-            if (state.rExRemaining > 0) state.rExRemaining -= rTranche;
+            // if (state.dExRemaining > 0) state.dExRemaining -= dTranche;
+            // if (state.rExRemaining > 0) state.rExRemaining -= rTranche;
             //Count mail votes
             if (state.VBMPercent) {
                 if (state.VBMDelay === 0) {
@@ -463,10 +466,10 @@ class SimulationVM {
                         state.dVBMRemaining -= dVBMTranche;
                         state.dReporting += dVBMTranche;
                         state.rReporting += rVBMTranche;
-                        if (state.dExRemaining > 0)
-                            state.dExRemaining -= dVBMTranche;
-                        if (state.rExRemaining > 0)
-                            state.rExRemaining -= rVBMTranche;
+                        // if (state.dExRemaining > 0)
+                        //     state.dExRemaining -= dVBMTranche;
+                        // if (state.rExRemaining > 0)
+                        //     state.rExRemaining -= rVBMTranche;
                         if (state.senateMargin) {
                             let rSenVBMTranche = Math.ceil(
                                 state.rSenVBMRemaining * rVBMFactor
@@ -478,10 +481,11 @@ class SimulationVM {
                             state.dSenVBMRemaining -= dSenVBMTranche;
                             state.dSenReporting += dSenVBMTranche;
                             state.rSenReporting += rSenVBMTranche;
-                            if (state.dSenExRemaining > 0)
-                                state.dSenExRemaining -= dSenVBMTranche;
-                            if (state.rSenExRemaining > 0)
-                                state.rSenExRemaining -= rSenVBMTranche;
+                            //     if (state.dSenExRemaining > 0)
+                            //         state.dSenExRemaining -= dSenVBMTranche;
+                            //     if (state.rSenExRemaining > 0)
+                            //         state.rSenExRemaining -= rSenVBMTranche;
+                            //
                         }
                         if (state.govMargin) {
                             let rGovVBMTranche = Math.ceil(
@@ -494,10 +498,10 @@ class SimulationVM {
                             state.dGovVBMRemaining -= dGovVBMTranche;
                             state.dGovReporting += dGovVBMTranche;
                             state.rGovReporting += rGovVBMTranche;
-                            if (state.dExGovRemaining > 0)
-                                state.dExGovRemaining -= dGovVBMTranche;
-                            if (state.rExGovRemaining > 0)
-                                state.rExGovRemaining -= rGovVBMTranche;
+                            // if (state.dExGovRemaining > 0)
+                            //     state.dExGovRemaining -= dGovVBMTranche;
+                            // if (state.rExGovRemaining > 0)
+                            //     state.rExGovRemaining -= rGovVBMTranche;
                         }
                         state.VBMInitialReport = false;
                     } else {
@@ -511,10 +515,10 @@ class SimulationVM {
                         );
                         state.rVBMRemaining -= rVBMTranche;
                         state.dVBMRemaining -= dVBMTranche;
-                        if (state.dExRemaining > 0)
-                            state.dExRemaining -= dVBMTranche;
-                        if (state.rExRemaining > 0)
-                            state.rExRemaining -= rVBMTranche;
+                        // if (state.dExRemaining > 0)
+                        //     state.dExRemaining -= dVBMTranche;
+                        // if (state.rExRemaining > 0)
+                        //     state.rExRemaining -= rVBMTranche;
                         state.dReporting += dVBMTranche;
                         state.rReporting += rVBMTranche;
                         if (state.senateMargin) {
@@ -528,10 +532,10 @@ class SimulationVM {
                             state.dSenVBMRemaining -= dSenVBMTranche;
                             state.dSenReporting += dSenVBMTranche;
                             state.rSenReporting += rSenVBMTranche;
-                            if (state.dSenExRemaining > 0)
-                                state.dSenExRemaining -= dSenVBMTranche;
-                            if (state.rSenExRemaining > 0)
-                                state.rSenExRemaining -= rSenVBMTranche;
+                            // if (state.dSenExRemaining > 0)
+                            //     state.dSenExRemaining -= dSenVBMTranche;
+                            // if (state.rSenExRemaining > 0)
+                            //     state.rSenExRemaining -= rSenVBMTranche;
                         }
                         if (state.govMargin) {
                             let rGovVBMTranche = Math.ceil(
@@ -544,10 +548,10 @@ class SimulationVM {
                             state.dGovVBMRemaining -= dGovVBMTranche;
                             state.dGovReporting += dGovVBMTranche;
                             state.rGovReporting += rGovVBMTranche;
-                            if (state.dExGovRemaining > 0)
-                                state.dExGovRemaining -= dGovVBMTranche;
-                            if (state.rExGovRemaining > 0)
-                                state.rExGovRemaining -= rGovVBMTranche;
+                            // if (state.dExGovRemaining > 0)
+                            //     state.dExGovRemaining -= dGovVBMTranche;
+                            // if (state.rExGovRemaining > 0)
+                            //     state.rExGovRemaining -= rGovVBMTranche;
                         }
                     }
                 }
@@ -559,10 +563,10 @@ class SimulationVM {
                 state.rSenReporting = state.rSenReporting + rSenateTranche;
                 state.dSenRemaining = state.dSenRemaining - dSenateTranche;
                 state.dSenReporting = state.dSenReporting + dSenateTranche;
-                if (state.dSenExRemaining > 0)
-                    state.dSenExRemaining -= dTranche;
-                if (state.rSenExRemaining > 0)
-                    state.rSenExRemaining -= rTranche;
+                // if (state.dSenExRemaining > 0)
+                //     state.dSenExRemaining -= dTranche;
+                // if (state.rSenExRemaining > 0)
+                //     state.rSenExRemaining -= rTranche;
             }
             if (state.govMargin) {
                 let rGovTranche = Math.ceil(state.rGovRemaining * rFactor);
@@ -571,17 +575,17 @@ class SimulationVM {
                 state.rGovReporting = state.rGovReporting + rGovTranche;
                 state.dGovRemaining = state.dGovRemaining - dGovTranche;
                 state.dGovReporting = state.dGovReporting + dGovTranche;
-                if (state.dExGovRemaining > 0)
-                    state.dExGovRemaining -= dTranche;
-                if (state.rExGovRemaining > 0)
-                    state.rExGovRemaining -= rTranche;
+                // if (state.dExGovRemaining > 0)
+                //     state.dExGovRemaining -= dTranche;
+                // if (state.rExGovRemaining > 0)
+                //     state.rExGovRemaining -= rTranche;
             }
-            if (state.dExRemaining < 0) state.dExRemaining = 0;
-            if (state.rExRemaining < 0) state.rExRemaining = 0;
-            if (state.dSenExRemaining < 0) state.dSenExRemaining = 0;
-            if (state.rSenExRemaining < 0) state.rSenExRemaining = 0;
-            if (state.dExGovRemaining < 0) state.dExGovRemaining = 0;
-            if (state.rExGovRemaining < 0) state.rExGovRemaining = 0;
+            // if (state.dExRemaining < 0) state.dExRemaining = 0;
+            // if (state.rExRemaining < 0) state.rExRemaining = 0;
+            // if (state.dSenExRemaining < 0) state.dSenExRemaining = 0;
+            // if (state.rSenExRemaining < 0) state.rSenExRemaining = 0;
+            // if (state.dExGovRemaining < 0) state.dExGovRemaining = 0;
+            // if (state.rExGovRemaining < 0) state.rExGovRemaining = 0;
 
             this.checkForCalls(state);
         }
@@ -660,16 +664,30 @@ class SimulationVM {
         state.percentile = NeedleVM.calculatePrezPercentile(state);
         if (!state.called) {
             if (
-                state.percentile > 120 &&
-                state.prezMargin > 0 &&
-                (state.dReporting > state.rReporting || state.prezMargin > 10)
+                (state.percentile > 175 &&
+                    state.prezMargin > 0 &&
+                    (state.dReporting > state.rReporting ||
+                        state.prezMargin > 10)) ||
+                (state.rRemaining +
+                    state.dRemaining +
+                    state.rVBMRemaining +
+                    state.dVBMRemaining <
+                    1000 &&
+                    state.dReporting > state.rReporting)
             ) {
                 this.callBlue(state);
             }
             if (
-                state.percentile < -120 &&
-                state.prezMargin < 0 &&
-                (state.rReporting > state.dReporting || state.prezMargin < -10)
+                (state.percentile < -175 &&
+                    state.prezMargin < 0 &&
+                    (state.rReporting > state.dReporting ||
+                        state.prezMargin < -10)) ||
+                (state.rRemaining +
+                    state.dRemaining +
+                    state.rVBMRemaining +
+                    state.dVBMRemaining <
+                    1000 &&
+                    state.dReporting < state.rReporting)
             ) {
                 this.callRed(state);
             }
@@ -678,18 +696,30 @@ class SimulationVM {
             state.senPercentile = NeedleVM.calculateSenatePercentile(state);
             if (!state.senateCalled) {
                 if (
-                    state.senPercentile > 120 &&
-                    state.senateMargin > 0 &&
-                    (state.dSenReporting > state.rSenReporting ||
-                        state.senateMargin > 10)
+                    (state.senPercentile > 175 &&
+                        state.senateMargin > 0 &&
+                        (state.dSenReporting > state.rSenReporting ||
+                            state.senateMargin > 10)) ||
+                    (state.rSenRemaining +
+                        state.rSenVBMRemaining +
+                        state.dRemaining +
+                        state.dSenVBMRemaining <
+                        1000 &&
+                        state.dSenReporting > state.rSenReporting)
                 ) {
                     this.callBlueSen(state);
                 }
                 if (
-                    state.senPercentile < -120 &&
-                    state.senateMargin < 0 &&
-                    (state.rSenReporting > state.dSenReporting ||
-                        state.senateMargin < -10)
+                    (state.senPercentile < -175 &&
+                        state.senateMargin < 0 &&
+                        (state.rSenReporting > state.dSenReporting ||
+                            state.senateMargin < -10)) ||
+                    (state.rSenRemaining +
+                        state.rSenVBMRemaining +
+                        state.dRemaining +
+                        state.dSenVBMRemaining <
+                        1000 &&
+                        state.dSenReporting < state.rSenReporting)
                 ) {
                     this.callRedSen(state);
                 }
@@ -699,18 +729,30 @@ class SimulationVM {
             state.govPercentile = NeedleVM.calculateGovPercentile(state);
             if (!state.govCalled) {
                 if (
-                    state.govPercentile > 120 &&
-                    state.govMargin > 0 &&
-                    (state.dGovReporting > state.rGovReporting ||
-                        state.govMargin > 10)
+                    (state.govPercentile > 175 &&
+                        state.govMargin > 0 &&
+                        (state.dGovReporting > state.rGovReporting ||
+                            state.govMargin > 10)) ||
+                    (state.rGovRemaining +
+                        state.rGovVBMRemaining +
+                        state.dGovRemaining +
+                        state.dGovVBMRemaining <
+                        1000 &&
+                        state.dGovReporting > state.rGovReporting)
                 ) {
                     this.callBlueGov(state);
                 }
                 if (
-                    state.govPercentile < -120 &&
-                    state.govMargin < 0 &&
-                    (state.rGovReporting > state.dGovReporting ||
-                        state.govMargin < -10)
+                    (state.govPercentile < -175 &&
+                        state.govMargin < 0 &&
+                        (state.rGovReporting > state.dGovReporting ||
+                            state.govMargin < -10)) ||
+                    (state.rGovRemaining +
+                        state.rGovVBMRemaining +
+                        state.dGovRemaining +
+                        state.dGovVBMRemaining <
+                        1000 &&
+                        state.dGovReporting < state.rGovReporting)
                 ) {
                     this.callRedGov(state);
                 }
