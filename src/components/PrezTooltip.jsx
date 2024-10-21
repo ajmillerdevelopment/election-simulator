@@ -116,13 +116,13 @@ const PrezTooltip = (props) => {
                                     <span className="rbox">
                                         {" "}
                                         {rpercent}%{" "}
-                                        {state.called && state.prezMargin < 0
+                                        {state.called && state.called === "R"
                                             ? "✓"
                                             : null}
                                     </span>
                                     <span className="dbox">
                                         {dpercent}%{" "}
-                                        {state.called && state.prezMargin > 0
+                                        {state.called && state.called === "D"
                                             ? "✓"
                                             : null}
                                     </span>

@@ -28,7 +28,7 @@ function Senate() {
                 ).toFixed(0);
                 if (state.active) {
                     if (state.govCalled) {
-                        if (state.govMargin < 0) {
+                        if (state.govCalled === "R") {
                             if (state.lastGov === "D") {
                                 elem[0]?.classList.add("called-red-flip");
                             } else {

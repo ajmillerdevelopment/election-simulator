@@ -133,14 +133,14 @@ const GovTooltip = (props) => {
                                 <span className="rbox">
                                     {" "}
                                     {rGovPercent}%{" "}
-                                    {state.govCalled && state.govMargin < 0
+                                    {state.called && state.called === "R"
                                         ? "✓"
                                         : null}
                                 </span>
                                 <span className="dbox">
                                     <span>
                                         {dGovPercent}%{" "}
-                                        {state.govCalled && state.govMargin > 0
+                                        {state.called && state.called === "D"
                                             ? "✓"
                                             : null}
                                     </span>

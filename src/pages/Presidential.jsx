@@ -22,7 +22,7 @@ export default function Presidential() {
             ).toFixed(0);
             if (state.active) {
                 if (state.called) {
-                    if (state.prezMargin < 0) {
+                    if (state.called === "R") {
                         if (state.lastPrez === "D") {
                             elem[0]?.classList.add("called-red-flip");
                         } else {

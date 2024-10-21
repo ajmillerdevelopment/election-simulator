@@ -2,7 +2,7 @@
     "ak": {
         "fullName": "Alaska",
         "closeTime": 0,
-        "prezMargin": -9.5,
+        "prezMargin": -10,
         "evs": 3,
         "countSpeed": 0.1,
         "totalVote": 350000,
@@ -15,7 +15,7 @@
             "contested": [
                 {
                     "districtName": "AK-AL",
-                    "districtMargin": -1,
+                    "districtMargin": -1.2,
                     "incumbent": "Peltola (D)",
                     "rating": "Tossup",
                     "last": "D",
@@ -39,7 +39,7 @@
             "contested": [
                 {
                     "districtName": "AL-2",
-                    "districtMargin": 10,
+                    "districtMargin": 10.6,
                     "incumbent": "fmr. Moore (R)",
                     "rating": "Likely D",
                     "last": "R",
@@ -53,7 +53,7 @@
     "ar": {
         "fullName": "Arkansas",
         "closeTime": 2030,
-        "prezMargin": -27,
+        "prezMargin": -28,
         "evs": 6,
         "countSpeed": 0.5,
         "totalVote": 1200000,
@@ -66,7 +66,7 @@
     "az": {
         "fullName": "Arizona",
         "closeTime": 2100,
-        "prezMargin": -1.2,
+        "prezMargin": -2.1,
         "evs": 11,
         "countSpeed": 0.2,
         "totalVote": 3300000,
@@ -85,7 +85,7 @@
             "contested": [
                 {
                     "districtName": "AZ-1",
-                    "districtMargin": -1.8,
+                    "districtMargin": -1.5,
                     "incumbent": "Schweikert (R)",
                     "rating": "Tossup",
                     "last": "R",
@@ -93,7 +93,7 @@
                     "DName": "Shah"
                 },
                 {
-                    "districtMargin": -1.8,
+                    "districtMargin": -2,
                     "districtName": "AZ-6",
                     "incumbent": "Ciscomani (R)",
                     "rating": "Tossup",
@@ -113,7 +113,7 @@
         "countSpeed": 0.1,
         "DSenateName": "Schiff",
         "RSenateName": "Garvey",
-        "senateMargin": 24,
+        "senateMargin": 24.6,
         "totalVote": 17000000,
         "region": "W",
         "lastPrez": "D",
@@ -204,7 +204,7 @@
     "co": {
         "fullName": "Colorado",
         "closeTime": 2100,
-        "prezMargin": 12,
+        "prezMargin": 11,
         "evs": 10,
         "countSpeed": 0.2,
         "totalVote": 3200000,
@@ -242,7 +242,7 @@
     "ct": {
         "fullName": "Connecticut",
         "closeTime": 2000,
-        "prezMargin": 18,
+        "prezMargin": 17,
         "evs": 7,
         "countSpeed": 0.4,
         "totalVote": 1800000,
@@ -273,7 +273,7 @@
     "dc": {
         "fullName": "District of Columbia",
         "closeTime": 2000,
-        "prezMargin": 86,
+        "prezMargin": 85,
         "evs": 3,
         "countSpeed": 0.4,
         "totalVote": 300000,
@@ -283,7 +283,7 @@
     "de": {
         "fullName": "Delaware",
         "closeTime": 2000,
-        "prezMargin": 17,
+        "prezMargin": 16,
         "evs": 3,
         "countSpeed": 0.5,
         "totalVote": 500000,
@@ -308,7 +308,7 @@
     "fl": {
         "fullName": "Florida",
         "closeTime": 2000,
-        "prezMargin": -4.8,
+        "prezMargin": -5.5,
         "evs": 30,
         "countSpeed": 0.5,
         "totalVote": 11000000,
@@ -351,7 +351,7 @@
     "ga": {
         "fullName": "Georgia",
         "closeTime": 1900,
-        "prezMargin": -0.9,
+        "prezMargin": -2,
         "evs": 16,
         "countSpeed": 0.4,
         "totalVote": 5000000,
@@ -369,7 +369,7 @@
     "hi": {
         "fullName": "Hawaii",
         "closeTime": 0,
-        "prezMargin": 28,
+        "prezMargin": 27,
         "evs": 4,
         "countSpeed": 0.5,
         "totalVote": 570000,
@@ -386,7 +386,7 @@
     "ia": {
         "fullName": "Iowa",
         "closeTime": 2100,
-        "prezMargin": -8.3,
+        "prezMargin": -9.2,
         "evs": 6,
         "countSpeed": 0.5,
         "totalVote": 1600000,
@@ -423,7 +423,7 @@
     "id": {
         "fullName": "Idaho",
         "closeTime": 2300,
-        "prezMargin": -32,
+        "prezMargin": -33,
         "evs": 4,
         "countSpeed": 0.2,
         "totalVote": 800000,
@@ -438,7 +438,7 @@
     "il": {
         "fullName": "Illinois",
         "closeTime": 2000,
-        "prezMargin": 16,
+        "prezMargin": 15,
         "evs": 19,
         "countSpeed": 0.2,
         "totalVote": 6000000,
@@ -467,7 +467,7 @@
     "in": {
         "fullName": "Indiana",
         "closeTime": 1900,
-        "prezMargin": -16,
+        "prezMargin": -17,
         "evs": 11,
         "countSpeed": 0.4,
         "totalVote": 3000000,
@@ -494,7 +494,7 @@
     "ks": {
         "fullName": "Kansas",
         "closeTime": 2100,
-        "prezMargin": -16,
+        "prezMargin": -17,
         "evs": 6,
         "countSpeed": 0.4,
         "totalVote": 1300000,
@@ -518,7 +518,7 @@
     "ky": {
         "fullName": "Kentucky",
         "closeTime": 1900,
-        "prezMargin": -27,
+        "prezMargin": -28,
         "evs": 8,
         "countSpeed": 0.5,
         "totalVote": 2000000,
@@ -532,7 +532,7 @@
     "la": {
         "fullName": "Louisana",
         "closeTime": 2100,
-        "prezMargin": -19,
+        "prezMargin": -20,
         "evs": 8,
         "countSpeed": 0.4,
         "region": "S",
@@ -546,7 +546,7 @@
     "ma": {
         "fullName": "Massachusetts",
         "closeTime": 2000,
-        "prezMargin": 30,
+        "prezMargin": 29,
         "evs": 11,
         "countSpeed": 0.2,
         "senateInc": "D",
@@ -601,7 +601,7 @@
     "me": {
         "fullName": "Maine",
         "closeTime": 2000,
-        "prezMargin": 9.2,
+        "prezMargin": 8.5,
         "evs": 2,
         "countSpeed": 0.2,
         "senateInc": "I",
@@ -634,7 +634,7 @@
     "me-1": {
         "fullName": "Maine 1st",
         "closeTime": 2000,
-        "prezMargin": 23,
+        "prezMargin": 22,
         "evs": 1,
         "countSpeed": 0.2,
         "region": "NE",
@@ -648,7 +648,7 @@
     "me-2": {
         "fullName": "Maine 2nd",
         "closeTime": 2000,
-        "prezMargin": -6.1,
+        "prezMargin": -6.9,
         "evs": 1,
         "countSpeed": 0.2,
         "region": "NE",
@@ -662,7 +662,7 @@
     "mi": {
         "fullName": "Michigan",
         "closeTime": 2100,
-        "prezMargin": 1.1,
+        "prezMargin": 0.4,
         "evs": 15,
         "countSpeed": 0.4,
         "DSenateName": "Slotkin",
@@ -722,7 +722,7 @@
     "mn": {
         "fullName": "Minnesota",
         "closeTime": 2100,
-        "prezMargin": 6.4,
+        "prezMargin": 5.8,
         "evs": 10,
         "countSpeed": 0.4,
         "senateInc": "D",
@@ -756,7 +756,7 @@
     "mo": {
         "fullName": "Missouri",
         "closeTime": 2000,
-        "prezMargin": -13,
+        "prezMargin": -14,
         "evs": 10,
         "countSpeed": 0.5,
         "senateInc": "R",
@@ -779,7 +779,7 @@
     "ms": {
         "fullName": "Mississippi",
         "closeTime": 2000,
-        "prezMargin": -17,
+        "prezMargin": -18,
         "evs": 6,
         "countSpeed": 0.2,
         "senateInc": "R",
@@ -835,7 +835,7 @@
     "nc": {
         "fullName": "North Carolina",
         "closeTime": 1930,
-        "prezMargin": -0.7,
+        "prezMargin": -1.2,
         "evs": 16,
         "countSpeed": 0.4,
         "totalVote": 5500000,
@@ -868,7 +868,7 @@
     "nd": {
         "fullName": "North Dakota",
         "closeTime": 2100,
-        "prezMargin": -32,
+        "prezMargin": -33,
         "evs": 3,
         "countSpeed": 0.5,
         "senateInc": "R",
@@ -894,7 +894,7 @@
     "ne": {
         "fullName": "Nebraska",
         "closeTime": 2100,
-        "prezMargin": -18,
+        "prezMargin": -19,
         "evs": 2,
         "countSpeed": 0.5,
         "senateInc": "R",
@@ -927,7 +927,7 @@
     "ne-1": {
         "fullName": "Nebraska 1st",
         "closeTime": 2100,
-        "prezMargin": -16,
+        "prezMargin": -17,
         "evs": 1,
         "countSpeed": 0.5,
         "region": "MW",
@@ -941,7 +941,7 @@
     "ne-2": {
         "fullName": "Nebraska 2nd",
         "closeTime": 2100,
-        "prezMargin": 7,
+        "prezMargin": 6.2,
         "evs": 1,
         "countSpeed": 0.5,
         "region": "MW",
@@ -955,7 +955,7 @@
     "ne-3": {
         "fullName": "Nebraska 3rd",
         "closeTime": 2100,
-        "prezMargin": -53,
+        "prezMargin": -55,
         "evs": 1,
         "countSpeed": 0.5,
         "region": "MW",
@@ -969,7 +969,7 @@
     "nh": {
         "fullName": "New Hampshire",
         "closeTime": 2000,
-        "prezMargin": 6.8,
+        "prezMargin": 6.3,
         "evs": 4,
         "countSpeed": 0.4,
         "totalVote": 800000,
@@ -1001,7 +1001,7 @@
     "nj": {
         "fullName": "New Jersey",
         "closeTime": 2000,
-        "prezMargin": 14,
+        "prezMargin": 13,
         "evs": 14,
         "countSpeed": 0.4,
         "DSenateName": "Kim",
@@ -1034,7 +1034,7 @@
     "ny": {
         "fullName": "New York",
         "closeTime": 2100,
-        "prezMargin": 17,
+        "prezMargin": 16,
         "evs": 28,
         "countSpeed": 0.2,
         "totalVote": 8600000,
@@ -1122,7 +1122,7 @@
     "nv": {
         "fullName": "Nevada",
         "closeTime": 2200,
-        "prezMargin": 0.9,
+        "prezMargin": 0.2,
         "evs": 6,
         "countSpeed": 0.2,
         "totalVote": 1500000,
@@ -1145,7 +1145,7 @@
     "nm": {
         "fullName": "New Mexico",
         "closeTime": 2100,
-        "prezMargin": 9,
+        "prezMargin": 7.2,
         "evs": 5,
         "countSpeed": 0.5,
         "totalVote": 900000,
@@ -1178,7 +1178,7 @@
     "oh": {
         "fullName": "Ohio",
         "closeTime": 1930,
-        "prezMargin": -7.6,
+        "prezMargin": -8.4,
         "evs": 17,
         "countSpeed": 0.5,
         "senateInc": "D",
@@ -1230,7 +1230,7 @@
     "ok": {
         "fullName": "Oklahoma",
         "closeTime": 2000,
-        "prezMargin": -32,
+        "prezMargin": -34,
         "evs": 7,
         "countSpeed": 0.5,
         "totalVote": 1500000,
@@ -1247,7 +1247,7 @@
     "or": {
         "fullName": "Oregon",
         "closeTime": 2300,
-        "prezMargin": 14,
+        "prezMargin": 13,
         "evs": 8,
         "countSpeed": 0.2,
         "totalVote": 2300000,
@@ -1276,7 +1276,7 @@
     "pa": {
         "fullName": "Pennsylvania",
         "closeTime": 2000,
-        "prezMargin": 0.7,
+        "prezMargin": -0.1,
         "evs": 19,
         "countSpeed": 0.2,
         "senateInc": "D",
@@ -1364,7 +1364,7 @@
     "sc": {
         "fullName": "South Carolina",
         "closeTime": 1900,
-        "prezMargin": -12,
+        "prezMargin": -13,
         "evs": 9,
         "totalVote": 2500000,
         "region": "S",
@@ -1378,7 +1378,7 @@
     "sd": {
         "fullName": "South Dakota",
         "closeTime": 2100,
-        "prezMargin": -27,
+        "prezMargin": -28,
         "evs": 3,
         "totalVote": 400000,
         "houseSeats": {
@@ -1414,7 +1414,7 @@
     "tx": {
         "fullName": "Texas",
         "closeTime": 2100,
-        "prezMargin": -6.2,
+        "prezMargin": -6.8,
         "evs": 40,
         "countSpeed": 0.4,
         "senateInc": "R",
@@ -1448,7 +1448,7 @@
     "ut": {
         "fullName": "Utah",
         "closeTime": 2200,
-        "prezMargin": -22,
+        "prezMargin": -20,
         "evs": 6,
         "countSpeed": 0.1,
         "senateInc": "R",
@@ -1470,7 +1470,7 @@
     "va": {
         "fullName": "Virginia",
         "closeTime": 1900,
-        "prezMargin": 8.4,
+        "prezMargin": 7.6,
         "evs": 13,
         "countSpeed": 0.4,
         "senateInc": "D",
@@ -1577,7 +1577,7 @@
     "wi": {
         "fullName": "Wisconsin",
         "closeTime": 2100,
-        "prezMargin": 1,
+        "prezMargin": 0.1,
         "evs": 10,
         "countSpeed": 0.5,
         "senateInc": "D",
@@ -1620,7 +1620,7 @@
     "wv": {
         "fullName": "West Virginia",
         "closeTime": 1930,
-        "prezMargin": -39,
+        "prezMargin": -40,
         "evs": 4,
         "countSpeed": 0.5,
         "senateInc": "D",
@@ -1642,7 +1642,7 @@
     "wy": {
         "fullName": "Wyoming",
         "closeTime": 2200,
-        "prezMargin": -44,
+        "prezMargin": -45,
         "evs": 3,
         "countSpeed": 0.4,
         "senateInc": "R",

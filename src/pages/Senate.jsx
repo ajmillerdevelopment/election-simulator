@@ -27,7 +27,7 @@ function Senate() {
                 ).toFixed(0);
                 if (state.active) {
                     if (state.senateCalled) {
-                        if (state.senateMargin < 0) {
+                        if (state.senateCalled === "R") {
                             if (state.lastSen === "D") {
                                 elem[0]?.classList.add("called-red-flip");
                             } else {
