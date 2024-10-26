@@ -269,6 +269,7 @@ class SimulationVM {
                 district.districtMargin += districtFactor;
                 district.districtMargin += stateFactor;
                 district.districtMargin += state.regionalFactor;
+                district.districtMargin += 1; //TEMP
                 let houseMargin = Math.round(
                     200000 * (district.districtMargin / 100)
                 );
@@ -661,14 +662,16 @@ class SimulationVM {
             }
 
             district.percentile = NeedleVM.calculateDistPercentile(district);
-            if (!district.called) {
-                if (district.percentile > 200) {
+            if (!district.called && district.districtName !== "AK-AL") {
+                if (district.percentile > 200 && district.districtMargin > 0) {
                     if (district.districtMargin < 0)
                         console.warn(`Wrong Call ${district.districtName}`);
                     district.called = "D";
                     this.DHouse++;
                     if (!this.houseCalled && this.DHouse >= 218) {
-                        this.log.push(`Democrats flip the House!`);
+                        this.log.push(
+                            `${this.hour}:${this.minute} - Democrats flip the House!`
+                        );
                         this.houseCalled = true;
                     }
                     if (district.last === "R") {
@@ -687,13 +690,15 @@ class SimulationVM {
                         );
                     }
                 }
-                if (district.percentile < -200) {
+                if (district.percentile < -200 && district.districtMargin < 0) {
                     if (district.districtMargin > 0)
                         console.warn(`Wrong Call ${district.districtName}`);
                     district.called = "R";
                     this.RHouse++;
                     if (!this.houseCalled && this.RHouse >= 218) {
-                        this.log.push(`Republicans hold the House!`);
+                        this.log.push(
+                            `${this.hour}:${this.minute} - Republicans hold the House!`
+                        );
                         this.houseCalled = true;
                     }
                     if (district.last === "D") {
@@ -727,7 +732,7 @@ class SimulationVM {
                     state.dRemaining +
                     state.rVBMRemaining +
                     state.dVBMRemaining <
-                    1000 &&
+                    state.totalVote * 0.001 &&
                     state.dReporting > state.rReporting)
             ) {
                 this.callBlue(state);
@@ -741,7 +746,7 @@ class SimulationVM {
                     state.dRemaining +
                     state.rVBMRemaining +
                     state.dVBMRemaining <
-                    1000 &&
+                    state.totalVote * 0.001 &&
                     state.dReporting < state.rReporting)
             ) {
                 this.callRed(state);
@@ -759,7 +764,7 @@ class SimulationVM {
                         state.rSenVBMRemaining +
                         state.dRemaining +
                         state.dSenVBMRemaining <
-                        1000 &&
+                        state.totalVote * 0.001 &&
                         state.dSenReporting > state.rSenReporting)
                 ) {
                     this.callBlueSen(state);
@@ -773,7 +778,7 @@ class SimulationVM {
                         state.rSenVBMRemaining +
                         state.dRemaining +
                         state.dSenVBMRemaining <
-                        1000 &&
+                        state.totalVote * 0.001 &&
                         state.dSenReporting < state.rSenReporting)
                 ) {
                     this.callRedSen(state);
@@ -792,7 +797,7 @@ class SimulationVM {
                         state.rGovVBMRemaining +
                         state.dGovRemaining +
                         state.dGovVBMRemaining <
-                        1000 &&
+                        state.totalVote * 0.001 &&
                         state.dGovReporting > state.rGovReporting)
                 ) {
                     this.callBlueGov(state);
@@ -806,7 +811,7 @@ class SimulationVM {
                         state.rGovVBMRemaining +
                         state.dGovRemaining +
                         state.dGovVBMRemaining <
-                        1000 &&
+                        state.totalVote * 0.001 &&
                         state.dGovReporting < state.rGovReporting)
                 ) {
                     this.callRedGov(state);
@@ -818,11 +823,6 @@ class SimulationVM {
         if (!state.called) {
             if (state.prezMargin < 0)
                 console.warn(`Wrong Call ${state.fullName} President`);
-            state.called = "D";
-            if (!this.called && this.DEVs + state.evs >= 270) {
-                this.called = true;
-                this.log.push(`Kamala Harris elected President!`);
-            }
             this.DEVs += state.evs;
             if (state.lastPrez === "R") {
                 this.log.push(
@@ -833,17 +833,19 @@ class SimulationVM {
                     `${this.hour}:${this.minute} - Kamala Harris wins ${state.fullName}`
                 );
             }
+            if (!this.called && this.DEVs + state.evs >= 270) {
+                this.called = true;
+                this.log.push(
+                    `${this.hour}:${this.minute} - Kamala Harris elected President!`
+                );
+            }
+            state.called = "D";
         }
     }
     callRed(state) {
         if (!state.called) {
             if (state.prezMargin > 0)
                 console.warn(`Wrong Call ${state.fullName} President`);
-            state.called = "R";
-            if (!this.called && this.REVs + state.evs >= 270) {
-                this.called = true;
-                this.log.push(`Donald Trump re-elected President!`);
-            }
             this.REVs += state.evs;
             if (state.lastPrez === "D") {
                 this.log.push(
@@ -854,6 +856,13 @@ class SimulationVM {
                     `${this.hour}:${this.minute} - Donald Trump wins ${state.fullName}`
                 );
             }
+            if (!this.called && this.REVs + state.evs >= 270) {
+                this.called = true;
+                this.log.push(
+                    `${this.hour}:${this.minute} - Donald Trump re-elected President!`
+                );
+            }
+            state.called = "R";
         }
     }
     callBlueSen(state) {
@@ -866,7 +875,9 @@ class SimulationVM {
                 !this.senateCalled &&
                 (this.DSen > 50 || (this.DSen === 5 && this.DEVs >= 270))
             ) {
-                this.log.push(`Democrats hold the Senate!`);
+                this.log.push(
+                    `${this.hour}:${this.minute} - Democrats hold the Senate!`
+                );
                 this.senateCalled = true;
             }
             if (state.lastSen === "R") {
@@ -897,7 +908,9 @@ class SimulationVM {
                 !this.senateCalled &&
                 (this.RSen > 50 || (this.RSen === 5 && this.REVs >= 270))
             ) {
-                this.log.push(`Republicans flip the Senate!`);
+                this.log.push(
+                    `${this.hour}:${this.minute} - Republicans flip the Senate!`
+                );
                 this.senateCalled = true;
             }
             if (state.lastSen === "D") {

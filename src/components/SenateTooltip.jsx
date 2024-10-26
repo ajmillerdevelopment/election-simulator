@@ -138,15 +138,16 @@ const SenTooltip = (props) => {
                                     <span className="rbox">
                                         {" "}
                                         {rSenatePercent}%{" "}
-                                        {state.called && state.called === "R"
+                                        {state.senateCalled &&
+                                        state.senateCalled === "R"
                                             ? "✓"
                                             : null}
                                     </span>
                                     <span className="dbox">
                                         <span>
                                             {dSenatePercent}%{" "}
-                                            {state.called &&
-                                            state.called === "D"
+                                            {state.senateCalled &&
+                                            state.senateCalled === "D"
                                                 ? "✓"
                                                 : null}
                                         </span>
