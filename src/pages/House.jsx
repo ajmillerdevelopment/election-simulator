@@ -39,7 +39,7 @@ export default function House() {
                 100
             ).toFixed(0);
             if (district.called) {
-                if (district.districtMargin < 0) {
+                if (district.called === "R") {
                     if (district.last === "D") {
                         elem[0]?.classList.add("called-red-flip-box");
                     } else {

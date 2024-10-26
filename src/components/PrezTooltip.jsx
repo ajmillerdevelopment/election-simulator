@@ -17,40 +17,38 @@ const PrezTooltip = (props) => {
     let totalReported = state.dReporting + state.rReporting + state.iReporting;
     let dpercent = ((state.dReporting / totalReported) * 100).toFixed(1);
     let rpercent = ((state.rReporting / totalReported) * 100).toFixed(1);
-    let ipercent = ((state.iReporting / totalReported) * 100).toFixed(1);
     let dtotal;
     let rtotal;
-    let itotal;
 
     dtotal = state.dReporting;
     rtotal = state.rReporting;
-    itotal = state.iReporting;
     dtotal = formatter.format(dtotal);
     rtotal = formatter.format(rtotal);
-    itotal = formatter.format(itotal);
 
     let needle = "Tossup";
-    if (percentile < 20 && percentile > -20) {
+    if (percentile < 50 && percentile > -50) {
         needle = "Tossup";
     }
-    if (percentile >= 20 && percentile < 60) {
+    if (percentile >= 50 && percentile < 100) {
         needle = "Lean D";
     }
-    if (percentile >= 60 && percentile < 110) {
+    if (percentile >= 100 && percentile < 150) {
         needle = "Likely D";
     }
-    if (percentile >= 110) {
+    if (percentile >= 150) {
         needle = "Safe D";
     }
-    if (percentile <= -20 && percentile > -60) {
+    if (percentile <= -50 && percentile > -100) {
         needle = "Lean R";
     }
-    if (percentile <= -60 && percentile > -110) {
+    if (percentile <= -100 && percentile > -150) {
         needle = "Likely R";
     }
-    if (percentile <= -110) {
+    if (percentile <= -150) {
         needle = "Safe R";
     }
+    if (isNaN(rpercent)) rpercent = "0";
+    if (isNaN(dpercent)) dpercent = "0";
     return (
         <Tooltip id={`${state.code}-tip`}>
             <div className="tooltip">
@@ -118,13 +116,13 @@ const PrezTooltip = (props) => {
                                     <span className="rbox">
                                         {" "}
                                         {rpercent}%{" "}
-                                        {state.called && state.prezMargin < 0
+                                        {state.called && state.called === "R"
                                             ? "✓"
                                             : null}
                                     </span>
                                     <span className="dbox">
                                         {dpercent}%{" "}
-                                        {state.called && state.prezMargin > 0
+                                        {state.called && state.called === "D"
                                             ? "✓"
                                             : null}
                                     </span>

@@ -58,7 +58,7 @@ export default function DistrictBox(props) {
                         {dist.dReporting > dist.rReporting ? (
                             <>
                                 <div>
-                                    {dtotal}{" "}
+                                    {dist.DName} {dtotal}{" "}
                                     <span className="dbox">
                                         {dpercent}%{" "}
                                         {dist.called && dist.districtMargin > 0
@@ -67,7 +67,7 @@ export default function DistrictBox(props) {
                                     </span>
                                 </div>
                                 <div>
-                                    {rtotal}{" "}
+                                    {dist.RName} {rtotal}{" "}
                                     <span className="rbox">
                                         {rpercent}%{" "}
                                         {dist.called && dist.districtMargin < 0
@@ -80,19 +80,19 @@ export default function DistrictBox(props) {
                             <>
                                 {" "}
                                 <div>
-                                    {rtotal}{" "}
+                                    {dist.RName} {rtotal}{" "}
                                     <span className="rbox">
                                         {rpercent}%{" "}
-                                        {dist.called && dist.districtMargin < 0
+                                        {dist.called && dist.called === "R"
                                             ? "✓"
                                             : null}
                                     </span>
                                 </div>
                                 <div>
-                                    {dtotal}{" "}
+                                    {dist.DName} {dtotal}{" "}
                                     <span className="dbox">
                                         {dpercent}%{" "}
-                                        {dist.called && dist.districtMargin > 0
+                                        {dist.called && dist.called === "D"
                                             ? "✓"
                                             : null}
                                     </span>

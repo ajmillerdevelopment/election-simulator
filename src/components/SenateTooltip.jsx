@@ -35,25 +35,25 @@ const SenTooltip = (props) => {
     }
 
     let needle = "Tossup";
-    if (percentile < 20 && percentile > -20) {
+    if (percentile < 50 && percentile > -50) {
         needle = "Tossup";
     }
-    if (percentile >= 20 && percentile < 60) {
+    if (percentile >= 50 && percentile < 100) {
         needle = "Lean D";
     }
-    if (percentile >= 60 && percentile < 110) {
+    if (percentile >= 100 && percentile < 150) {
         needle = "Likely D";
     }
-    if (percentile >= 110) {
+    if (percentile >= 150) {
         needle = "Safe D";
     }
-    if (percentile <= -20 && percentile > -60) {
+    if (percentile <= -50 && percentile > -100) {
         needle = "Lean R";
     }
-    if (percentile <= -60 && percentile > -110) {
+    if (percentile <= -100 && percentile > -150) {
         needle = "Likely R";
     }
-    if (percentile <= -110) {
+    if (percentile <= -150) {
         needle = "Safe R";
     }
     let displayPercentile = percentile;
@@ -139,7 +139,7 @@ const SenTooltip = (props) => {
                                         {" "}
                                         {rSenatePercent}%{" "}
                                         {state.senateCalled &&
-                                        state.senateMargin < 0
+                                        state.senateCalled === "R"
                                             ? "✓"
                                             : null}
                                     </span>
@@ -147,7 +147,7 @@ const SenTooltip = (props) => {
                                         <span>
                                             {dSenatePercent}%{" "}
                                             {state.senateCalled &&
-                                            state.senateMargin > 0
+                                            state.senateCalled === "D"
                                                 ? "✓"
                                                 : null}
                                         </span>

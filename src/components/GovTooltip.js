@@ -33,25 +33,25 @@ const GovTooltip = (props) => {
     }
 
     let needle = "Tossup";
-    if (percentile < 20 && percentile > -20) {
+    if (percentile < 50 && percentile > -50) {
         needle = "Tossup";
     }
-    if (percentile >= 20 && percentile < 60) {
+    if (percentile >= 50 && percentile < 100) {
         needle = "Lean D";
     }
-    if (percentile >= 60 && percentile < 110) {
+    if (percentile >= 100 && percentile < 150) {
         needle = "Likely D";
     }
-    if (percentile >= 110) {
+    if (percentile >= 150) {
         needle = "Safe D";
     }
-    if (percentile <= -20 && percentile > -60) {
+    if (percentile <= -50 && percentile > -100) {
         needle = "Lean R";
     }
-    if (percentile <= -60 && percentile > -110) {
+    if (percentile <= -100 && percentile > -150) {
         needle = "Likely R";
     }
-    if (percentile <= -110) {
+    if (percentile <= -150) {
         needle = "Safe R";
     }
     let displayPercentile = percentile;
@@ -133,14 +133,15 @@ const GovTooltip = (props) => {
                                 <span className="rbox">
                                     {" "}
                                     {rGovPercent}%{" "}
-                                    {state.govCalled && state.govMargin < 0
+                                    {state.govCalled && state.govCalled === "R"
                                         ? "✓"
                                         : null}
                                 </span>
                                 <span className="dbox">
                                     <span>
                                         {dGovPercent}%{" "}
-                                        {state.govCalled && state.govMargin > 0
+                                        {state.govCalled &&
+                                        state.govCalled === "D"
                                             ? "✓"
                                             : null}
                                     </span>
