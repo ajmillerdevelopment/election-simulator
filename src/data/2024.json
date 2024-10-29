@@ -359,7 +359,7 @@
         "lastPrez": "D",
         "VBMPercent": 0.04,
         "VBMSplit": 24,
-        "VBMInitialReport": false,
+        "VBMInitialReport": true,
         "VBMDelay": 0,
         "houseSeats": {
             "safeD": 5,
@@ -664,7 +664,7 @@
         "region": "MW",
         "VBMPercent": 0.25,
         "VBMSplit": 11,
-        "VBMInitialReport": false,
+        "VBMInitialReport": true,
         "VBMDelay": 0,
         "houseSeats": {
             "safeD": 5,
@@ -828,7 +828,7 @@
         "lastGov": "D",
         "VBMPercent": 0.04,
         "VBMSplit": 11,
-        "VBMInitialReport": true,
+        "VBMInitialReport": false,
         "VBMDelay": 0,
         "houseSeats": {
             "safeD": 3,
@@ -1097,7 +1097,7 @@
         "prezMargin": 0.1,
         "evs": 6,
         "countSpeed": 0.2,
-        "totalVote": 1500000,
+        "totalVote": 2000000,
         "region": "SW",
         "senateInc": "D",
         "DSenateName": "Rosen",
