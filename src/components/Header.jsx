@@ -38,7 +38,7 @@ export default function Header(props) {
 
             {/* <h4>{vm.timeCode}</h4> */}
             <div className="results-bar">
-                <div
+                {/* <div
                     id="prezHeader"
                     className="active"
                     onClick={() => {
@@ -81,7 +81,7 @@ export default function Header(props) {
                             </span>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div
                     id="senateHeader"
                     onClick={() => {
@@ -90,9 +90,6 @@ export default function Header(props) {
                             .classList.add("active");
                         document
                             .getElementById("houseHeader")
-                            .classList.remove("active");
-                        document
-                            .getElementById("prezHeader")
                             .classList.remove("active");
                         document
                             .getElementById("govHeader")
@@ -148,9 +145,6 @@ export default function Header(props) {
                             .getElementById("houseHeader")
                             .classList.remove("active");
                         document
-                            .getElementById("prezHeader")
-                            .classList.remove("active");
-                        document
                             .getElementById("govHeader")
                             .classList.add("active");
                         props.setModule("governors");
@@ -195,9 +189,6 @@ export default function Header(props) {
                         document
                             .getElementById("houseHeader")
                             .classList.add("active");
-                        document
-                            .getElementById("prezHeader")
-                            .classList.remove("active");
                         document
                             .getElementById("govHeader")
                             .classList.remove("active");

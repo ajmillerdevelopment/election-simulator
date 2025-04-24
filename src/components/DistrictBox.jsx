@@ -58,7 +58,7 @@ export default function DistrictBox(props) {
                         {dist.dReporting > dist.rReporting ? (
                             <>
                                 <div>
-                                    {dist.DName} {dtotal}{" "}
+                                    D {dtotal}{" "}
                                     <span className="dbox">
                                         {dpercent}%{" "}
                                         {dist.called && dist.districtMargin > 0
@@ -67,7 +67,7 @@ export default function DistrictBox(props) {
                                     </span>
                                 </div>
                                 <div>
-                                    {dist.RName} {rtotal}{" "}
+                                    R {rtotal}{" "}
                                     <span className="rbox">
                                         {rpercent}%{" "}
                                         {dist.called && dist.districtMargin < 0
@@ -80,7 +80,7 @@ export default function DistrictBox(props) {
                             <>
                                 {" "}
                                 <div>
-                                    {dist.RName} {rtotal}{" "}
+                                    R {rtotal}{" "}
                                     <span className="rbox">
                                         {rpercent}%{" "}
                                         {dist.called && dist.called === "R"
@@ -89,7 +89,7 @@ export default function DistrictBox(props) {
                                     </span>
                                 </div>
                                 <div>
-                                    {dist.DName} {dtotal}{" "}
+                                    D {dtotal}{" "}
                                     <span className="dbox">
                                         {dpercent}%{" "}
                                         {dist.called && dist.called === "D"

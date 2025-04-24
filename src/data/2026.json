@@ -1,0 +1,1782 @@
+{
+    "ak": {
+        "fullName": "Alaska",
+        "closeTime": 0,
+        "countSpeed": 0.1,
+        "totalVote": 350000,
+        "VBMPercent": 0.25,
+        "VBMSplit": -16,
+        "VBMInitialReport": false,
+        "VBMDelay": 168,
+        "voteDelay": 1,
+        "voteInitialReport": true,
+        "noCallBelow50": true,
+        "senateInc": "R",
+        "RSenateName": "Sullivan",
+        "DSenateName": "Peltola?",
+        "lastSen": "R",
+        "senateMargin": -8,
+        "lastGov": "R",
+        "govMargin": -8,
+        "RGovName": "Dalhstrom?",
+        "DGovName": "Begich?",
+        "houseSeats": {
+            "contested": [
+                {
+                    "districtName": "AK-AL",
+                    "districtMargin": -13,
+                    "incumbent": "Begich (R)",
+                    "rating": "Likely D",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "al": {
+        "fullName": "Alabama",
+        "closeTime": 2000,
+        "countSpeed": 0.5,
+        "totalVote": 2300000,
+        "region": "S",
+        "senateInc": "R",
+        "RSenateName": "Tuberville",
+        "DSenateName": "Jones?",
+        "lastSen": "R",
+        "senateMargin": -15,
+        "lastGov": "R",
+        "govMargin": -15,
+        "RGovName": "Ainsworth?",
+        "DGovName": "A Democrat",
+        "houseSeats": {
+            "safeD": 2,
+            "safeR": 5
+        }
+    },
+    "ar": {
+        "fullName": "Arkansas",
+        "closeTime": 2030,
+        "VBMPercent": 0.5,
+        "VBMSplit": -36,
+        "countSpeed": 0.5,
+        "totalVote": 1200000,
+        "region": "S",
+        "voteInitialReport": true,
+        "VBMInitialReport": true,
+        "senateInc": "R",
+        "RSenateName": "Cotton",
+        "DSenateName": "Whitfield?",
+        "lastSen": "R",
+        "senateMargin": -16,
+        "lastGov": "R",
+        "govMargin": -16,
+        "RGovName": "Sanders",
+        "DGovName": "A Democrat",
+        "govInc": "R",
+        "houseSeats": {
+            "safeR": 3,
+            "contested": [
+                {
+                    "districtName": "AR-2",
+                    "districtMargin": -17,
+                    "incumbent": "Hill (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "az": {
+        "fullName": "Arizona",
+        "closeTime": 2100,
+        "countSpeed": 0.2,
+        "totalVote": 3300000,
+        "region": "SW",
+        "VBMPercent": 0.6,
+        "VBMSplit": -5,
+        "VBMInitialReport": true,
+        "VBMDelay": 1,
+        "voteDelay": 1,
+        "voteInitialReport": true,
+        "lastGov": "D",
+        "govMargin": -2,
+        "RGovName": "Biggs?",
+        "DGovName": "Hobbs",
+        "govInc": "D",
+        "houseSeats": {
+            "safeD": 2,
+            "contested": [
+                {
+                    "districtName": "AZ-1",
+                    "districtMargin": -3,
+                    "incumbent": "Schweikert (R)",
+                    "rating": "Lean D",
+                    "last": "R"
+                },
+                {
+                    "districtMargin": -3,
+                    "districtName": "AZ-6",
+                    "incumbent": "Ciscomani (R)",
+                    "rating": "Lean D",
+                    "last": "R"
+                },
+                {
+                    "districtMargin": -9,
+                    "districtName": "AZ-2",
+                    "incumbent": "Crane (R)",
+                    "rating": "Tossup",
+                    "last": "R"
+                },
+                {
+                    "districtMargin": -21,
+                    "districtName": "AZ-5",
+                    "incumbent": "Biggs (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtMargin": -13,
+                    "districtName": "AZ-8",
+                    "incumbent": "Hamadeh (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtMargin": 7,
+                    "districtName": "AZ-4",
+                    "incumbent": "Standon (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                }
+            ],
+            "safeR": 1
+        }
+    },
+    "ca": {
+        "fullName": "California",
+        "closeTime": 2300,
+        "countSpeed": 0.05,
+        "totalVote": 17000000,
+        "region": "W",
+        "VBMPercent": 0.68,
+        "VBMSplit": 20,
+        "VBMInitialReport": true,
+        "voteInitialReport": true,
+        "VBMDelay": 0,
+        "lastGov": "D",
+        "govMargin": 13,
+        "RGovName": "A Republican",
+        "DGovName": "Harris",
+        "houseSeats": {
+            "safeD": 39,
+            "safeR": 3,
+            "contested": [
+                {
+                    "districtName": "CA-47",
+                    "districtMargin": 3,
+                    "incumbent": "Min (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "CA-13",
+                    "districtMargin": 0.1,
+                    "incumbent": "Gray (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "CA-22",
+                    "districtMargin": -7,
+                    "incumbent": "Valadao (R)",
+                    "rating": "Tossup",
+                    "last": "R"
+                },
+                {
+                    "districtName": "CA-27",
+                    "districtMargin": 3,
+                    "incumbent": "Whitesides (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "CA-41",
+                    "districtMargin": -3,
+                    "incumbent": "Calvert (R)",
+                    "rating": "Lean D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "CA-45",
+                    "districtMargin": 0.1,
+                    "incumbent": "Tran (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "CA-3",
+                    "districtMargin": -11,
+                    "incumbent": "Kiley (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "CA-40",
+                    "districtMargin": -11,
+                    "incumbent": "Kim (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "CA-23",
+                    "districtMargin": -21,
+                    "incumbent": "Olbernolte (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "CA-48",
+                    "districtMargin": -19,
+                    "incumbent": "Issa (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "co": {
+        "fullName": "Colorado",
+        "closeTime": 2100,
+        "countSpeed": 0.2,
+        "totalVote": 3200000,
+        "region": "MT",
+        "VBMPercent": 0.8,
+        "VBMSplit": 0,
+        "VBMInitialReport": true,
+        "VBMDelay": 1,
+        "voteDelay": 1,
+        "voteInitialReport": true,
+        "senateInc": "D",
+        "RSenateName": "A Republican",
+        "DSenateName": "Hickenlooper",
+        "lastSen": "D",
+        "senateMargin": 4,
+        "lastGov": "D",
+        "govMargin": 4,
+        "RGovName": "A Republican",
+        "DGovName": "Weiser?",
+        "houseSeats": {
+            "contested": [
+                {
+                    "districtName": "CO-3",
+                    "districtMargin": -5,
+                    "incumbent": "Hurd (R)",
+                    "rating": "Likely D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "CO-8",
+                    "districtMargin": -1,
+                    "incumbent": "Evans (R)",
+                    "rating": "Likely D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "CO-4",
+                    "districtMargin": -11,
+                    "incumbent": "Boebert (R)",
+                    "rating": "Tossup",
+                    "last": "R"
+                },
+                {
+                    "districtName": "CO-5",
+                    "districtMargin": -14,
+                    "incumbent": "Crank (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                }
+            ],
+            "safeD": 4
+        }
+    },
+    "ct": {
+        "fullName": "Connecticut",
+        "closeTime": 2000,
+        "countSpeed": 0.4,
+        "totalVote": 1800000,
+        "region": "NE",
+        "VBMPercent": 0.3,
+        "VBMSplit": 19,
+        "VBMInitialReport": true,
+        "VBMDelay": 0,
+        "lastGov": "D",
+        "govMargin": 7,
+        "RGovName": "A Republican",
+        "DGovName": "Lamont?",
+        "houseSeats": {
+            "safeD": 5
+        }
+    },
+    "de": {
+        "fullName": "Delaware",
+        "closeTime": 2000,
+        "countSpeed": 0.5,
+        "totalVote": 500000,
+        "lastSen": "D",
+        "region": "NE",
+        "VBMPercent": 0.4,
+        "VBMSplit": 12,
+        "VBMInitialReport": true,
+        "voteInitialReport": true,
+        "VBMDelay": 0,
+        "senateInc": "D",
+        "RSenateName": "A Republican",
+        "DSenateName": "Coons",
+        "senateMargin": 7,
+        "houseSeats": {
+            "safeD": 1
+        }
+    },
+    "fl": {
+        "fullName": "Florida",
+        "closeTime": 2000,
+        "countSpeed": 0.5,
+        "totalVote": 11000000,
+        "DSenateName": "A Democrat",
+        "RSenateName": "Moody?",
+        "senateMargin": -6,
+        "region": "S",
+        "lastSen": "R",
+        "VBMPercent": 0.6,
+        "VBMSplit": -11,
+        "VBMInitialReport": true,
+        "lastGov": "R",
+        "govMargin": -6,
+        "RGovName": "Donalds?",
+        "DGovName": "A Democrat",
+        "houseSeats": {
+            "safeD": 8,
+            "contested": [
+                {
+                    "districtName": "FL-13",
+                    "districtMargin": -9,
+                    "incumbent": "Luna (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "FL-27",
+                    "districtMargin": -21,
+                    "incumbent": "Salazar (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "FL-4",
+                    "districtMargin": -15,
+                    "incumbent": "Bean (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "FL-7",
+                    "districtMargin": -13,
+                    "incumbent": "Mills (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "FL-11",
+                    "districtMargin": -21,
+                    "incumbent": "Webster (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "FL-15",
+                    "districtMargin": -13,
+                    "incumbent": "Lee (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "FL-16",
+                    "districtMargin": -19,
+                    "incumbent": "Buchanan (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ],
+            "safeR": 13
+        }
+    },
+    "ga": {
+        "fullName": "Georgia",
+        "closeTime": 1900,
+        "countSpeed": 0.4,
+        "totalVote": 5000000,
+        "region": "S",
+        "VBMPercent": 0.8,
+        "VBMSplit": 4,
+        "VBMInitialReport": true,
+        "VBMDelay": 1,
+        "voteDelay": 1,
+        "voteInitialReport": true,
+        "senateInc": "D",
+        "RSenateName": "Kemp?",
+        "DSenateName": "Ossoff",
+        "lastSen": "D",
+        "senateMargin": -3,
+        "lastGov": "R",
+        "govMargin": -3,
+        "RGovName": "Carr?",
+        "DGovName": "Bottoms?",
+        "houseSeats": {
+            "safeD": 5,
+            "safeR": 8,
+            "contested": [
+                {
+                    "districtName": "GA-12",
+                    "districtMargin": -21,
+                    "incumbent": "Allen (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "hi": {
+        "fullName": "Hawaii",
+        "closeTime": 0,
+        "countSpeed": 0.5,
+        "totalVote": 570000,
+        "voteInitialReport": true,
+        "VBMInitialReport": true,
+        "VBMPercent": 0.03,
+        "VBMSplit": 30,
+        "lastGov": "D",
+        "govMargin": 25,
+        "govInc": "D",
+        "RGovName": "A Republican",
+        "DGovName": "Green",
+        "houseSeats": {
+            "safeD": 2
+        }
+    },
+    "ia": {
+        "fullName": "Iowa",
+        "closeTime": 2100,
+        "countSpeed": 0.5,
+        "totalVote": 1600000,
+        "region": "MW",
+        "VBMPercent": 0.37,
+        "VBMSplit": -1,
+        "senateInc": "R",
+        "RSenateName": "Ernst",
+        "DSenateName": "Sand?",
+        "lastSen": "R",
+        "senateMargin": -6,
+        "lastGov": "R",
+        "govMargin": -6,
+        "govInc": "R",
+        "RGovName": "Reynolds?",
+        "DGovName": "Konfrst?",
+        "houseSeats": {
+            "contested": [
+                {
+                    "districtName": "IA-3",
+                    "districtMargin": -3,
+                    "incumbent": "Nunn (R)",
+                    "rating": "Lean D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "IA-1",
+                    "districtMargin": -0.1,
+                    "incumbent": "Miller-Meeks (R)",
+                    "rating": "Likely D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "IA-2",
+                    "districtMargin": -16,
+                    "incumbent": "Hinson (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ],
+            "safeR": 1
+        }
+    },
+    "id": {
+        "fullName": "Idaho",
+        "closeTime": 2300,
+        "countSpeed": 0.2,
+        "totalVote": 800000,
+        "region": "MT",
+        "VBMPercent": 0.37,
+        "VBMSplit": -48,
+        "VBMInitialReport": true,
+        "VBMDelay": 0,
+        "senateInc": "R",
+        "RSenateName": "Risch",
+        "DSenateName": "A Democrat",
+        "lastSen": "R",
+        "senateMargin": -18,
+        "lastGov": "R",
+        "govMargin": -18,
+        "govInc": "R",
+        "RGovName": "Little?",
+        "DGovName": "A Democrat",
+        "houseSeats": { "safeR": 2 }
+    },
+    "il": {
+        "fullName": "Illinois",
+        "closeTime": 2000,
+        "countSpeed": 0.2,
+        "totalVote": 6000000,
+        "region": "MW",
+        "VBMPercent": 0.3,
+        "VBMSplit": 21,
+        "VBMInitialReport": true,
+        "DSenateName": "Krishnamoorthi?",
+        "RSenateName": "LaHood?",
+        "lastSen": "D",
+        "senateMargin": 7,
+        "lastGov": "D",
+        "govMargin": 7,
+        "govInc": "D",
+        "RGovName": "Bailey?",
+        "DGovName": "Pritzker",
+        "houseSeats": {
+            "safeD": 14,
+            "safeR": 3
+        }
+    },
+    "in": {
+        "fullName": "Indiana",
+        "closeTime": 1900,
+        "countSpeed": 0.4,
+        "totalVote": 3000000,
+        "region": "MW",
+        "VBMPercent": 0.4,
+        "VBMSplit": -23,
+        "houseSeats": {
+            "safeR": 6,
+            "safeD": 2,
+            "contested": [
+                {
+                    "districtName": "IN-5",
+                    "districtMargin": -18,
+                    "incumbent": "Spartz (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "ks": {
+        "fullName": "Kansas",
+        "closeTime": 2100,
+        "countSpeed": 0.4,
+        "totalVote": 1300000,
+        "region": "MW",
+        "lastPrez": "R",
+        "VBMPercent": 0.38,
+        "VBMSplit": -19,
+        "senateInc": "R",
+        "RSenateName": "Marshall",
+        "DSenateName": "A Democrat",
+        "lastSen": "R",
+        "senateMargin": -10,
+        "lastGov": "D",
+        "govMargin": -10,
+        "RGovName": "A Republican",
+        "DGovName": "Toland?",
+        "houseSeats": {
+            "safeD": 1,
+            "safeR": 2,
+            "contested": [
+                {
+                    "districtName": "KS-2",
+                    "districtMargin": -19,
+                    "incumbent": "Schmidt (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "ky": {
+        "fullName": "Kentucky",
+        "closeTime": 1900,
+        "countSpeed": 0.5,
+        "totalVote": 2000000,
+        "region": "S",
+        "RSenateName": "Cameron",
+        "DSenateName": "A Democrat",
+        "lastSen": "R",
+        "senateMargin": -16,
+        "houseSeats": {
+            "safeD": 1,
+            "safeR": 5
+        }
+    },
+    "la": {
+        "fullName": "Louisana",
+        "closeTime": 2100,
+        "countSpeed": 0.4,
+        "region": "S",
+        "totalVote": 2000000,
+        "VBMInitialReport": true,
+        "VBMPercent": 0.5,
+        "VBMSplit": -9,
+        "senateInc": "R",
+        "RSenateName": "Cassidy",
+        "DSenateName": "Edwards?",
+        "lastSen": "R",
+        "senateMargin": -12,
+        "houseSeats": {
+            "safeD": 2,
+            "safeR": 4
+        }
+    },
+    "ma": {
+        "fullName": "Massachusetts",
+        "closeTime": 2000,
+        "countSpeed": 0.1,
+        "DSenateName": "A Democrat",
+        "RSenateName": "A Republican",
+        "region": "NE",
+        "senateMargin": 15,
+        "totalVote": 3600000,
+        "lastPrez": "D",
+        "lastSen": "D",
+        "VBMPercent": 0.38,
+        "VBMSplit": 24,
+        "lastGov": "D",
+        "govMargin": 15,
+        "govInc": "D",
+        "RGovName": "A Republican",
+        "DGovName": "Healey?",
+        "houseSeats": {
+            "safeD": 9
+        }
+    },
+    "md": {
+        "fullName": "Maryland",
+        "closeTime": 2000,
+        "countSpeed": 0.2,
+        "DGovName": "Moore",
+        "RSenateName": "Buckel",
+        "govMargin": 14,
+        "govInc": "D",
+        "region": "NE",
+        "totalVote": 3000000,
+        "lastGov": "D",
+        "VBMPercent": 0.5,
+        "VBMSplit": 32,
+        "VBMInitialReport": true,
+        "houseSeats": {
+            "safeD": 7,
+            "contested": [
+                {
+                    "districtName": "MD-1",
+                    "districtMargin": -22,
+                    "incumbent": "Harris (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "me": {
+        "fullName": "Maine",
+        "closeTime": 2000,
+        "prezMargin": 8,
+        "evs": 2,
+        "countSpeed": 0.2,
+        "senateInc": "R",
+        "DSenateName": "Mills?",
+        "RSenateName": "Collins",
+        "totalVote": 800000,
+        "senateMargin": -1,
+        "region": "NE",
+        "lastSen": "R",
+        "VBMPercent": 0.37,
+        "VBMSplit": 14,
+        "VBMInitialReport": false,
+        "noCallBelow50": true,
+        "lastGov": "D",
+        "govMargin": 2,
+        "RGovName": "Bennett?",
+        "DGovName": "Pinet?",
+        "houseSeats": {
+            "safeD": 1,
+            "contested": [
+                {
+                    "districtName": "ME-2",
+                    "districtMargin": 1,
+                    "incumbent": "Golden (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                }
+            ]
+        }
+    },
+    "mi": {
+        "fullName": "Michigan",
+        "closeTime": 2100,
+        "countSpeed": 0.4,
+        "DSenateName": "McMorrow?",
+        "RSenateName": "Rogers?",
+        "totalVote": 5500000,
+        "senateMargin": -1,
+        "lastSen": "D",
+        "region": "MW",
+        "VBMPercent": 0.52,
+        "VBMSplit": 13,
+        "lastGov": "D",
+        "govMargin": -1,
+        "RGovName": "Dixon?",
+        "DGovName": "Benson?",
+        "houseSeats": {
+            "safeD": 6,
+            "contested": [
+                {
+                    "districtName": "MI-7",
+                    "districtMargin": -4,
+                    "incumbent": "Barrett (R)",
+                    "rating": "Lean D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "MI-10",
+                    "districtMargin": -6,
+                    "incumbent": "James (R)",
+                    "rating": "Tossup",
+                    "last": "R"
+                },
+                {
+                    "districtName": "MI-1",
+                    "districtMargin": -22,
+                    "incumbent": "Bergman (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "MI-4",
+                    "districtMargin": -12,
+                    "incumbent": "Huizenga (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                }
+            ],
+            "safeR": 3
+        }
+    },
+    "mn": {
+        "fullName": "Minnesota",
+        "closeTime": 2100,
+        "countSpeed": 0.4,
+        "senateInc": "D",
+        "DSenateName": "Flanagan?",
+        "RSenateName": "White?",
+        "senateMargin": 1,
+        "totalVote": 3200000,
+        "region": "MW",
+        "lastSen": "D",
+        "VBMPercent": 0.46,
+        "VBMSplit": 21,
+        "VBMInitialReport": true,
+        "VBMDelay": 1,
+        "voteDelay": 1,
+        "voteInitialReport": true,
+        "lastGov": "D",
+        "govInc": "D",
+        "govMargin": 1,
+        "RGovName": "A Republican",
+        "DGovName": "Walz",
+        "houseSeats": {
+            "safeD": 4,
+            "contested": [
+                {
+                    "districtName": "MN-1",
+                    "districtMargin": -17,
+                    "incumbent": "Finstad (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "MN-8",
+                    "districtMargin": -16,
+                    "incumbent": "Stauber (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ],
+            "safeR": 2
+        }
+    },
+    "mo": {
+        "fullName": "Missouri",
+        "closeTime": 2000,
+        "countSpeed": 0.5,
+        "totalVote": 3000000,
+        "region": "S",
+        "houseSeats": {
+            "safeD": 2,
+            "safeR": 5,
+            "contested": [
+                {
+                    "districtName": "MO-2",
+                    "districtMargin": -12,
+                    "incumbent": "Wagner (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "ms": {
+        "fullName": "Mississippi",
+        "closeTime": 2000,
+        "countSpeed": 0.2,
+        "senateInc": "R",
+        "RSenateName": "Hyde-Smith",
+        "DSenateName": "A Democrat",
+        "totalVote": 3000000,
+        "region": "S",
+        "lastSen": "R",
+        "senateMargin": -24,
+        "houseSeats": {
+            "safeR": 3,
+            "safeD": 1
+        }
+    },
+    "mt": {
+        "fullName": "Montana",
+        "closeTime": 2200,
+        "countSpeed": 0.1,
+        "senateInc": "R",
+        "DSenateName": "Neill?",
+        "RSenateName": "Daines",
+        "totalVote": 600000,
+        "senateMargin": -11,
+        "region": "MT",
+        "lastSen": "R",
+        "VBMPercent": 0.66,
+        "VBMSplit": -28,
+        "VBMInitialReport": false,
+        "VBMDelay": 0,
+        "houseSeats": {
+            "safeR": 1,
+            "contested": [
+                {
+                    "districtName": "MT-1",
+                    "districtMargin": -8,
+                    "incumbent": "Zinke (R)",
+                    "rating": "Tossup",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "nc": {
+        "fullName": "North Carolina",
+        "closeTime": 1930,
+        "countSpeed": 0.4,
+        "totalVote": 5500000,
+        "region": "S",
+        "lastPrez": "R",
+        "VBMPercent": 0.8,
+        "VBMSplit": 13,
+        "VBMInitialReport": false,
+        "voteDelay": 1,
+        "RSenateName": "Trump?",
+        "DSenateName": "Cooper?",
+        "lastSen": "R",
+        "senateMargin": -1,
+        "houseSeats": {
+            "safeD": 3,
+            "contested": [
+                {
+                    "districtName": "NC-1",
+                    "districtMargin": 2,
+                    "incumbent": "Davis (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "NC-5",
+                    "districtMargin": -19,
+                    "incumbent": "Foxx (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "NC-7",
+                    "districtMargin": -17,
+                    "incumbent": "Rouzer (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "NC-8",
+                    "districtMargin": -19,
+                    "incumbent": "Harris (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "NC-9",
+                    "districtMargin": -19,
+                    "incumbent": "Hudson (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "NC-10",
+                    "districtMargin": -19,
+                    "incumbent": "Harrigan (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "NC-11",
+                    "districtMargin": -13,
+                    "incumbent": "Edwards (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "NC-13",
+                    "districtMargin": -17,
+                    "incumbent": "Knott (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "NC-14",
+                    "districtMargin": -17,
+                    "incumbent": "Moore (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ],
+            "safeR": 3
+        }
+    },
+    "nd": {
+        "fullName": "North Dakota",
+        "closeTime": 2100,
+        "countSpeed": 0.5,
+        "totalVote": 300000,
+        "region": "MW",
+        "VBMPercent": 0.16,
+        "VBMSplit": -29,
+        "VBMInitialReport": false,
+        "VBMDelay": 0,
+        "houseSeats": {
+            "safeR": 1
+        }
+    },
+    "ne": {
+        "fullName": "Nebraska",
+        "closeTime": 2100,
+        "countSpeed": 0.5,
+        "senateInc": "R",
+        "DSenateName": "A Democrat",
+        "RSenateName": "Ricketts",
+        "senateMargin": -13,
+        "totalVote": 900000,
+        "lastSen": "R",
+        "region": "MW",
+        "VBMPercent": 0.3,
+        "VBMSplit": -13,
+        "VBMInitialReport": true,
+        "VBMDelay": 0,
+        "govInc": "R",
+        "lastGov": "R",
+        "govMargin": -13,
+        "RGovName": "Pillen",
+        "DGovName": "A Democrat",
+        "houseSeats": {
+            "safeR": 2,
+            "contested": [
+                {
+                    "districtName": "NE-2",
+                    "districtMargin": -2,
+                    "incumbent": "Bacon (R)",
+                    "last": "R",
+                    "rating": "Likely D"
+                },
+                {
+                    "districtName": "NE-1",
+                    "districtMargin": -21,
+                    "incumbent": "Flood (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "nh": {
+        "fullName": "New Hampshire",
+        "closeTime": 2000,
+        "countSpeed": 0.4,
+        "totalVote": 800000,
+        "region": "NE",
+        "VBMPercent": 0.04,
+        "VBMSplit": 4,
+        "senateInc": "D",
+        "RSenateName": "Brown?",
+        "DSenateName": "Shaheen",
+        "lastSen": "D",
+        "senateMargin": 4,
+        "DGovName": "A Democrat",
+        "RGovName": "Ayotte",
+        "lastGov": "R",
+        "govMargin": 1,
+        "govInc": "R",
+        "houseSeats": {
+            "safeD": 2
+        }
+    },
+    "nj": {
+        "fullName": "New Jersey",
+        "closeTime": 2000,
+        "countSpeed": 0.4,
+        "senateInc": "D",
+        "DSenateName": "Booker",
+        "RSenateName": "Bashaw",
+        "totalVote": 4500000,
+        "region": "NE",
+        "senateMargin": 6,
+        "lastSen": "D",
+        "VBMPercent": 0.15,
+        "VBMSplit": 38,
+        "houseSeats": {
+            "safeD": 9,
+            "contested": [
+                {
+                    "districtName": "NJ-7",
+                    "districtMargin": -5,
+                    "incumbent": "Kean (R)",
+                    "rating": "Lean D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "NJ-2",
+                    "districtMargin": -17,
+                    "incumbent": "Van Drew (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ],
+            "safeR": 1
+        }
+    },
+    "ny": {
+        "fullName": "New York",
+        "closeTime": 2100,
+        "countSpeed": 0.2,
+        "totalVote": 8600000,
+        "govInc": "D",
+        "DGovName": "Hochul",
+        "RGovName": "Lawler?",
+        "govMargin": 10,
+        "region": "NE",
+        "lastGov": "D",
+        "VBMPercent": 0.32,
+        "VBMSplit": 30,
+        "VBMInitialReport": true,
+        "voteInitialReport": true,
+        "houseSeats": {
+            "safeD": 17,
+            "contested": [
+                {
+                    "districtName": "NY-4",
+                    "districtMargin": 3,
+                    "incumbent": "Gillen (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "NY-17",
+                    "districtMargin": -7,
+                    "incumbent": "Lawler (R)",
+                    "rating": "Tossup",
+                    "last": "R"
+                },
+                {
+                    "districtName": "NY-19",
+                    "districtMargin": 2,
+                    "incumbent": "Riley (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "NY-1",
+                    "districtMargin": -11,
+                    "incumbent": "LaLota (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "NY-2",
+                    "districtMargin": -19,
+                    "incumbent": "Garbarino (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "NY-21",
+                    "districtMargin": -24,
+                    "incumbent": "Gendebien (D)",
+                    "rating": "Likely R",
+                    "last": "D"
+                },
+                {
+                    "districtName": "NY-3",
+                    "districtMargin": 3,
+                    "incumbent": "Souzzi (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                }
+            ],
+            "safeR": 3
+        }
+    },
+    "nv": {
+        "fullName": "Nevada",
+        "closeTime": 2200,
+        "countSpeed": 0.2,
+        "totalVote": 2000000,
+        "region": "SW",
+        "govInc": "R",
+        "DGovName": "Ford?",
+        "RGovName": "Lombardo",
+        "govMargin": -1,
+        "lastGov": "R",
+        "VBMPercent": 0.5,
+        "VBMSplit": 5,
+        "VBMInitialReport": true,
+        "voteInitialReport": true,
+        "VBMDelay": 2,
+        "voteDelay": 2,
+        "houseSeats": {
+            "safeD": 2,
+            "safeR": 1,
+            "contested": [
+                {
+                    "districtName": "NV-3",
+                    "districtMargin": 3,
+                    "incumbent": "Lee (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                }
+            ]
+        }
+    },
+    "nm": {
+        "fullName": "New Mexico",
+        "closeTime": 2100,
+        "countSpeed": 0.5,
+        "totalVote": 900000,
+        "region": "SW",
+        "senateInc": "D",
+        "DSenateName": "Lujan",
+        "RSenateName": "A Republican",
+        "senateMargin": 3,
+        "lastSen": "D",
+        "VBMPercent": 0.55,
+        "VBMSplit": 10,
+        "lastGov": "D",
+        "govMargin": 3,
+        "RGovName": "Baca?",
+        "DGovName": "Haaland?",
+        "houseSeats": {
+            "safeD": 3
+        }
+    },
+    "oh": {
+        "fullName": "Ohio",
+        "closeTime": 1930,
+        "countSpeed": 0.5,
+        "senateInc": "R",
+        "DSenateName": "Brown?",
+        "RSenateName": "Husted",
+        "senateMargin": -4,
+        "totalVote": 5900000,
+        "region": "MW",
+        "lastSen": "R",
+        "VBMPercent": 0.4,
+        "VBMSplit": -10,
+        "VBMInitialReport": true,
+        "voteInitialReport": true,
+        "VBMDelay": 1,
+        "voteDelay": 1,
+        "lastGov": "R",
+        "govMargin": -6,
+        "RGovName": "Ramaswamy?",
+        "DGovName": "Ryan??",
+        "houseSeats": {
+            "safeD": 3,
+            "safeR": 7,
+            "contested": [
+                {
+                    "districtName": "OH-7",
+                    "districtMargin": -15,
+                    "incumbent": "Miller (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+
+                {
+                    "districtName": "OH-9",
+                    "districtMargin": 1,
+                    "incumbent": "Kaptur (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "OH-10",
+                    "districtMargin": -21,
+                    "incumbent": "Turner (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "OH-13",
+                    "districtMargin": 3,
+                    "incumbent": "Sykes (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "OH-15",
+                    "districtMargin": -13,
+                    "incumbent": "Carey (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "ok": {
+        "fullName": "Oklahoma",
+        "closeTime": 2000,
+        "countSpeed": 0.5,
+        "totalVote": 1500000,
+        "region": "S",
+        "VBMPercent": 0.2,
+        "VBMSplit": -14,
+        "VBMInitialReport": true,
+        "voteInitialReport": true,
+        "senateInc": "R",
+        "RSenateName": "Mullin",
+        "DSenateName": "A Democrat",
+        "lastSen": "R",
+        "senateMargin": -20,
+        "lastGov": "R",
+        "govMargin": -20,
+        "RGovName": "Drummond",
+        "DGovName": "A Democrat",
+        "houseSeats": {
+            "safeR": 4,
+            "contested": [
+                {
+                    "districtName": "OK-5",
+                    "districtMargin": -21,
+                    "incumbent": "Bice (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "or": {
+        "fullName": "Oregon",
+        "closeTime": 2300,
+        "countSpeed": 0.2,
+        "totalVote": 2300000,
+        "region": "W",
+        "VBMPercent": 0.47,
+        "VBMSplit": 8,
+        "VBMInitialReport": true,
+        "voteInitialReport": true,
+        "VBMDelay": 1,
+        "voteDelay": 1,
+        "senateInc": "D",
+        "RSenateName": "A Republican",
+        "DSenateName": "Merkeley",
+        "lastSen": "D",
+        "senateMargin": 6,
+        "lastGov": "D",
+        "govMargin": 6,
+        "RGovName": "A Republican",
+        "DGovName": "Kotek",
+        "govInc": "D",
+        "houseSeats": {
+            "safeR": 1,
+            "contested": [
+                {
+                    "districtName": "OR-5",
+                    "districtMargin": 2.5,
+                    "incumbent": "Bynum (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "OR-4",
+                    "districtMargin": 7,
+                    "incumbent": "Hoyle (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "OR-6",
+                    "districtMargin": 7,
+                    "incumbent": "Salinas (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                }
+            ],
+            "safeD": 2
+        }
+    },
+    "pa": {
+        "fullName": "Pennsylvania",
+        "closeTime": 2000,
+        "countSpeed": 0.2,
+        "totalVote": 6900000,
+        "region": "MW",
+        "lastPrez": "D",
+        "VBMPercent": 0.2,
+        "VBMSplit": 38,
+        "VBMInitialReport": true,
+        "lastGov": "D",
+        "govMargin": -2,
+        "RGovName": "Garrity",
+        "DGovName": "Shapiro",
+        "govInc": "D",
+        "houseSeats": {
+            "safeD": 7,
+            "contested": [
+                {
+                    "districtName": "PA-7",
+                    "districtMargin": -1,
+                    "incumbent": "Mackenzie (R)",
+                    "rating": "Likely D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "PA-8",
+                    "districtMargin": -1,
+                    "incumbent": "Bresnahan (R)",
+                    "rating": "Likely D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "PA-10",
+                    "districtMargin": -2,
+                    "incumbent": "Perry (R)",
+                    "rating": "Likely D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "PA-1",
+                    "districtMargin": -12,
+                    "incumbent": "Fitzpatrick (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ],
+            "safeR": 6
+        }
+    },
+    "ri": {
+        "fullName": "Rhode Island",
+        "closeTime": 2000,
+        "evs": 4,
+        "countSpeed": 0.4,
+        "senateInc": "D",
+        "DSenateName": "Reed",
+        "RSenateName": "A Republican",
+        "totalVote": 500000,
+        "region": "NE",
+        "lastSen": "D",
+        "VBMInitialReport": true,
+        "voteInitialReport": true,
+        "VBMPercent": 0.36,
+        "VBMSplit": 28,
+        "lastGov": "D",
+        "govMargin": 8,
+        "RGovName": "A Republican",
+        "DGovName": "McKee",
+        "govInc": "D",
+        "houseSeats": {
+            "safeD": 2
+        },
+        "senateMargin": 8
+    },
+    "sc": {
+        "fullName": "South Carolina",
+        "closeTime": 1900,
+        "totalVote": 2500000,
+        "region": "S",
+        "countSpeed": 0.5,
+        "VBMPercent": 0.6,
+        "VBMSplit": -19,
+        "senateInc": "R",
+        "RSenateName": "Graham",
+        "DSenateName": "A Democrat",
+        "lastSen": "R",
+        "senateMargin": -8,
+        "lastGov": "R",
+        "govMargin": -8,
+        "RGovName": "Evette?",
+        "DGovName": "A Democrat",
+        "houseSeats": {
+            "safeD": 1,
+            "safeR": 3,
+            "contested": [
+                {
+                    "districtName": "SC-1",
+                    "districtMargin": -17,
+                    "incumbent": "Mace (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "SC-2",
+                    "districtMargin": -19,
+                    "incumbent": "Wilson (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "SC-4",
+                    "districtMargin": -19,
+                    "incumbent": "Timmons (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "sd": {
+        "fullName": "South Dakota",
+        "closeTime": 2100,
+        "totalVote": 400000,
+        "houseSeats": {
+            "safeR": 1
+        },
+        "countSpeed": 0.4,
+        "region": "MW",
+        "VBMPercent": 0.1,
+        "VBMSplit": -24,
+        "VBMInitialReport": false,
+        "VBMDelay": 0,
+        "senateInc": "R",
+        "RSenateName": "Rounds",
+        "DSenateName": "A Democrat",
+        "lastSen": "R",
+        "senateMargin": -16,
+        "lastGov": "R",
+        "govMargin": -16,
+        "RGovName": "Rhoden",
+        "DGovName": "A Democrat",
+        "govInc": "R"
+    },
+    "tn": {
+        "fullName": "Tennessee",
+        "closeTime": 2000,
+        "countSpeed": 0.4,
+        "totalVote": 3000000,
+        "lastPrez": "R",
+        "region": "S",
+        "VBMPercent": 0.73,
+        "VBMSplit": 34,
+        "VBMInitialReport": true,
+        "senateInc": "R",
+        "RSenateName": "Hagerty",
+        "DSenateName": "A Democrat",
+        "lastSen": "R",
+        "senateMargin": -14,
+        "lastGov": "R",
+        "govMargin": -14,
+        "RGovName": "Green?",
+        "DGovName": "A Democrat",
+        "houseSeats": {
+            "safeD": 1,
+            "safeR": 6,
+            "contested": [
+                {
+                    "districtName": "TN-5",
+                    "districtMargin": -17,
+                    "incumbent": "Ogles (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "TN-7",
+                    "districtMargin": -21,
+                    "incumbent": "Green (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ]
+        }
+    },
+    "tx": {
+        "fullName": "Texas",
+        "closeTime": 2100,
+        "countSpeed": 0.4,
+        "totalVote": 11000000,
+        "region": "SW",
+        "lastPrez": "R",
+        "VBMPercent": 0.8,
+        "VBMSplit": -13,
+        "VBMInitialReport": true,
+        "senateInc": "R",
+        "RSenateName": "Cornyn",
+        "DSenateName": "A Democrat",
+        "lastSen": "R",
+        "senateMargin": -5,
+        "lastGov": "R",
+        "govMargin": -5,
+        "RGovName": "Abbot",
+        "DGovName": "Clark?",
+        "govInc": "R",
+        "houseSeats": {
+            "safeD": 12,
+            "contested": [
+                {
+                    "districtName": "TX-15",
+                    "districtMargin": -14,
+                    "incumbent": "De La Cruz (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "TX-12",
+                    "districtMargin": -20,
+                    "incumbent": "Goldman (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "TX-24",
+                    "districtMargin": -21,
+                    "incumbent": "Van Duyne (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "TX-34",
+                    "districtMargin": 3,
+                    "incumbent": "Gonzalez (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                }
+            ],
+            "safeR": 22
+        }
+    },
+    "ut": {
+        "fullName": "Utah",
+        "closeTime": 2200,
+        "countSpeed": 0.1,
+        "totalVote": 1400000,
+        "region": "MT",
+        "VBMPercent": 0.24,
+        "VBMSplit": 26,
+        "VBMDelay": 1,
+        "voteDelay": 1,
+        "houseSeats": {
+            "safeR": 4
+        }
+    },
+    "va": {
+        "fullName": "Virginia",
+        "closeTime": 1900,
+        "countSpeed": 0.4,
+        "senateInc": "D",
+        "DSenateName": "Warner",
+        "RSenateName": "Youngkin?",
+        "totalVote": 4000000,
+        "region": "S",
+        "senateMargin": 3,
+        "lastSen": "D",
+        "VBMPercent": 0.52,
+        "VBMSplit": 1,
+        "houseSeats": {
+            "safeD": 5,
+            "contested": [
+                {
+                    "districtName": "VA-7",
+                    "districtMargin": 3,
+                    "incumbent": "Vindman (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "VA-2",
+                    "districtMargin": -4,
+                    "incumbent": "Kiggans (R)",
+                    "rating": "Lean D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "VA-1",
+                    "districtMargin": -13,
+                    "incumbent": "Wittman (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "VA-5",
+                    "districtMargin": -15,
+                    "incumbent": "McGuire (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ],
+            "safeR": 2
+        }
+    },
+    "vt": {
+        "fullName": "Vermont",
+        "closeTime": 1900,
+        "countSpeed": 0.5,
+        "totalVote": 400000,
+        "govMargin": 2,
+        "DGovName": "A Democrat",
+        "RGovName": "Scott",
+        "lastGov": "R",
+        "region": "NE",
+        "VBMPercent": 0.42,
+        "VBMSplit": 43,
+        "houseSeats": {
+            "safeD": 1
+        }
+    },
+    "wa": {
+        "fullName": "Washington",
+        "closeTime": 2300,
+        "countSpeed": 0.1,
+        "totalVote": 4000000,
+        "region": "W",
+        "VBMPercent": 0.57,
+        "VBMSplit": 19,
+        "VBMInitialReport": true,
+        "houseSeats": {
+            "safeD": 7,
+            "contested": [
+                {
+                    "districtName": "WA-3",
+                    "districtMargin": 4,
+                    "incumbent": "Perez (D)",
+                    "rating": "Likely D",
+                    "last": "D"
+                },
+                {
+                    "districtName": "WA-5",
+                    "districtMargin": -21,
+                    "incumbent": "Baumgartner (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ],
+            "safeR": 1
+        }
+    },
+    "wi": {
+        "fullName": "Wisconsin",
+        "closeTime": 2100,
+        "evs": 10,
+        "countSpeed": 0.5,
+        "totalVote": 3200000,
+        "region": "MW",
+        "lastPrez": "D",
+        "VBMPercent": 0.43,
+        "VBMSplit": 16,
+        "VBMInitialReport": true,
+        "VBMDelay": 3,
+        "lastGov": "D",
+        "govMargin": -2,
+        "RGovName": "A Republican",
+        "DGovName": "Kaul?",
+        "houseSeats": {
+            "safeD": 2,
+            "contested": [
+                {
+                    "districtName": "WI-3",
+                    "districtMargin": -3,
+                    "incumbent": "Van Orden (R)",
+                    "rating": "Lean D",
+                    "last": "R"
+                },
+                {
+                    "districtName": "WI-1",
+                    "districtMargin": -11,
+                    "incumbent": "Stiel (R)",
+                    "rating": "Lean R",
+                    "last": "R"
+                },
+                {
+                    "districtName": "WI-8",
+                    "districtMargin": -15,
+                    "incumbent": "Wied (R)",
+                    "rating": "Likely R",
+                    "last": "R"
+                }
+            ],
+            "safeR": 3
+        }
+    },
+    "wv": {
+        "fullName": "West Virginia",
+        "closeTime": 1930,
+        "evs": 4,
+        "countSpeed": 0.5,
+        "senateInc": "R",
+        "RSenateName": "Capito",
+        "DSenateName": "A Democrat",
+        "totalVote": 700000,
+        "senateMargin": -22,
+        "lastSen": "R",
+        "region": "MW",
+        "houseSeats": {
+            "safeR": 2
+        }
+    },
+    "wy": {
+        "fullName": "Wyoming",
+        "closeTime": 2200,
+        "prezMargin": -25,
+        "evs": 3,
+        "countSpeed": 0.4,
+        "totalVote": 200000,
+        "lastPrez": "R",
+        "region": "MT",
+        "VBMPercent": 0.13,
+        "VBMSplit": -82,
+        "VBMInitialReport": false,
+        "VBMDelay": 0,
+        "senateInc": "R",
+        "RSenateName": "Lummis",
+        "DSenateName": "A Democrat",
+        "lastSen": "R",
+        "senateMargin": -25,
+        "lastGov": "R",
+        "govMargin": -40,
+        "RGovName": "Biteman?",
+        "DGovName": "A Democrat",
+        "govInc": "R",
+        "houseSeats": {
+            "safeR": 1
+        }
+    }
+}

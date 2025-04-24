@@ -1,37 +1,37 @@
 class NeedleVM {
-    calculatePrezPercentile(state) {
-        let reportedVote =
-            (state.dReporting + state.rReporting) / state.totalVote;
-        let remainingVote = 1 - reportedVote;
+    // calculatePrezPercentile(state) {
+    //     let reportedVote =
+    //         (state.dReporting + state.rReporting) / state.totalVote;
+    //     let remainingVote = 1 - reportedVote;
 
-        let dMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
-        let dMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
-        let rMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
-        let rMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
+    //     let dMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
+    //     let dMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
+    //     let rMaxFactor = Math.random() * (1.1 - 1.05) + 1.05;
+    //     let rMinFactor = Math.random() * (0.95 - 0.9) + 0.9;
 
-        let dEst = state.dExRemaining * remainingVote;
-        let rEst = state.rExRemaining * remainingVote;
+    //     let dEst = state.dExRemaining * remainingVote;
+    //     let rEst = state.rExRemaining * remainingVote;
 
-        let dMax = Math.round(dEst * dMaxFactor) + state.dReporting;
-        let dMin = Math.round(dEst * dMinFactor) + state.dReporting;
-        let dMed = Math.round((dMax + dMin) / 2);
+    //     let dMax = Math.round(dEst * dMaxFactor) + state.dReporting;
+    //     let dMin = Math.round(dEst * dMinFactor) + state.dReporting;
+    //     let dMed = Math.round((dMax + dMin) / 2);
 
-        let rMax = Math.round(rEst * rMaxFactor) + state.rReporting;
-        let rMin = Math.round(rEst * rMinFactor) + state.rReporting;
-        let rMed = Math.round((rMax + rMin) / 2);
+    //     let rMax = Math.round(rEst * rMaxFactor) + state.rReporting;
+    //     let rMin = Math.round(rEst * rMinFactor) + state.rReporting;
+    //     let rMed = Math.round((rMax + rMin) / 2);
 
-        let dMaxMargin = dMax - rMin;
-        let median = dMed - rMed;
-        let rMaxMargin = dMin - rMax;
-        let totalWidth = dMaxMargin - rMaxMargin;
+    //     let dMaxMargin = dMax - rMin;
+    //     let median = dMed - rMed;
+    //     let rMaxMargin = dMin - rMax;
+    //     let totalWidth = dMaxMargin - rMaxMargin;
 
-        let distance = median - 0;
-        let newPerc = (distance / totalWidth) * 100;
-        if (state.percentile) {
-            newPerc = (newPerc + state.percentile) / 2;
-        }
-        return newPerc;
-    }
+    //     let distance = median - 0;
+    //     let newPerc = (distance / totalWidth) * 100;
+    //     if (state.percentile) {
+    //         newPerc = (newPerc + state.percentile) / 2;
+    //     }
+    //     return newPerc;
+    // }
     calculateSenatePercentile(state) {
         let reportedVote =
             (state.dSenReporting + state.rSenReporting) / state.totalVote;
